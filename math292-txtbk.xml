@@ -5,7 +5,7 @@
         <!-- ISBN, website, other metadata --> 
         <xi:include href="./bookinfo.xml" />
         
-        <book xml:id="sample-book">
+        <book xml:id="math292-textbook">
             <title>Math 292 <pretext /> Textbook</title>
             <subtitle>Differential Equations</subtitle>
     
@@ -22,7 +22,7 @@
             <!-- Nonhomogeneous Linear Systems -->
             <xi:include href="./nhomo-ls.xml" />
     
-            
+
 
         </book>
     

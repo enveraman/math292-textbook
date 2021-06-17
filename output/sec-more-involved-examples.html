@@ -1,7 +1,7 @@
 <!DOCTYPE html SYSTEM "about:legacy-compat">
 <!--********************************************-->
 <!--*       Generated from PreTeXt source      *-->
-<!--*       on 2021-06-17T17:14:09-04:00       *-->
+<!--*       on 2021-06-17T19:11:57-04:00       *-->
 <!--*   A recent stable commit (2020-08-09):   *-->
 <!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
 <!--*                                          *-->
@@ -14,7 +14,7 @@
 <title>More Involved Examples</title>
 <meta name="Keywords" content="Authored in PreTeXt">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script>window.MathJax = {
+<script src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script>window.MathJax = {
   tex: {
     inlineMath: [['\\(','\\)']],
     tags: "none",
@@ -26,6 +26,19 @@
   options: {
     ignoreHtmlClass: "tex2jax_ignore",
     processHtmlClass: "has_am",
+    renderActions: {
+        findScript: [10, function (doc) {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(function(node) {
+                var display = !!node.type.match(/; *mode=display/);
+                var math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                var text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = {node: text, delim: '', n: 0};
+                math.end = {node: text, delim: '', n: 0};
+                doc.math.push(math);
+            });
+        }, '']
+    },
   },
   chtml: {
     scale: 0.88,
@@ -36,7 +49,15 @@
     paths: {pretext: "https://pretextbook.org/js/lib"},
   },
 };
-</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.min.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.sticky.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.espy.min.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/0.13/pretext.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/0.13/pretext_add_on.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script xmlns:svg="http://www.w3.org/2000/svg">sagecellEvalName='Evaluate (Sage)';
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><script>$(function () {
+    // Make *any* div with class 'sagecell-sage' an executable Sage cell
+    // Their results will be linked, only within language type
+    sagecell.makeSagecell({inputLocation: 'div.sagecell-sage',
+                           linked: true,
+                           languages: ['sage'],
+                           evalButtonText: 'Evaluate (Sage)'});
+});
+</script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.min.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.sticky.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.espy.min.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/0.13/pretext.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/0.13/pretext_add_on.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script xmlns:svg="http://www.w3.org/2000/svg">sagecellEvalName='Evaluate (Sage)';
 </script><link xmlns:svg="http://www.w3.org/2000/svg" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic" rel="stylesheet" type="text/css">
 <link xmlns:svg="http://www.w3.org/2000/svg" href="https://fonts.googleapis.com/css?family=Inconsolata:400,700&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
 <link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/pretext.css" rel="stylesheet" type="text/css">
@@ -59,7 +80,7 @@
 \)</div>
 <header id="masthead" class="smallbuttons"><div class="banner"><div class="container">
 <a id="logo-link" href=""></a><div class="title-container">
-<h1 class="heading"><a href="sample-book.html"><span class="title">Math 292 PreTeXt Textbook:</span> <span class="subtitle">Differential Equations</span></a></h1>
+<h1 class="heading"><a href="math292-textbook.html"><span class="title">Math 292 PreTeXt Textbook:</span> <span class="subtitle">Differential Equations</span></a></h1>
 <p class="byline"></p>
 </div>
 </div></div>
@@ -95,7 +116,12 @@
 <section class="subsection" id="subsec-involved-1"><h3 class="heading hide-type">
 <span class="type">Subsection</span> <span class="codenumber">1.3.1</span> <span class="title">Solve \(y'' + 2y' + 5y = \sin t\)</span>
 </h3>
-<p id="p-67">As with always, we begin by solving \(y'' + 2y' + 5y = 0\text{.}\)</p>
+<p id="p-67">As with always, we begin by solving \(y'' + 2y' + 5y = 0\text{.}\) The general solution of this ODE is</p>
+<div class="displaymath">
+\begin{gather*}
+y(t) = c_1e^{-t} \cos 2t + c_2 e^{-t} \sin 2t 
+\end{gather*}
+</div>
 <article class="question example-like" id="question-8"><a data-knowl="" class="id-ref question-knowl original" data-refid="hk-question-8"><h6 class="heading">
 <span class="type">Question</span><span class="space"> </span><span class="codenumber">1.3.1</span><span class="period">.</span><span class="space"> </span><span class="title">How do I solve \(y'' + 2y' + 5y = 0\text{?}\)</span>
 </h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-question-8"><article class="question example-like"><p id="p-68">Set \(y = e^{rt}\) to obtain \(r^2 + 2r + 5 = 0\text{.}\) This holds when</p>
@@ -119,10 +145,93 @@ y(t) = c_1e^{-t} \cos 2t + c_2 e^{-t} \sin 2t.
 <p id="p-71">With the general solution of the homogeneous ODE \(y'' + 2y' + 5y = 0\text{,}\) we now look for a particular solution of the inhomogeneous ODE \(y'' + 2y' + 5y = \sin t\text{,}\) using variation of parameters of course.</p>
 <p id="p-72">One might remember variation of parameters of the form</p>
 <div class="displaymath">
+\begin{equation}
+\begin{bmatrix} y_1 \amp y_2 \\ y_1' \amp y_2' \end{bmatrix} \begin{bmatrix} u_1' \\ u_2' \end{bmatrix} = \begin{bmatrix} 0 \\ g(t)/p(t) \end{bmatrix}.\label{eqn-linear-varparam}\tag{1.3.1}
+\end{equation}
+</div>
+<p id="p-73">This gave us a neat solution for \(u_1',u_2'\text{:}\)</p>
+<div class="displaymath">
 \begin{align*}
-\begin{bmatrix} y_1 \amp y_2 \\ y_1' \amp y_2' \end{bmatrix} \begin{bmatrix} u_1' \\ u_2' \end{bmatrix} = \begin{bmatrix} 0 \\ g(t)/p(t) \end{bmatrix}.
+\begin{bmatrix} u_1' \\ u_2' \end{bmatrix} = \begin{bmatrix} y_1 \amp y_2 \\ y_1' \amp y_2' \end{bmatrix}^{-1} \begin{bmatrix} 0 \\ g(t)/p(t) \end{bmatrix} = \frac{1}{W[y_1,y_2](t)} \begin{bmatrix} y_2' \amp -y_2 \\ -y_1' \amp y_1 \end{bmatrix} \begin{bmatrix} 0 \\ g(t)/p(t) \end{bmatrix}.
 \end{align*}
-</div></section></section></div></main>
+</div>
+<p id="p-74">The expression \(W[y_1, y_2](t)\) may look intimidating, but this is just equal to \(y_1y_2' - y_1'y_2\text{.}\)</p>
+<p id="p-75">There's a lot to unpack here! We have \(y_1 = e^{-t} \cos 2t\) and \(y_2 = e^{-t} \sin 2t\text{,}\) and \(g(t)/p(t) = \sin t\text{.}\) We need to calculate \(y_1'\) and \(y_2'\) first, before we continue with our form of variation of parameters above:</p>
+<div class="displaymath">
+\begin{align*}
+y_1'(t) \amp = -e^{-t} \cos 2t - 2e^{-t} \sin 2t, \\
+y_2'(t) \amp = -e^{-t} \sin 2t + 2e^{-t} \cos 2t. 
+\end{align*}
+</div>
+<p id="p-76">Next, we have to compute \(W[y_1, y_2](t) = y_1y_2' - y_1'y_2\text{.}\) This is pretty annoying computationally, but trudging through it anyway gives us a pretty nice form of \(W[y_1, y_2](t)\text{:}\)</p>
+<div class="displaymath">
+\begin{gather*}
+W[y_1, y_2](t) = 2e^{-2t} 
+\end{gather*}
+</div>
+<article class="question example-like" id="question-9"><a data-knowl="" class="id-ref question-knowl original" data-refid="hk-question-9"><h6 class="heading">
+<span class="type">Question</span><span class="space"> </span><span class="codenumber">1.3.2</span><span class="period">.</span><span class="space"> </span><span class="title">How did you calculate \(W[y_1, y_2](t)\text{?}\)</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-question-9"><article class="question example-like"><p id="p-77">Here's the work of all this:</p>
+<div class="displaymath">
+\begin{align*}
+W[y_1, y_2](t) \amp = \bigg[ e^{-t} \cos 2t \bigg] \bigg[ -e^{-t} \sin 2t + 2e^{-t} \cos 2t \bigg] - \bigg[ -e^{-t} \cos 2t - 2e^{-t} \sin 2t \bigg] \bigg[ e^{-t} \sin 2t \bigg], \\
+\amp = -e^{-2t} \sin 2t \cos 2t + 2e^{-2t} \cos^2 2t \\
+\amp \qquad + e^{-2t} \sin 2t \cos 2t + 2e^{-2t} \sin^2 2t, \\
+\amp = 2e^{-2t} \cos^2 2t + 2e^{-2t} \sin^2 2t, \\
+\amp = 2e^{-2t}. 
+\end{align*}
+</div></article></div>
+<p id="p-78">Now we have all the parts we need for <a class="xref" data-knowl="./knowl/eqn-linear-varparam.html" title="Equation 1.3.1">(1.3.1)</a>! Substituting all this stuff into there and expanding seems like a lot of work again, but the expansion itself is not too bad:</p>
+<div class="displaymath">
+\begin{align*}
+\begin{bmatrix} u_1' \\ u_2' \end{bmatrix} \amp = \frac{1}{2e^{-2t}}
+\begin{bmatrix}
+-e^{-t} \sin 2t + 2e^{-t} \cos 2t \amp -e^{-t} \sin 2t \\
+-e^{-t} \cos 2t - 2e^{-t} \sin 2t \amp e^{-t} \cos 2t
+\end{bmatrix}
+\begin{bmatrix} 0 \\ \sin t \end{bmatrix}, \\
+\amp = \begin{bmatrix} -e^{-t}\sin 2t \sin t \\ e^{-t}\cos 2t \sin t \end{bmatrix}. 
+\end{align*}
+</div>
+<p id="p-79">We've found \(u_1'\) and \(u_2'\text{:}\)</p>
+<div class="displaymath">
+\begin{align*}
+u_1'(t) \amp = -e^{-t}\sin 2t \sin t \\
+u_2'(t) \amp = e^{-t}\cos 2t \sin t 
+\end{align*}
+</div>
+<p id="p-80">We want to take the indefinite integral of both of these, to see what forms \(u_1\) and \(u_2\) can take. But integrating either of these is going to be pretty brutal. That's why it's good to rely on computing packages!</p>
+<article class="question example-like" id="question-10"><a data-knowl="" class="id-ref question-knowl original" data-refid="hk-question-10"><h6 class="heading">
+<span class="type">Question</span><span class="space"> </span><span class="codenumber">1.3.3</span><span class="period">.</span><span class="space"> </span><span class="title">How do I do this in Mathematica?</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-question-10"><article class="question example-like"><p id="p-81">When we want to calculate \(\displaystyle\int f(x) \ dx\text{,}\) we use the command <code class="code-inline tex2jax_ignore">Integrate[f[x], x]</code>.</p>
+<p id="p-82">In this case, the integrals of \(u_1'(t)\) and \(u_2'(t)\) can be calculated using</p>
+<pre class="code-display tex2jax_ignore"> u1[t_] = Integrate[Exp[-t] * Sin[2t] * Sin[t], t] 
+ u2[t_] = Integrate[Exp[-t] * Cos[2t] * Sin[t], t] 
+</pre></article></div>
+<article class="question example-like" id="question-11"><a data-knowl="" class="id-ref question-knowl original" data-refid="hk-question-11"><h6 class="heading">
+<span class="type">Question</span><span class="space"> </span><span class="codenumber">1.3.4</span><span class="period">.</span><span class="space"> </span><span class="title">How do I do this in Matlab?</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-question-11"><article class="question example-like"><p id="p-83">When we want to calculate \(\displaystyle\int f(x) \ dx\text{,}\) we use the command <code class="code-inline tex2jax_ignore">int(f(x), x)</code>.</p>
+<p id="p-84">Here, we can calculate the integrals of \(u_1'\) and \(u_2'\) using</p>
+<pre class="code-display tex2jax_ignore"> u1(t) = int(-exp(-t) * sin(2 * t) * sin(t), t) 
+ u2(t) = int(-exp(-t) * cos(2 * t) * sin(t), t) 
+</pre></article></div>
+<article class="question example-like" id="question-12"><a data-knowl="" class="id-ref question-knowl original" data-refid="hk-question-12"><h6 class="heading">
+<span class="type">Question</span><span class="space"> </span><span class="codenumber">1.3.5</span><span class="period">.</span><span class="space"> </span><span class="title">How do I do this in Maple?</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-question-12"><article class="question example-like"><p id="p-85">The integration command is actually very similar to what you'd use for Matlab, so you'd use</p>
+<pre class="code-display tex2jax_ignore"> u1 := int(-exp(-t) * sin(2 * t) * sin(t), t) 
+ u2 := int(-exp(-t) * cos(2 * t) * sin(t), t) 
+</pre></article></div>
+<article class="question example-like" id="question-13"><a data-knowl="" class="id-ref question-knowl original" data-refid="hk-question-13"><h6 class="heading">
+<span class="type">Question</span><span class="space"> </span><span class="codenumber">1.3.6</span><span class="period">.</span><span class="space"> </span><span class="title">How do I do this in Sage? (+ bonus Sage cell).</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-question-13"><article class="question example-like"><p id="p-86">It's just as simple for Sage as the others: if we wanted to integrate \(f(x)\text{,}\) then we'd write <code class="code-inline tex2jax_ignore">integrate(f(x), x)</code>.</p>
+<p id="p-87">Here's a Sage window with the command already in. Try it out by clicking the “Evaluate Sage” button! (Not currently working :/)</p>
+<div class="hidden-sagecell-sage" id="sage-1"><script type="text/x-sage">t = var('t')
+u1(t) = integrate(-exp(-t) * sin(2 * t) * sin(t), x)
+u2(t) = integrate(exp(-t) * cos(2 * t) * sin(t), x)
+print("u1(t) = ", u1(t))
+print("u2(t) = ", u2(t))
+</script></div>
+<div class="code-box" style="width: 100%; margin-left: 0%; margin-right: 0%;"><pre class="console"></pre></div></article></div></section></section></div></main>
 </div>
 </body>
 </html>

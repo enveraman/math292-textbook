@@ -1,0 +1,159 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      4765,        149]
+NotebookOptionsPosition[      3716,        122]
+NotebookOutlinePosition[      4152,        139]
+CellTagsIndexPosition[      4109,        136]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"u1", "[", "t_", "]"}], "=", 
+  RowBox[{"Integrate", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", 
+      RowBox[{"Exp", "[", 
+       RowBox[{"-", "t"}], "]"}]}], "*", 
+     RowBox[{"Sin", "[", 
+      RowBox[{"2", "t"}], "]"}], "*", 
+     RowBox[{"Sin", "[", "t", "]"}]}], ",", "t"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.8329556278077793`*^9, 3.832955634555024*^9}, {
+  3.832955681415143*^9, 3.832955693705759*^9}},
+ CellLabel->"In[12]:=",ExpressionUUID->"8ac2a1c7-9b7c-43ee-9b0d-19f011a2265a"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"-", 
+   FractionBox["1", "20"]}], " ", 
+  SuperscriptBox["\[ExponentialE]", 
+   RowBox[{"-", "t"}]], " ", 
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", "5"}], " ", 
+     RowBox[{"Cos", "[", "t", "]"}]}], "+", 
+    RowBox[{"Cos", "[", 
+     RowBox[{"3", " ", "t"}], "]"}], "+", 
+    RowBox[{"5", " ", 
+     RowBox[{"Sin", "[", "t", "]"}]}], "-", 
+    RowBox[{"3", " ", 
+     RowBox[{"Sin", "[", 
+      RowBox[{"3", " ", "t"}], "]"}]}]}], ")"}]}]], "Output",
+ CellChangeTimes->{3.832955698563362*^9},
+ CellLabel->"Out[12]=",ExpressionUUID->"704802e9-0095-4e2a-9279-4027c6af5db0"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"u2", "[", "t_", "]"}], "=", 
+  RowBox[{"Integrate", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Exp", "[", 
+      RowBox[{"-", "t"}], "]"}], "*", 
+     RowBox[{"Cos", "[", 
+      RowBox[{"2", "t"}], "]"}], "*", 
+     RowBox[{"Sin", "[", "t", "]"}]}], ",", "t"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.83295570248149*^9, 3.8329557550893135`*^9}},
+ CellLabel->"In[14]:=",ExpressionUUID->"9dc2423f-1005-4156-aabf-338bce3727d9"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"-", 
+   FractionBox["1", "20"]}], " ", 
+  SuperscriptBox["\[ExponentialE]", 
+   RowBox[{"-", "t"}]], " ", 
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", "5"}], " ", 
+     RowBox[{"Cos", "[", "t", "]"}]}], "+", 
+    RowBox[{"3", " ", 
+     RowBox[{"Cos", "[", 
+      RowBox[{"3", " ", "t"}], "]"}]}], "-", 
+    RowBox[{"5", " ", 
+     RowBox[{"Sin", "[", "t", "]"}]}], "+", 
+    RowBox[{"Sin", "[", 
+     RowBox[{"3", " ", "t"}], "]"}]}], ")"}]}]], "Output",
+ CellChangeTimes->{{3.8329557392724805`*^9, 3.8329557556534166`*^9}},
+ CellLabel->"Out[14]=",ExpressionUUID->"8a4a753e-c1c8-41d8-b7e4-880bbff2e5fc"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"CloudExport", "[", 
+  RowBox[{"nbexpr", ",", "\"\<NB\>\""}], "]"}]], "Input",
+ CellChangeTimes->{{3.8329557964893227`*^9, 3.8329557964967856`*^9}},
+ CellLabel->"In[15]:=",ExpressionUUID->"5aa738ce-e49c-46e3-97ab-13193acbf764"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "CloudObject", "srverr", 
+   "\"Cloud server is not able to complete a request.\"", 2, 15, 1, 
+   27342241275121466370, "Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.832955808146305*^9},
+ CellLabel->
+  "During evaluation of \
+In[15]:=",ExpressionUUID->"23243f6b-c943-4c5b-afae-ca831d9833a9"],
+
+Cell[BoxData["$Failed"], "Output",
+ CellChangeTimes->{3.8329558081994653`*^9},
+ CellLabel->"Out[15]=",ExpressionUUID->"75db133f-f9d5-4d55-a532-10f614bd3eed"]
+}, Open  ]]
+},
+WindowSize->{471., 380.4},
+WindowMargins->{{Automatic, 43.799999999999955`}, {
+  58.80000000000007, Automatic}},
+FrontEndVersion->"12.1 for Microsoft Windows (64-bit) (June 19, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"0571ff0a-5926-4952-85a8-37285c2df378"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 536, 14, 28, "Input",ExpressionUUID->"8ac2a1c7-9b7c-43ee-9b0d-19f011a2265a"],
+Cell[1119, 38, 626, 19, 48, "Output",ExpressionUUID->"704802e9-0095-4e2a-9279-4027c6af5db0"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1782, 62, 463, 12, 28, "Input",ExpressionUUID->"9dc2423f-1005-4156-aabf-338bce3727d9"],
+Cell[2248, 76, 654, 19, 48, "Output",ExpressionUUID->"8a4a753e-c1c8-41d8-b7e4-880bbff2e5fc"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2939, 100, 250, 4, 28, "Input",ExpressionUUID->"5aa738ce-e49c-46e3-97ab-13193acbf764"],
+Cell[3192, 106, 348, 9, 23, "Message",ExpressionUUID->"23243f6b-c943-4c5b-afae-ca831d9833a9"],
+Cell[3543, 117, 157, 2, 32, "Output",ExpressionUUID->"75db133f-f9d5-4d55-a532-10f614bd3eed"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+

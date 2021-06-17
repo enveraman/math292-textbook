@@ -622,8 +622,12 @@
             <title>Solve <m>y'' + 2y' + 5y = \sin t</m></title>
             
             <p>
-                As with always, we begin by solving <m>y'' + 2y' + 5y = 0</m>. 
+                As with always, we begin by solving <m>y'' + 2y' + 5y = 0</m>. The general solution of this ODE is
             </p>
+
+            <md>
+                <mrow> y(t) = c_1e^{-t} \cos 2t + c_2 e^{-t} \sin 2t </mrow>
+            </md>
 
             <question>
                 <title>How do I solve <m>y'' + 2y' + 5y = 0</m>?</title>
@@ -662,14 +666,164 @@
                 One might remember variation of parameters of the form
             </p>
 
+            <men xml:id="eqn-linear-varparam">
+                \begin{bmatrix} y_1 \amp y_2 \\ y_1' \amp y_2' \end{bmatrix} \begin{bmatrix} u_1' \\ u_2' \end{bmatrix} = \begin{bmatrix} 0 \\ g(t)/p(t) \end{bmatrix}.
+            </men>
+
+            <p>
+                This gave us a neat solution for <m>u_1',u_2'</m>:
+            </p>
+
             <md>
-                <mrow>
-                    \begin{bmatrix} y_1 \amp y_2 \\ y_1' \amp y_2' \end{bmatrix} \begin{bmatrix} u_1' \\ u_2' \end{bmatrix} = \begin{bmatrix} 0 \\ g(t)/p(t) \end{bmatrix}.
+                <mrow> 
+                    \begin{bmatrix} u_1' \\ u_2' \end{bmatrix} = \begin{bmatrix} y_1 \amp y_2 \\ y_1' \amp y_2' \end{bmatrix}^{-1} \begin{bmatrix} 0 \\ g(t)/p(t) \end{bmatrix} = \frac{1}{W[y_1,y_2](t)} \begin{bmatrix} y_2' \amp -y_2 \\ -y_1' \amp y_1 \end{bmatrix} \begin{bmatrix} 0 \\ g(t)/p(t) \end{bmatrix}.
                 </mrow>
             </md>
 
-            
+            <p>
+                The expression <m>W[y_1, y_2](t)</m> may look intimidating, but this is just equal to <m>y_1y_2' - y_1'y_2</m>.
+            </p>
 
+            <p>
+                There's a lot to unpack here! We have <m>y_1 = e^{-t} \cos 2t</m> and <m>y_2 = e^{-t} \sin 2t</m>, and <m>g(t)/p(t) = \sin t</m>. We need to calculate <m>y_1'</m> and <m>y_2'</m> first, before we continue with our form of variation of parameters above:
+            </p>
+
+            <md>
+                <mrow> y_1'(t) \amp = -e^{-t} \cos 2t - 2e^{-t} \sin 2t, </mrow>
+                <mrow> y_2'(t) \amp = -e^{-t} \sin 2t + 2e^{-t} \cos 2t. </mrow>
+            </md>
+
+            <p>
+                Next, we have to compute <m>W[y_1, y_2](t) = y_1y_2' - y_1'y_2</m>. This is pretty annoying computationally, but trudging through it anyway gives us a pretty nice form of <m>W[y_1, y_2](t)</m>:
+            </p>
+
+            <md>
+                <mrow> W[y_1, y_2](t) = 2e^{-2t} </mrow>
+            </md>
+
+            <question>
+                <title>How did you calculate <m>W[y_1, y_2](t)</m>?</title>
+                
+                <p>
+                    Here's the work of all this:
+                </p>
+
+                <md>
+                    <mrow> W[y_1, y_2](t) \amp = \bigg[ e^{-t} \cos 2t \bigg] \bigg[ -e^{-t} \sin 2t + 2e^{-t} \cos 2t \bigg] - \bigg[ -e^{-t} \cos 2t - 2e^{-t} \sin 2t \bigg] \bigg[ e^{-t} \sin 2t \bigg], </mrow>
+    
+                    <mrow> \amp = -e^{-2t} \sin 2t \cos 2t + 2e^{-2t} \cos^2 2t </mrow>
+                    <mrow> \amp \qquad + e^{-2t} \sin 2t \cos 2t + 2e^{-2t} \sin^2 2t, </mrow>
+    
+                    <mrow> \amp = 2e^{-2t} \cos^2 2t + 2e^{-2t} \sin^2 2t, </mrow>
+    
+                    <mrow> \amp = 2e^{-2t}. </mrow>
+                </md>
+
+            </question>
+            
+            <p>
+                Now we have all the parts we need for <xref ref="eqn-linear-varparam"/>! Substituting all this stuff into there and expanding seems like a lot of work again, but the expansion itself is not too bad:
+            </p>
+
+            <md>
+                <mrow> \begin{bmatrix} u_1' \\ u_2' \end{bmatrix} \amp = \frac{1}{2e^{-2t}}
+                    \begin{bmatrix}
+                        -e^{-t} \sin 2t + 2e^{-t} \cos 2t \amp -e^{-t} \sin 2t \\
+                        -e^{-t} \cos 2t - 2e^{-t} \sin 2t \amp e^{-t} \cos 2t
+                    \end{bmatrix}
+                    \begin{bmatrix} 0 \\ \sin t \end{bmatrix}, </mrow>
+
+                <mrow> \amp = \begin{bmatrix} -e^{-t}\sin 2t \sin t \\ e^{-t}\cos 2t \sin t \end{bmatrix}. </mrow>
+            </md>
+
+            <p>
+                We've found <m>u_1'</m> and <m>u_2'</m>:
+            </p>
+
+            <md>
+                <mrow> u_1'(t) \amp = -e^{-t}\sin 2t \sin t </mrow>
+                <mrow> u_2'(t) \amp = e^{-t}\cos 2t \sin t </mrow>
+            </md>
+
+            <p>
+                We want to take the indefinite integral of both of these, to see what forms <m>u_1</m> and <m>u_2</m> can take. But integrating either of these is going to be pretty brutal. That's why it's good to rely on computing packages!
+            </p>
+
+            <question>
+                <title>How do I do this in Mathematica?</title>
+                
+                <p>
+                    When we want to calculate <m>\displaystyle\int f(x) \ dx</m>, we use the command <c>Integrate[f[x], x]</c>. 
+                </p>
+
+                <p>
+                    In this case, the integrals of <m>u_1'(t)</m> and <m>u_2'(t)</m> can be calculated using
+                </p>
+
+                <cd>
+                    <cline> u1[t_] = Integrate[Exp[-t] * Sin[2t] * Sin[t], t] </cline>
+                    <cline> u2[t_] = Integrate[Exp[-t] * Cos[2t] * Sin[t], t] </cline>
+                </cd>
+            </question>
+
+            <question>
+                <title>How do I do this in Matlab?</title>
+                
+                <p>
+                    When we want to calculate <m>\displaystyle\int f(x) \ dx</m>, we use the command <c>int(f(x), x)</c>. 
+                </p>
+                
+                <p>
+                    Here, we can calculate the integrals of <m>u_1'</m> and <m>u_2'</m> using
+                </p>
+
+                <cd>
+                    <cline> u1(t) = int(-exp(-t) * sin(2 * t) * sin(t), t) </cline>
+                    <cline> u2(t) = int(-exp(-t) * cos(2 * t) * sin(t), t) </cline>
+                </cd>
+            </question>
+
+            <question>
+                <title>How do I do this in Maple?</title>
+                
+                <p>
+                    The integration command is actually very similar to what you'd use for Matlab, so you'd use
+                </p>
+                
+                <cd>
+                    <cline> u1 := int(-exp(-t) * sin(2 * t) * sin(t), t) </cline>
+                    <cline> u2 := int(-exp(-t) * cos(2 * t) * sin(t), t) </cline>
+                </cd>
+
+            </question>
+
+            <question>
+                <title>How do I do this in Sage? (+ bonus Sage cell)</title>
+                
+                <p>
+                    It's just as simple for Sage as the others: if we wanted to integrate <m>f(x)</m>, then we'd write <c>integrate(f(x), x)</c>.
+                </p>
+
+                <p>
+                    Here's a Sage window with the command already in. Try it out by clicking the <q>Evaluate Sage</q> button! (Not currently working :/)
+                </p>
+
+                <sage>
+                    <input>
+                        t = var('t')
+                        u1(t) = integrate(-exp(-t) * sin(2 * t) * sin(t), x)
+                        u2(t) = integrate(exp(-t) * cos(2 * t) * sin(t), x)
+                        print("u1(t) = ", u1(t))
+                        print("u2(t) = ", u2(t))
+                    </input>
+                    <output>
+                        u1(t) =  -x*e^(-t)*sin(2*t)*sin(t)
+                        u2(t) =  x*cos(2*t)*e^(-t)*sin(t)
+                    </output>
+                </sage>
+
+
+            </question>
 
         </subsection>
 
