@@ -1,0 +1,28 @@
+<chapter xml:id="chap-nonhomo-ls" xmlns:xi="http://www.w3.org/2001/XInclude">
+    <title>Nonhomogeneous Linear Systems</title>
+
+    <section xml:id="sec-section-2-1">
+        <title>Section 2.1</title>
+
+        This is Section 2.1.
+
+        <subsection xml:id="subsec-subsection-c">
+            <title>subsection-c</title>
+            
+            This is Subsection C.
+        </subsection>
+    </section>
+
+    <section xml:id="sec-section-2-2">
+        <title>Section 2.2</title>
+
+        This is Section 2.2
+
+        <subsection xml:id="subsec-subsection-d">
+            <title>subsection-d</title>
+            
+            This is Subsection D.
+        </subsection>
+    </section>
+
+</chapter>

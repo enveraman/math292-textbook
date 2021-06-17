@@ -1,0 +1,39 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*       on 2021-06-17T15:59:53-04:00       *-->
+<!--*   A recent stable commit (2020-08-09):   *-->
+<!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<article class="example example-like"><h6 xmlns:svg="http://www.w3.org/2000/svg" class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.2.2</span><span class="period">.</span><span class="space"> </span><span class="title">If you've memorized the form of the solution.</span>
+</h6>
+<p xmlns:svg="http://www.w3.org/2000/svg">Great! Then, this should be a simple task of plugging in stuff (although the simplification might be a little messy).</p>
+<p xmlns:svg="http://www.w3.org/2000/svg">In this exercise, we have \(g(t) = e^t\) and \(p(t) = 1\text{.}\) Let's also take \(t_0 = 0\text{,}\) just to hopefully make the integration a little easier. So, directly from the formula, the particular solution \(Y(t)\) that we want is</p>
+<div xmlns:svg="http://www.w3.org/2000/svg" class="displaymath">
+\begin{align*}
+Y(t) \amp = \int_{t_0}^t \frac{y_1(s) y_2(t) - y_1(t) y_2(s)}{W[y_1,y_2](s)} \cdot \frac{g(s)}{p(s)} \ ds, \\
+\amp = \int_0^t \frac{e^{2s} \cdot e^{-2t} - e^{2t} \cdot e^{-2s}}{e^{2s} \cdot (-2 e^{-2s}) - (2 e^{2s}) \cdot e^{-2s} } \cdot e^s \ ds. 
+\end{align*}
+</div>
+<p xmlns:svg="http://www.w3.org/2000/svg">Simplifying this will be a bit of a hassle, but the integration shouldn't be too bad:</p>
+<div xmlns:svg="http://www.w3.org/2000/svg" class="displaymath">
+\begin{align*}
+Y(t) \amp = \int_0^t \frac{e^{2s - 2t} - e^{2t - 2s}}{(-4)} \cdot e^s \ ds, \\
+\amp = -\frac{1}{4} \int_0^t \Big[ e^{3s - 2t} - e^{2t - s} \Big] \ ds, \\
+\amp = -\frac{1}{4} \Big[ \frac{1}{3} e^{3s - 2t} + e^{2t - s} \Big]_{s=0}^{s=t}, \\
+\amp = -\frac{1}{3}e^t + \frac{1}{12} e^{-2t} + \frac{1}{4} e^{2t}.
+\end{align*}
+</div>
+<p xmlns:svg="http://www.w3.org/2000/svg">Although not necessary, with a little careful observation, one may note that \(e^{-2t}/12 + e^{2t}/4\) solves \(x'' - 4x = 0\text{,}\) so we may instead take \(Y(t) = -e^t/3\) to be our particular solution of choice.</p></article><span class="incontext"><a href="sec-basic-ex-varparam.html#example-1">in-context</a></span>
+</body>
+</html>

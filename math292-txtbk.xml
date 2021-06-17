@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<pretext xmlns:xi="http://www.w3.org/2001/XInclude" xml:lang="en-US">
+    
+        <!-- ISBN, website, other metadata --> 
+        <xi:include href="./bookinfo.xml" />
+        
+        <book xml:id="sample-book">
+            <title>Math 292 <pretext /> Textbook</title>
+            <subtitle>Differential Equations</subtitle>
+    
+            <!-- Title Page, Preface, etc. -->
+            <!-- <xi:include href="./frontmatter.xml" /> -->
+            
+            <!-- Parts are optional, included here for testing            -->
+            <!-- In "bookinfo.xml" set to "structural" for maximum effect -->
+    
+
+            <!-- Variation of Parameters -->
+            <xi:include href="./varofparam.xml" />
+
+            <!-- Nonhomogeneous Linear Systems -->
+            <xi:include href="./nhomo-ls.xml" />
+            
+
+    
+        </book>
+    
+    </pretext>

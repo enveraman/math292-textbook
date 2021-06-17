@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- Dump all the LaTeX preamble stuff here, and other global things -->
+
+<docinfo>
+
+    <author-biographies length="short" />
+
+    <!-- Logo? -->
+    <!-- <brandlogo url="http://abstract.pugetsound.edu" source="images/cover_aata_2014.png" /> -->
+
+    <!-- Prefix to enhance Sage notebook contents (?) -->
+    <!-- <initialism>Math292 Textbook</initialism> -->
+
+    <!-- LaTeX newcommands here! -->
+    <macros>
+    \newcommand{\lcm}{\operatorname{lcm}}
+    \renewcommand{\Re}{\mathrm{Re}}
+    \renewcommand{\Im}{\mathrm{Im}}
+    </macros>
+
+    <!-- this is the default, but supresses a warning -->
+    <cross-references text="type-global" />
+
+    <!-- tikz package and libraries for images -->
+    <latex-image-preamble>
+    \usepackage{tikz}
+    \usetikzlibrary{backgrounds}
+    \usetikzlibrary{arrows,matrix}
+    \usetikzlibrary{snakes}
+    </latex-image-preamble>
+
+</docinfo>

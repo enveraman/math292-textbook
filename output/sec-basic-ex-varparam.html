@@ -1,0 +1,238 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*       on 2021-06-17T15:59:53-04:00       *-->
+<!--*   A recent stable commit (2020-08-09):   *-->
+<!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<html lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Some Basic Examples</title>
+<meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>window.MathJax = {
+  tex: {
+    inlineMath: [['\\(','\\)']],
+    tags: "none",
+    useLabelIds: true,
+    tagSide: "right",
+    tagIndent: ".8em",
+    packages: {'[+]': ['base', 'extpfeil', 'ams', 'amscd', 'newcommand', 'knowl']}
+  },
+  options: {
+    ignoreHtmlClass: "tex2jax_ignore",
+    processHtmlClass: "has_am",
+  },
+  chtml: {
+    scale: 0.88,
+    mtextInheritFont: true
+  },
+  loader: {
+    load: ['input/asciimath', '[tex]/extpfeil', '[tex]/amscd', '[tex]/newcommand', '[pretext]/mathjaxknowl3.js'],
+    paths: {pretext: "https://pretextbook.org/js/lib"},
+  },
+};
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.min.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.sticky.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.espy.min.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/0.13/pretext.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/0.13/pretext_add_on.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script xmlns:svg="http://www.w3.org/2000/svg">sagecellEvalName='Evaluate (Sage)';
+</script><link xmlns:svg="http://www.w3.org/2000/svg" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://fonts.googleapis.com/css?family=Inconsolata:400,700&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/pretext.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/pretext_add_on.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/banner_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/toc_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/knowls_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/style_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/colors_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/setcolors.css" rel="stylesheet" type="text/css">
+<!-- 2019-10-12: Temporary - CSS file for experiments with styling --><link xmlns:svg="http://www.w3.org/2000/svg" href="developer.css" rel="stylesheet" type="text/css">
+</head>
+<body class="mathbook-book has-toc has-sidebar-left">
+<a class="assistive" href="#content">Skip to main content</a><div xmlns:svg="http://www.w3.org/2000/svg" id="latex-macros" class="hidden-content" style="display:none">\(\newcommand{\lcm}{\operatorname{lcm}}
+\renewcommand{\Re}{\mathrm{Re}}
+\renewcommand{\Im}{\mathrm{Im}}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\)</div>
+<header id="masthead" class="smallbuttons"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><a href="sample-book.html"><span class="title">Math 292 PreTeXt Textbook:</span> <span class="subtitle">Differential Equations</span></a></h1>
+<p class="byline"></p>
+</div>
+</div></div>
+<nav xmlns:svg="http://www.w3.org/2000/svg" id="primary-navbar" class="navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active" aria-label="Show or hide table of contents sidebar">Contents</button><div class="tree-nav toolbar toolbar-divisor-3"><span class="threebuttons"><a id="previousbutton" class="previous-button toolbar-item button" href="sec-desc-varparam.html" title="Previous">Prev</a><a id="upbutton" class="up-button button toolbar-item" href="chap-varofparams.html" title="Up">Up</a><a id="nextbutton" class="next-button button toolbar-item" href="sec-more-involved-examples.html" title="Next">Next</a></span></div>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="sec-desc-varparam.html" title="Previous">Prev</a><a class="up-button button toolbar-item" href="chap-varofparams.html" title="Up">Up</a><a class="next-button button toolbar-item" href="sec-more-involved-examples.html" title="Next">Next</a>
+</div>
+</div></nav></header><div class="page">
+<div xmlns:svg="http://www.w3.org/2000/svg" id="sidebar-left" class="sidebar" role="navigation"><div class="sidebar-content">
+<nav id="toc"><ul>
+<li class="link">
+<a href="chap-varofparams.html" data-scroll="chap-varofparams"><span class="codenumber">1</span> <span class="title">Variation of Parameters</span></a><ul>
+<li><a href="sec-desc-varparam.html" data-scroll="sec-desc-varparam">Variation of Parameters</a></li>
+<li><a href="sec-basic-ex-varparam.html" data-scroll="sec-basic-ex-varparam" class="active">Some Basic Examples</a></li>
+<li><a href="sec-more-involved-examples.html" data-scroll="sec-more-involved-examples">More Involved Examples</a></li>
+<li><a href="sec-exercises-varparam.html" data-scroll="sec-exercises-varparam">Exercises</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="chap-nonhomo-ls.html" data-scroll="chap-nonhomo-ls"><span class="codenumber">2</span> <span class="title">Nonhomogeneous Linear Systems</span></a><ul>
+<li><a href="sec-section-2-1.html" data-scroll="sec-section-2-1">Section 2.1</a></li>
+<li><a href="sec-section-2-2.html" data-scroll="sec-section-2-2">Section 2.2</a></li>
+</ul>
+</li>
+</ul></nav><div class="extras"><nav><a class="mathbook-link" href="https://pretextbook.org">Authored in PreTeXt</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://www.mathjax.org/badge/badge.gif" alt="Powered by MathJax"></a></nav></div>
+</div></div>
+<main class="main"><div id="content" class="pretext-content"><section xmlns:svg="http://www.w3.org/2000/svg" class="section" id="sec-basic-ex-varparam"><h2 class="heading hide-type">
+<span class="type">Section</span> <span class="codenumber">1.2</span> <span class="title">Some Basic Examples</span>
+</h2>
+<section class="subsection" id="subsection-5"><h3 class="heading hide-type">
+<span class="type">Subsection</span> <span class="codenumber">1.2.1</span> <span class="title">Solve \(x''(t) - 4x(t) = e^{t}\)</span>
+</h3>
+<p id="p-37">First, we solve the homogeneous version \(x'' - 4x = 0\text{.}\) It turns out that the general solution of this ODE is</p>
+<div class="displaymath">
+\begin{gather*}
+x(t) = c_1 e^{2t} + c_2 e^{-2t}.
+\end{gather*}
+</div>
+<article class="question example-like" id="question-5"><a data-knowl="" class="id-ref question-knowl original" data-refid="hk-question-5"><h6 class="heading">
+<span class="type">Question</span><span class="space"> </span><span class="codenumber">1.2.1</span><span class="period">.</span><span class="space"> </span><span class="title">How to solve \(x'' - 4x = 0\text{?}\)</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-question-5"><article class="question example-like"><p id="p-38">For 2nd order linear ODEs (basically ODEs of the form \(a x'' + bx' + cx = 0\) for <em class="emphasis">constants</em> \(a,b,c\)), remember that we always start off by plugging in \(x = e^{rt}\text{.}\)</p>
+<p id="p-39">If \(x = e^{rt}\text{,}\) then \(x' = re^{rt}\) and \(x'' = r^2e^{rt}\text{.}\) Substituting these into \(x'' - 4x = 0\) shows that</p>
+<div class="displaymath">
+\begin{gather*}
+r^2e^{rt} - 4e^{rt} = 0.
+\end{gather*}
+</div>
+<p id="p-40">Dividing out by \(e^{rt} &gt; 0\) gives us the <em class="emphasis">characteristic polynomial</em> \(r^2 - 4 = 0\text{.}\) Solving this has solutions \(r = \pm 2\text{.}\) This means that \(e^{2t}\) and \(e^{-2t}\) are solutions of \(x'' - 4x = 0\text{.}\)</p>
+<p id="p-41">So, we get that \(x(t) = c_1 e^{2t} + c_2 e^{-2t}\) is the general solution of \(x'' - 4x = 0\text{.}\)</p></article></div>
+<p id="p-42">This makes it clear that we should take \(y_1(t) = e^{2t}\) and \(y_2(t) = e^{-2t}\text{.}\) The Wronskian \(W[y_1,y_2](t) = -4\text{,}\) so these are fundamental solutions.</p>
+<p id="p-43">All we need to find is a particular solution of \(x'' + 4x = e^t\text{.}\) This is quite easy if we've memorized the solution variation of parameters gives us.</p>
+<article class="example example-like" id="example-1"><a data-knowl="" class="id-ref example-knowl original" data-refid="hk-example-1"><h6 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.2.2</span><span class="period">.</span><span class="space"> </span><span class="title">If you've memorized the form of the solution.</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-example-1"><article class="example example-like"><p id="p-44">Great! Then, this should be a simple task of plugging in stuff (although the simplification might be a little messy).</p>
+<p id="p-45">In this exercise, we have \(g(t) = e^t\) and \(p(t) = 1\text{.}\) Let's also take \(t_0 = 0\text{,}\) just to hopefully make the integration a little easier. So, directly from the formula, the particular solution \(Y(t)\) that we want is</p>
+<div class="displaymath">
+\begin{align*}
+Y(t) \amp = \int_{t_0}^t \frac{y_1(s) y_2(t) - y_1(t) y_2(s)}{W[y_1,y_2](s)} \cdot \frac{g(s)}{p(s)} \ ds, \\
+\amp = \int_0^t \frac{e^{2s} \cdot e^{-2t} - e^{2t} \cdot e^{-2s}}{e^{2s} \cdot (-2 e^{-2s}) - (2 e^{2s}) \cdot e^{-2s} } \cdot e^s \ ds. 
+\end{align*}
+</div>
+<p id="p-46">Simplifying this will be a bit of a hassle, but the integration shouldn't be too bad:</p>
+<div class="displaymath">
+\begin{align*}
+Y(t) \amp = \int_0^t \frac{e^{2s - 2t} - e^{2t - 2s}}{(-4)} \cdot e^s \ ds, \\
+\amp = -\frac{1}{4} \int_0^t \Big[ e^{3s - 2t} - e^{2t - s} \Big] \ ds, \\
+\amp = -\frac{1}{4} \Big[ \frac{1}{3} e^{3s - 2t} + e^{2t - s} \Big]_{s=0}^{s=t}, \\
+\amp = -\frac{1}{3}e^t + \frac{1}{12} e^{-2t} + \frac{1}{4} e^{2t}.
+\end{align*}
+</div>
+<p id="p-47">Although not necessary, with a little careful observation, one may note that \(e^{-2t}/12 + e^{2t}/4\) solves \(x'' - 4x = 0\text{,}\) so we may instead take \(Y(t) = -e^t/3\) to be our particular solution of choice.</p></article></div>
+<article class="example example-like" id="example-2"><a data-knowl="" class="id-ref example-knowl original" data-refid="hk-example-2"><h6 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.2.3</span><span class="period">.</span><span class="space"> </span><span class="title">Memorizing it is too much!</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-example-2"><article class="example example-like"><p id="p-48">This is okay! The solution that variation of parameters gives is long, and misremembering one small detail could waste a lot of time. A lot of the work to find this solution the “long way” is slightly tedious, so I'll skip over some more of the computational details.</p>
+<p id="p-49">Remember that the basic principle of variation of parameters is that we set \(x = Y(t) = u_1(t) y_1(t) + u_2(t) y_2(t)\text{.}\) In this case, we set \(Y(t) = u_1(t) e^{2t} + u_2(t) e^{-2t}\text{.}\) We want to solve for \(u_1\) and \(u_2\text{.}\)</p>
+<p id="p-50">Now, calculate \(Y'(t)\text{.}\)</p>
+<div class="displaymath">
+\begin{gather*}
+Y'(t) = u_1'(t)e^{2t} + u_2'(t) e^{-2t} + 2 u_1(t) e^{2t} - 2 u_2(t) e^{-2t}.
+\end{gather*}
+</div>
+<p id="p-51">We set \(u_1'(t)e^{2t} + u_2'(t) e^{-2t} = 0\text{,}\) and keep this in the back of our heads. Next up, calculate \(Y''(t)\text{:}\)</p>
+<div class="displaymath">
+\begin{gather*}
+Y''(t) = 2u_1'(t) e^{2t} - 2u_2'(t) e^{-2t} + 4u_1(t) e^{2t} + 4u_2(t) e^{-2t}.
+\end{gather*}
+</div>
+<p id="p-52">Substitute \(x = Y(t)\) into \(x'' - 4x = e^t\) to get</p>
+<div class="displaymath">
+\begin{align*}
+e^t \amp = \Big( 2u_1'(t) e^{2t} - 2u_2'(t) e^{-2t} + 4u_1(t) e^{2t} + 4u_2(t) e^{-2t} \Big) - \Big( 4u_1(t) e^{2t} + 4u_2(t) e^{-2t} \Big), \\
+\amp = 2u_1'(t) e^{2t} - 2u_2'(t) e^{-2t}
+\end{align*}
+</div>
+<p id="p-53">So in all, we get a system of equations (which is what we should expect).</p>
+<div class="displaymath">
+\begin{align*}
+0 \amp = u_1'(t) e^{2t} + u_2'(t) e^{-2t} \\
+e^t \amp = 2u_1'(t) e^{2t} - 2u_2'(t) e^{-2t} 
+\end{align*}
+</div>
+<p id="p-54">Turn this into a matrix equation to get</p>
+<div class="displaymath">
+\begin{align*}
+\begin{bmatrix} u_1' \\ u_2' \end{bmatrix} \amp = \begin{bmatrix}
+e^{2t} \amp e^{-2t} \\
+2e^{2t} \amp -2e^{-2t}
+\end{bmatrix}
+\begin{bmatrix} 0 \\ e^t \end{bmatrix}\\
+\amp = \frac{1}{4} \begin{bmatrix} e^{-t} \\ -e^{3t} \end{bmatrix} 
+\end{align*}
+</div>
+<p id="p-55">Now, we have \(u_1'(t) = e^{-t}/4\) and \(u_2'(t) = -e^{3t}/4\text{.}\) We can choose <em class="emphasis">any</em> \(u_1, u_2\) with these derivatives, so for sake of simplicity, choose \(u_1(t) = -e^{-t}/4\) and \(u_2(t) = -e^{3t}/12\text{.}\)</p>
+<p id="p-56">Substitute these into \(Y(t) = u_1(t) e^{2t} + u_2(t) e^{-2t}\text{:}\)</p>
+<div class="displaymath">
+\begin{gather*}
+Y(t) = -\frac{1}{4} e^{-t} e^{2t} - \frac{1}{12} e^{3t} e^{-2t} = -\frac{1}{3} e^t. 
+\end{gather*}
+</div></article></div>
+<p id="p-57">In both cases, we found that \(Y(t) = -e^t/3\) is a particular solution to \(x'' - 4x = e^t\text{.}\) So, the general solution to \(x'' - 4x = e^t\) is</p>
+<div class="displaymath">
+\begin{gather*}
+\boxed{x(t) = c_1 e^{2t} + c_2 e^{-2t} + \frac{1}{3} e^t.} 
+\end{gather*}
+</div></section><section class="subsection" id="subsection-6"><h3 class="heading hide-type">
+<span class="type">Subsection</span> <span class="codenumber">1.2.2</span> <span class="title">Solve \(x'' - 3x' + 2x = 1\)</span>
+</h3>
+<p id="p-58">Try it yourself! First, solve \(x'' - 3x' + 2x = 0\text{.}\)</p>
+<article class="question example-like" id="question-6"><a data-knowl="" class="id-ref question-knowl original" data-refid="hk-question-6"><h6 class="heading">
+<span class="type">Question</span><span class="space"> </span><span class="codenumber">1.2.4</span><span class="period">.</span><span class="space"> </span><span class="title">How do I solve \(x'' - 3x' + 2x = 0\text{?}\)</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-question-6"><article class="question example-like"><p id="p-59">Set \(x = e^{rt}\text{.}\) Substituting this into \(x'' - 3x' + 2x = 0\) shows that</p>
+<div class="displaymath">
+\begin{gather*}
+r^2 - 3r + 2 = 0. 
+\end{gather*}
+</div>
+<p class="continuation">This occurs when \(r = 1,2\text{,}\) so the general solution to \(x'' - 3x' + 2x = 0\) is</p>
+<div class="displaymath">
+\begin{gather*}
+x(t) = c_1e^t + c_2e^{2t}. 
+\end{gather*}
+</div></article></div>
+<p id="p-60">Next, we need a particular solution. Use variation of parameters to find some particular solution \(Y(t)\) of \(x'' - 3x' + 2x = 1\text{.}\)</p>
+<article class="question example-like" id="question-7"><a data-knowl="" class="id-ref question-knowl original" data-refid="hk-question-7"><h6 class="heading">
+<span class="type">Question</span><span class="space"> </span><span class="codenumber">1.2.5</span><span class="period">.</span><span class="space"> </span><span class="title">I need some help with starting variation of parameters!</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-question-7"><article class="question example-like"><p id="p-61">Set \(Y(t) = u_1(t) y_1(t) + u_2(t) y_2(t)\text{.}\) Then, find \(Y'\) and \(Y''\text{,}\) using the special condition that we've set before (it's to avoid terms like \(u_1''\) and \(u_2''\))</p>
+<p id="p-62">Substituting these into \(x'' - 3x' + 2x = 1\text{,}\) along with the special condition, gives us a system of equations that we can solve!</p>
+<a data-knowl="" class="id-ref hint-knowl original" data-refid="hk-hint-1" id="hint-1"><span class="type">Hint</span></a><div class="hidden-content tex2jax_ignore" id="hk-hint-1"><div class="hint solution-like">
+<p id="p-63">Alternatively, one might remember that \(Y(t)\) takes the form</p>
+<div class="displaymath">
+\begin{gather*}
+Y(t) = \int_{t_0}^t \frac{y_1(s) y_2(t) - y_1(t) y_2(s)}{W[y_1,y_2](s)} \cdot \frac{g(s)}{p(s)} \ ds. 
+\end{gather*}
+</div>
+<p id="p-64">What's \(g(t)\) and \(p(t)\) in the ODE \(x'' - 3x' + 2x = 1\text{?}\)</p>
+</div></div></article></div>
+<p id="p-65">Finally, the general solution to \(x'' - 3x' + 2x = 1\) is of the form</p>
+<div class="displaymath">
+\begin{gather*}
+x(t) = c_1 y_1(t) + c_2y_2(t) + Y(t). 
+\end{gather*}
+</div>
+<a data-knowl="" class="id-ref answer-knowl original" data-refid="hk-answer-1" id="answer-1"><span class="type">Answer</span></a><div class="hidden-content tex2jax_ignore" id="hk-answer-1"><div class="answer solution-like">
+<p id="p-66">Here's one possible general solution (there are multiple, based on the \(Y(t)\) chosen)</p>
+<div class="displaymath">
+\begin{gather*}
+\boxed{x(t) = c_1 e^t + c_2 e^{2t} + \frac{1}{2}.} 
+\end{gather*}
+</div>
+</div></div></section></section></div></main>
+</div>
+</body>
+</html>

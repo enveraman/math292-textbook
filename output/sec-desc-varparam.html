@@ -1,0 +1,320 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*       on 2021-06-17T15:59:53-04:00       *-->
+<!--*   A recent stable commit (2020-08-09):   *-->
+<!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<html lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Variation of Parameters</title>
+<meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>window.MathJax = {
+  tex: {
+    inlineMath: [['\\(','\\)']],
+    tags: "none",
+    useLabelIds: true,
+    tagSide: "right",
+    tagIndent: ".8em",
+    packages: {'[+]': ['base', 'extpfeil', 'ams', 'amscd', 'newcommand', 'knowl']}
+  },
+  options: {
+    ignoreHtmlClass: "tex2jax_ignore",
+    processHtmlClass: "has_am",
+  },
+  chtml: {
+    scale: 0.88,
+    mtextInheritFont: true
+  },
+  loader: {
+    load: ['input/asciimath', '[tex]/extpfeil', '[tex]/amscd', '[tex]/newcommand', '[pretext]/mathjaxknowl3.js'],
+    paths: {pretext: "https://pretextbook.org/js/lib"},
+  },
+};
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.min.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.sticky.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.espy.min.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/0.13/pretext.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/0.13/pretext_add_on.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script xmlns:svg="http://www.w3.org/2000/svg">sagecellEvalName='Evaluate (Sage)';
+</script><link xmlns:svg="http://www.w3.org/2000/svg" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://fonts.googleapis.com/css?family=Inconsolata:400,700&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/pretext.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/pretext_add_on.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/banner_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/toc_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/knowls_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/style_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/colors_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/setcolors.css" rel="stylesheet" type="text/css">
+<!-- 2019-10-12: Temporary - CSS file for experiments with styling --><link xmlns:svg="http://www.w3.org/2000/svg" href="developer.css" rel="stylesheet" type="text/css">
+</head>
+<body class="mathbook-book has-toc has-sidebar-left">
+<a class="assistive" href="#content">Skip to main content</a><div xmlns:svg="http://www.w3.org/2000/svg" id="latex-macros" class="hidden-content" style="display:none">\(\newcommand{\lcm}{\operatorname{lcm}}
+\renewcommand{\Re}{\mathrm{Re}}
+\renewcommand{\Im}{\mathrm{Im}}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\)</div>
+<header id="masthead" class="smallbuttons"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><a href="sample-book.html"><span class="title">Math 292 PreTeXt Textbook:</span> <span class="subtitle">Differential Equations</span></a></h1>
+<p class="byline"></p>
+</div>
+</div></div>
+<nav xmlns:svg="http://www.w3.org/2000/svg" id="primary-navbar" class="navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active" aria-label="Show or hide table of contents sidebar">Contents</button><div class="tree-nav toolbar toolbar-divisor-3"><span class="threebuttons"><a id="previousbutton" class="previous-button toolbar-item button" href="chap-varofparams.html" title="Previous">Prev</a><a id="upbutton" class="up-button button toolbar-item" href="chap-varofparams.html" title="Up">Up</a><a id="nextbutton" class="next-button button toolbar-item" href="sec-basic-ex-varparam.html" title="Next">Next</a></span></div>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="chap-varofparams.html" title="Previous">Prev</a><a class="up-button button toolbar-item" href="chap-varofparams.html" title="Up">Up</a><a class="next-button button toolbar-item" href="sec-basic-ex-varparam.html" title="Next">Next</a>
+</div>
+</div></nav></header><div class="page">
+<div xmlns:svg="http://www.w3.org/2000/svg" id="sidebar-left" class="sidebar" role="navigation"><div class="sidebar-content">
+<nav id="toc"><ul>
+<li class="link">
+<a href="chap-varofparams.html" data-scroll="chap-varofparams"><span class="codenumber">1</span> <span class="title">Variation of Parameters</span></a><ul>
+<li><a href="sec-desc-varparam.html" data-scroll="sec-desc-varparam" class="active">Variation of Parameters</a></li>
+<li><a href="sec-basic-ex-varparam.html" data-scroll="sec-basic-ex-varparam">Some Basic Examples</a></li>
+<li><a href="sec-more-involved-examples.html" data-scroll="sec-more-involved-examples">More Involved Examples</a></li>
+<li><a href="sec-exercises-varparam.html" data-scroll="sec-exercises-varparam">Exercises</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="chap-nonhomo-ls.html" data-scroll="chap-nonhomo-ls"><span class="codenumber">2</span> <span class="title">Nonhomogeneous Linear Systems</span></a><ul>
+<li><a href="sec-section-2-1.html" data-scroll="sec-section-2-1">Section 2.1</a></li>
+<li><a href="sec-section-2-2.html" data-scroll="sec-section-2-2">Section 2.2</a></li>
+</ul>
+</li>
+</ul></nav><div class="extras"><nav><a class="mathbook-link" href="https://pretextbook.org">Authored in PreTeXt</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://www.mathjax.org/badge/badge.gif" alt="Powered by MathJax"></a></nav></div>
+</div></div>
+<main class="main"><div id="content" class="pretext-content"><section xmlns:svg="http://www.w3.org/2000/svg" class="section" id="sec-desc-varparam"><h2 class="heading hide-type">
+<span class="type">Section</span> <span class="codenumber">1.1</span> <span class="title">Variation of Parameters</span>
+</h2>
+<section class="introduction" id="introduction-1"><article class="assemblage assemblage-like" id="assemblage-tldr"><h6 class="heading"><span class="title">Straight to the point....</span></h6>
+<p id="p-1">Variation of Parameters tells us that the ODE \(p(t) y'' + q(t) y' + r(t)y = g(t)\) has a particular solution \(Y(t) = u_1(t) y_1(t) + u_2(t) y_2(t)\text{,}\) where</p>
+<div class="displaymath">
+\begin{gather*}
+Y(t) = \int_{t_0}^t \frac{y_1(s) y_2(t) - y_1(t) y_2(s)}{W[y_1,y_2](s)} \cdot \frac{g(s)}{p(s)} \ ds. 
+\end{gather*}
+</div>
+<p id="p-2">Here, we take \(\{y_1, y_2\}\) to be a fundamental set of solutions of the homogeneous ODE \(p(t) y'' + q(t) y' + r(t)y = 0\text{,}\) that is to say, \(y_1 y_2' - y_1'y_2 \neq 0\text{.}\)</p>
+<p id="p-3">We also take \(t_0\) to be some number that lies in the range of \(t\) that the ODE is defined on. Choosing an appropriate \(t_0\) can sidestep a lot of the computational work.</p>
+<p id="p-4">Another way one can look at Variation of Parameters is that, given \(Y(t) = u_1(t) y_1(t) + u_2(t) y_2(t)\text{,}\) the functions \(u_1\) and \(u_2\) satisfy the equation</p>
+<div class="displaymath">
+\begin{align*}
+\begin{bmatrix} y_1 \amp y_2 \\ y_1' \amp y_2' \end{bmatrix} \begin{bmatrix} u_1' \\ u_2' \end{bmatrix} = \begin{bmatrix} 0 \\ g(t)/p(t) \end{bmatrix}.
+\end{align*}
+</div>
+<p id="p-5">Memorizing this (or the process below) is certainly less meticulous than memorizing the direct integral form above. Notice that the \(2 \times 2\) matrix on the left hand side above is the matrix whose determinant equals the \(W[y_1,y_2](t)\text{.}\)</p></article><p id="p-6">We are often interested in finding a particular solution of a nonhomogenous linear ODE \(p(t) y'' + q(t) y' + r(t)y = g(t)\text{,}\) mainly because the general solution of this ODE is</p>
+<div class="displaymath">
+\begin{gather*}
+y(t) = h(t) + Y(t), 
+\end{gather*}
+</div>
+<p class="continuation">where \(h(t)\) is the general solution of the homogeneous linear ODE \(p(t) y'' + q(t) y' + r(t)y = 0\) and \(Y(t)\) is <em class="emphasis">any</em> particular solution of the nonhomogeneous ODE \(p(t) y'' + q(t) y' + r(t)y = g(t)\text{.}\)</p>
+<p id="p-7">Using <em class="emphasis">Variation of Parameters</em> or <em class="emphasis">Duhamel's Principle</em> helps us find some particular solution \(Y(t)\) for the nonhomogeneous ODE. Here, we'll start with <dfn class="terminology">Variation of Parameters</dfn>.</p></section><section class="subsection" id="subsec-start-varparam"><h3 class="heading hide-type">
+<span class="type">Subsection</span> <span class="codenumber">1.1.1</span> <span class="title">Starting Variation of Parameters</span>
+</h3>
+<p id="p-8">Variation of Parameters begins by assuming that a particular solution \(Y(t)\) to</p>
+<div class="displaymath">
+\begin{gather*}
+p(t) y'' + q(t) y' + r(t)y = g(t) 
+\end{gather*}
+</div>
+<p class="continuation">is of the form</p>
+<div class="displaymath">
+\begin{gather*}
+Y(t) = u_1(t) y_1(t) + u_2(t) y_2(t). 
+\end{gather*}
+</div>
+<p id="p-9">Here, \(y_1\) and \(y_2\) are <em class="emphasis">fundamental</em> solutions to the homogeneous ODE \(p(t) y'' + q(t) y' + r(t)y = 0\text{,}\) that is, the Wronskian \(W[y_1,y_2](t) \neq 0\) for all applicable \(t\text{.}\)</p>
+<article class="hiddenproof" id="proof-1"><a data-knowl="" class="id-ref proof-knowl original" data-refid="hk-proof-1"><h6 class="heading"><span class="title">Review of Wronskian.</span></h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-proof-1"><article class="hiddenproof"><p id="p-10">Let \(y_1, y_2\) be solutions of the homogeneous ODE \(p(t) y'' + q(t) y' + r(t)y = 0\text{.}\) Recall that the Wronskian of \(y_1, y_2\) is denoted \(W[y_1, y_2](t)\text{,}\) and</p>
+<div class="displaymath">
+\begin{align*}
+W[y_1, y_2](t) = \det \begin{bmatrix}
+y_1(t) \amp y_2(t) \\
+y_1'(t) \amp y_2'(t)
+\end{bmatrix} = y_1(t) y_2'(t) - y_1'(t) y_2(t). 
+\end{align*}
+</div></article></div>
+<p id="p-11">The idea behind Variation of Parameters is to kind of "generalize" the general solution of the homogenous ODE. Note that if we have that \(u_1(t) = c_1\) and \(u_2(t) = c_2\) are constant for all \(t\text{,}\) then the solution \(Y(t) = c_1 y_1(t) + c_2 y_2(t)\) is actually a solution of the <em class="emphasis">homogeneous ODE!</em></p>
+<p id="p-12">So, we generalize the homogeneous solution by \(Y(t) = u_1(t) y_1(t) + u_2(t) y_2(t)\) in hopes that we find one (we only need one particular nonhomogeneous solution to describe them all!) solution to the nonhomogeneous ODE.</p>
+<p id="p-13">The algebra here can get a bit tricky, but I'll do my best to describe all the steps used!</p></section><section class="subsection" id="subsec-alg-of-varparam"><h3 class="heading hide-type">
+<span class="type">Subsection</span> <span class="codenumber">1.1.2</span> <span class="title">Equations involving \(u_1(t)\) and \(u_2(t)\)</span>
+</h3>
+<p id="p-14">Now, since \(Y(t)\) is a particular solution of \(p(t) y'' + q(t) y' + r(t)y = g(t)\text{,}\) we have that</p>
+<div class="displaymath">
+\begin{equation}
+p(t) Y''(t) + q(t) Y'(t) + r(t)Y(t) = g(t).\label{eqn-varparam-Y}\tag{1.1.1}
+\end{equation}
+</div>
+<p id="p-15">We'll want to calculate \(Y'(t)\) and \(Y''(t)\text{,}\) using the form \(Y(t) = u_1(t) y_1(t) + u_2(t) y_2(t)\text{.}\) Doing so will create equations for \(u_1\) and \(u_2\text{,}\) which we will hopefully be able to solve.</p>
+<p id="p-16">First, calculate \(Y'(t)\text{:}\) (try it yourself! Remember that \(Y(t) = u_1 y_1 + u_2 y_2\text{,}\) all of those terms being functions of \(t\text{.}\))</p>
+<article class="question example-like" id="question-1"><a data-knowl="" class="id-ref question-knowl original" data-refid="hk-question-1"><h6 class="heading">
+<span class="type">Question</span><span class="space"> </span><span class="codenumber">1.1.1</span><span class="period">.</span><span class="space"> </span><span class="title">What's \(Y'(t)\) equal to?</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-question-1"><article class="question example-like"><p id="p-17">We make good use of the product rule! Note that</p>
+<div class="displaymath">
+\begin{align*}
+Y'(t) \amp = \Big[ u_1'(t) y_1(t) + u_2'(t) y_2(t) \Big] + u_1(t) y_1'(t) + u_2(t) y_2'(t).
+\end{align*}
+</div></article></div>
+<p id="p-18">We have 4 terms in our representation of \(Y'(t)\text{.}\) This means that \(Y''(t)\) will have 8 terms! To reduce down on the number of terms we have, we set</p>
+<div class="displaymath">
+\begin{gather*}
+u_1'(t) y_1(t) + u_2'(t) y_2(t) = 0. 
+\end{gather*}
+</div>
+<p id="p-19">This may seem arbitrary for now, but this will ease up a lot of our calculations. We now have that</p>
+<div class="displaymath">
+\begin{align*}
+Y'(t) \amp = \Big[ u_1'(t) y_1(t) + u_2'(t) y_2(t) \Big] + u_1(t) y_1'(t) + u_2(t) y_2'(t) \\
+\amp = u_1(t) y_1'(t) + u_2(t) y_2'(t). 
+\end{align*}
+</div>
+<p id="p-20">Now, we calculate \(Y''(t)\text{,}\) using our representation of \(Y'(t)\) above.</p>
+<article class="question example-like" id="question-2"><a data-knowl="" class="id-ref question-knowl original" data-refid="hk-question-2"><h6 class="heading">
+<span class="type">Question</span><span class="space"> </span><span class="codenumber">1.1.2</span><span class="period">.</span><span class="space"> </span><span class="title">What's \(Y''(t)\) equal to?</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-question-2"><article class="question example-like"><p id="p-21">Again, this should be another quick differentiation exercise.</p>
+<div class="displaymath">
+\begin{gather*}
+Y''(t) = \Big[ u_1'(t) y_1'(t) + u_2'(t) y_2'(t) \Big] + u_1(t) y_1''(t) + u_2(t) y_2''(t).
+\end{gather*}
+</div></article></div>
+<p id="p-22">Now, we have expressions for \(Y'(t)\) and \(Y''(t)\text{.}\) Substitute these into <a class="xref" data-knowl="./knowl/eqn-varparam-Y.html" title="Equation 1.1.1">(1.1.1)</a> (Why isn't this working? This should expand out to show equation (1.1.1), will fix later). Doing so would yield that</p>
+<div class="displaymath">
+\begin{gather*}
+u_1'(t) y_1'(t) + u_2'(t) y_2'(t) = \frac{g(t)}{p(t)}. 
+\end{gather*}
+</div>
+<article class="question example-like" id="question-3"><a data-knowl="" class="id-ref question-knowl original" data-refid="hk-question-3"><h6 class="heading">
+<span class="type">Question</span><span class="space"> </span><span class="codenumber">1.1.3</span><span class="period">.</span><span class="space"> </span><span class="title">Why does this occur?</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-question-3"><article class="question example-like"><p id="p-23">Since \(y_1\) and \(y_2\) are solutions of the homogeneous equation, notice that</p>
+<div class="displaymath">
+\begin{gather*}
+p(t) y_1''(t) + q(t) y_1'(t) + r(t )y_1(t) = 0, 
+\end{gather*}
+</div>
+<p class="continuation">and</p>
+<div class="displaymath">
+\begin{gather*}
+p(t) y_2''(t) + q(t) y_2'(t) + r(t )y_2(t) = 0. 
+\end{gather*}
+</div>
+<p id="p-24">Now, we directly substitute \(Y'(t)\) and \(Y''(t)\) into <a class="xref" data-knowl="./knowl/eqn-varparam-Y.html" title="Equation 1.1.1">(1.1.1)</a>:</p>
+<div class="displaymath">
+\begin{align*}
+g(t) \amp = p(t) \Big[ u_1'(t) y_1'(t) + u_2'(t) y_2'(t) + u_1(t) y_1''(t) + u_2(t) y_2''(t) \Big] \\
+\amp \quad + \ q(t) \Big[ u_1(t) y_1'(t) + u_2(t) y_2'(t) \Big] \\
+\amp \quad + \ r(t) \Big[ u_1(t) y_1(t) + u_2(t) y_2(t) \Big], \\
+\amp = u_1(t)\Big[ p(t) y_1''(t) + q(t) y_1'(t) + r(t )y_1(t) \Big] \\
+\amp \quad + \ u_2(t) \Big[ p(t) y_2''(t) + q(t) y_2'(t) + r(t )y_2(t) \Big] \\
+\amp \quad + \ p(t) \Big[ u_1'(t) y_1'(t) + u_2'(t) y_2'(t) \Big], \\
+\amp = p(t) \Big[ u_1'(t) y_1'(t) + u_2'(t) y_2'(t) \Big]. 
+\end{align*}
+</div>
+<p class="continuation">Finish off by dividing \(p(t)\) on both sides. Note that we must have that \(p(t) \neq 0\) for all \(t\) in the appropriate interval.</p></article></div> With this, we have finally found two equations involving \(u_1\) and \(u_2\text{,}\) which we can solve as a typical system of linear equations:<div class="displaymath">
+\begin{align*}
+u_1' y_1 + u_2' y_2 \amp = 0, \\
+u_1' y_1' + u_2' y_2' \amp = \frac{g(t)}{p(t)}. 
+\end{align*}
+</div></section><section class="subsection" id="subsec-solve-u1-u2"><h3 class="heading hide-type">
+<span class="type">Subsection</span> <span class="codenumber">1.1.3</span> <span class="title">Solving for \(u_1(t)\) and \(u_2(t)\)</span>
+</h3>
+<p id="p-25">We can write the two equations from the previous section as a matrix system.</p>
+<div class="displaymath">
+\begin{align*}
+\begin{bmatrix}
+y_1 \amp y_2 \\
+y_1' \amp y_2'
+\end{bmatrix} \begin{bmatrix} 
+u_1' \\ u_2'
+\end{bmatrix} = \begin{bmatrix}
+0 \\ g(t) / p(t)
+\end{bmatrix}
+\end{align*}
+</div>
+<p id="p-26">With our knowledge from linear algebra, we can solve for \(u_1'\) and \(u_2'\) using matrix inverses:</p>
+<div class="displaymath">
+\begin{align*}
+\begin{bmatrix} 
+u_1' \\ u_2'
+\end{bmatrix} \amp = \begin{bmatrix}
+y_1 \amp y_2 \\
+y_1' \amp y_2'
+\end{bmatrix}^{-1} \begin{bmatrix}
+0 \\ g(t) / p(t)
+\end{bmatrix}\\
+\amp = \frac{1}{y_1 y_2' - y_1' y_2} \begin{bmatrix}
+y_2' \amp -y_2 \\
+-y_1' \amp y_1
+\end{bmatrix} \begin{bmatrix}
+0 \\ g(t) / p(t)
+\end{bmatrix}\\
+\amp = \frac{g(t) / p(t)}{W[y_1, y_2](t)} \begin{bmatrix}
+-y_2 \\ y_1
+\end{bmatrix}                            
+\end{align*}
+</div>
+<p id="p-27">At last! We have solved for \(u_1'(t)\) and \(u_2'(t)\text{:}\)</p>
+<div class="displaymath">
+\begin{gather*}
+u_1'(t) = - \frac{y_2(t)}{W[y_1, y_2](t)} \frac{g(t)}{p(t)} \qquad \text{and} \qquad u_2'(t) = \frac{y_1(t)}{W[y_1, y_2](t)} \frac{g(t)}{p(t)}. 
+\end{gather*}
+</div>
+<p id="p-28">We want \(u_1\) and \(u_2\text{.}\) We can choose \(t_0\) to be some number for which \(u_1(t_0) = 0\) and \(u_2(t_0) = 0\text{.}\)</p>
+<article class="question example-like" id="question-4"><a data-knowl="" class="id-ref question-knowl original" data-refid="hk-question-4"><h6 class="heading">
+<span class="type">Question</span><span class="space"> </span><span class="codenumber">1.1.4</span><span class="period">.</span><span class="space"> </span><span class="title">Why can we choose \(t_0\) to satisfy \(u_1(t_0) = u_2(t_0) = 0\text{?}\)</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-question-4"><article class="question example-like"><p id="p-29">When we perform "indefinite integrals" we always have to add a constant to our answer (that "\(+ C\)"). For example, we would write</p>
+<div class="displaymath">
+\begin{gather*}
+\int x^2 \ dx = \frac{x^3}3 + C. 
+\end{gather*}
+</div>
+<p class="continuation">In general, we have that</p>
+<div class="displaymath">
+\begin{gather*}
+\int f'(x) \ dx = f(x) + C. 
+\end{gather*}
+</div>
+<p class="continuation">That is to say, given \(f'(x)\text{,}\) we can find <em class="emphasis">infinitely many unique</em> \(f(x)\text{.}\) As in the case before, any function of the form \(x^3/3 + C\text{,}\) for any constant \(C\text{,}\) has the derivative \(x^2\)</p>
+<p id="p-30">All this is to say that we know what \(u_1'\) and \(u_2'\) are. But, we can find <em class="emphasis">infinitely many unique</em> \(u_1\) and \(u_2\) whose derivatives satisfy the forms we have. So we can shift \(u_1\) and \(u_2\) up or down until both intersect at some \(t_0\) with a value of \(0\text{.}\)</p></article></div>
+<p id="p-31">This helps us in that we can write that</p>
+<div class="displaymath">
+\begin{gather*}
+u_1(t) = \int_{t_0}^t u_1'(s) \ ds = - \int_{t_0}^t \frac{y_2(s)}{W[y_1, y_2](s)} \frac{g(s)}{p(s)} \ ds,
+\end{gather*}
+</div>
+<p class="continuation">and</p>
+<div class="displaymath">
+\begin{gather*}
+u_2(t) = \int_{t_0}^t u_2'(s) \ ds = \int_{t_0}^t \frac{y_1(s)}{W[y_1, y_2](s)} \frac{g(s)}{p(s)} \ ds.
+\end{gather*}
+</div></section><section class="subsection" id="subsec-final-form-of-y"><h3 class="heading hide-type">
+<span class="type">Subsection</span> <span class="codenumber">1.1.4</span> <span class="title">Final Form of \(Y(t)\)</span>
+</h3>
+<p id="p-32">With all this, our final form of \(Y(t) = u_1y_1 + u_2y_2\) becomes</p>
+<div class="displaymath">
+\begin{gather*}
+Y(t) = - y_1(t) \int_{t_0}^t \frac{y_2(s)}{W[y_1, y_2](s)} \frac{g(s)}{p(s)} \ ds + y_2(t) \int_{t_0}^t \frac{y_1(s)}{W[y_1, y_2](s)} \frac{g(s)}{p(s)} \ ds. 
+\end{gather*}
+</div>
+<p id="p-33">All in one integral, this is expressed as</p>
+<div class="displaymath">
+\begin{gather*}
+Y(t) = \int_{t_0}^t \frac{y_1(s) y_2(t) - y_1(t) y_2(s)}{W[y_1,y_2](s)} \cdot \frac{g(s)}{p(s)} \ ds. 
+\end{gather*}
+</div>
+<p id="p-34">This is the particular solution we obtain with Variation of Parameters! It's certainly a handful to memorize, but starting with \(Y = u_1y_1 + u_2y_2\) and remembering the general steps we took along the way is another good way of remembering variation of parameters.</p>
+<p id="p-35">An interesting viewpoint of this is that we can write the general solution to a nonhomogeneous linear second order ODE of the form \(p(t) y'' + q(t) y' + r(t)y = g(t)\) using <em class="emphasis">only</em> a fundamental set of solutions \(\{y_1, y_2\}\) of the homogeneous ODE \(p(t) y'' + q(t) y' + r(t)y = 0\text{,}\) and a constant \(t_0\) that lies in the interval the ODE is defined on.</p>
+<p id="p-36">Namely, the general solution of \(p(t) y'' + q(t) y' + r(t)y = g(t)\) is</p>
+<div class="displaymath">
+\begin{gather*}
+y(t) = c_1y_1(t) + c_2y_2(t) + \int_{t_0}^t \frac{y_1(s) y_2(t) - y_1(t) y_2(s)}{W[y_1,y_2](s)} \cdot \frac{g(s)}{p(s)} \ ds, 
+\end{gather*}
+</div>
+<p class="continuation">where \(c_1,c_2\) are real constants.</p></section></section></div></main>
+</div>
+</body>
+</html>
