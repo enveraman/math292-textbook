@@ -628,8 +628,48 @@
             <question>
                 <title>How do I solve <m>y'' + 2y' + 5y = 0</m>?</title>
                 
+                <p>
+                    Set <m>y = e^{rt}</m> to obtain <m>r^2 + 2r + 5 = 0</m>. This holds when
+                </p>
+
+                <md>
+                    <mrow> r = \frac{-2 \pm \sqrt{4 - 4\cdot 5}}{2} = -1 \pm 2i.</mrow>
+                </md>
+
+                <p>
+                    So, <m>y = e^{(-1 + 2i)t}</m> is a solution of <m>y'' + 2y' + 5y = 0</m>. Recall that if <m>y(t)</m> is a solution of a linear ODE, then so are <m>\Re\{y(t)\}</m> (real part of <m>y</m>) and <m>\Im\{y(t)\}</m> (imaginary part of <m>y</m>). Writing out <m>e^{(-1 + 2i)t}</m> shows that
+                </p>
+
+                <md>
+                    <mrow> e^{(-1 + 2i)t} = e^{-t} \cos 2t + ie^{-t} \sin 2t. </mrow>
+                </md>
+
+                <p>
+                    Therefore, the general solution of <m>y'' + 2y' + 5y = 0</m> is
+                </p>
                 
+                <md>
+                    <mrow> y(t) = c_1e^{-t} \cos 2t + c_2 e^{-t} \sin 2t. </mrow>
+                </md>
+
             </question>
+
+            <p>
+                With the general solution of the homogeneous ODE <m>y'' + 2y' + 5y = 0</m>, we now look for a particular solution of the inhomogeneous ODE <m>y'' + 2y' + 5y = \sin t</m>, using variation of parameters of course.
+            </p>
+
+            <p>
+                One might remember variation of parameters of the form
+            </p>
+
+            <md>
+                <mrow>
+                    \begin{bmatrix} y_1 \amp y_2 \\ y_1' \amp y_2' \end{bmatrix} \begin{bmatrix} u_1' \\ u_2' \end{bmatrix} = \begin{bmatrix} 0 \\ g(t)/p(t) \end{bmatrix}.
+                </mrow>
+            </md>
+
+            
+
 
         </subsection>
 
