@@ -1,0 +1,45 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*       on 2021-07-07T18:02:43-04:00       *-->
+<!--*   A recent stable commit (2020-08-09):   *-->
+<!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body><article class="question example-like"><p xmlns:svg="http://www.w3.org/2000/svg">As we've seen a lot already, it's good to memorize at least one of the forms of variation of parameters. Personally, my favorite form to memorize is</p>
+<div xmlns:svg="http://www.w3.org/2000/svg" class="displaymath">
+\begin{align*}
+\begin{bmatrix} y_1 \amp y_2 \\ y_1' \amp y_2' \end{bmatrix} \begin{bmatrix} u_1' \\ u_2' \end{bmatrix} = \begin{bmatrix} 0 \\ g(t)/p(t) \end{bmatrix}. 
+\end{align*}
+</div>We have \(y_1 = e^{-t}\) and \(y_2 = e^{5t}\) and \(g(t) / p(t) = e^{-t}\text{.}\) Plugging these in gives us<div xmlns:svg="http://www.w3.org/2000/svg" class="displaymath">
+\begin{align*}
+\begin{bmatrix} e^{-t} \amp e^{5t} \\ -e^{-t} \amp 5e^{5t} \end{bmatrix} \begin{bmatrix} u_1' \\ u_2' \end{bmatrix} = \begin{bmatrix} 0 \\ e^{-t} \end{bmatrix}. 
+\end{align*}
+</div>And now, we solve this linear equation. In a test environment, be careful to not forget small details like dividing by the determinant for the inverse.<div xmlns:svg="http://www.w3.org/2000/svg" class="displaymath">
+\begin{align*}
+\begin{bmatrix} u_1' \\ u_2' \end{bmatrix} \amp = \begin{bmatrix} e^{-t} \amp e^{5t} \\ -e^{-t} \amp 5e^{5t} \end{bmatrix}^{-1} \begin{bmatrix} 0 \\ e^{-t} \end{bmatrix} \\
+\amp = \frac{1}{6e^{4t}} \begin{bmatrix} 5e^{5t} \amp -e^{5t} \\ e^{-t} \amp e^{-t} \end{bmatrix} \begin{bmatrix} 0 \\ e^{-t} \end{bmatrix} \\
+\amp = \frac{e^{-4t}}{6} \begin{bmatrix} -e^{4t} \\ e^{-2t} \end{bmatrix} \\
+\amp = \begin{bmatrix} -1/6 \\ e^{-6t} / 6 \end{bmatrix}. 
+\end{align*}
+</div>So we get the relatively nice forms<div xmlns:svg="http://www.w3.org/2000/svg" class="displaymath">
+\begin{gather*}
+u_1'(t) = -\frac{1}{6} \quad \text{and} \quad u_2'(t) = \frac{e^{-6t}}{6}.
+\end{gather*}
+</div>These are much much much nicer than the previous problem. We take an indefinite integral to find \(u_1,u_2\text{.}\)<div xmlns:svg="http://www.w3.org/2000/svg" class="displaymath">
+\begin{gather*}
+u_1(t) = -\frac{t}{6} \quad \text{and} \quad u_2(t) = - \frac{e^{-6t}}{36}.
+\end{gather*}
+</div>So, with \(Y(t) = u_1y_1 + u_2y_2\text{,}\) we get<div xmlns:svg="http://www.w3.org/2000/svg" class="displaymath">
+\begin{gather*}
+Y(t) = -\frac{t}{6} \cdot e^{-t} - \frac{e^{-6t}}{36} \cdot e^{5t} = -\frac{te^{-t}}{6} - \frac{e^{-t}}{36}.
+\end{gather*}
+</div></article></body>
+</html>

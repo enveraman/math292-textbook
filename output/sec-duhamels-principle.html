@@ -1,0 +1,237 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*       on 2021-07-07T18:02:42-04:00       *-->
+<!--*   A recent stable commit (2020-08-09):   *-->
+<!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<html lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Math292 Textbook Duhamel's Principle</title>
+<meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script>window.MathJax = {
+  tex: {
+    inlineMath: [['\\(','\\)']],
+    tags: "none",
+    useLabelIds: true,
+    tagSide: "right",
+    tagIndent: ".8em",
+    packages: {'[+]': ['base', 'extpfeil', 'ams', 'amscd', 'newcommand', 'knowl']}
+  },
+  options: {
+    ignoreHtmlClass: "tex2jax_ignore",
+    processHtmlClass: "has_am",
+    renderActions: {
+        findScript: [10, function (doc) {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(function(node) {
+                var display = !!node.type.match(/; *mode=display/);
+                var math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                var text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = {node: text, delim: '', n: 0};
+                math.end = {node: text, delim: '', n: 0};
+                doc.math.push(math);
+            });
+        }, '']
+    },
+  },
+  chtml: {
+    scale: 0.88,
+    mtextInheritFont: true
+  },
+  loader: {
+    load: ['input/asciimath', '[tex]/extpfeil', '[tex]/amscd', '[tex]/newcommand', '[pretext]/mathjaxknowl3.js'],
+    paths: {pretext: "https://pretextbook.org/js/lib"},
+  },
+};
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.min.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.sticky.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.espy.min.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/0.13/pretext.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/0.13/pretext_add_on.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script xmlns:svg="http://www.w3.org/2000/svg">sagecellEvalName='Evaluate (Sage)';
+</script><link xmlns:svg="http://www.w3.org/2000/svg" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://fonts.googleapis.com/css?family=Inconsolata:400,700&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/pretext.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/pretext_add_on.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/banner_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/toc_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/knowls_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/style_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/colors_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/setcolors.css" rel="stylesheet" type="text/css">
+<!-- 2019-10-12: Temporary - CSS file for experiments with styling --><link xmlns:svg="http://www.w3.org/2000/svg" href="developer.css" rel="stylesheet" type="text/css">
+</head>
+<body class="mathbook-book has-toc has-sidebar-left">
+<a class="assistive" href="#content">Skip to main content</a><div xmlns:svg="http://www.w3.org/2000/svg" id="latex-macros" class="hidden-content" style="display:none">\(\newcommand{\lcm}{\operatorname{lcm}}
+\renewcommand{\Re}{\mathrm{Re}}
+\renewcommand{\Im}{\mathrm{Im}}
+
+\newcommand{\bvec}[2]{\begin{bmatrix} #1 \\ #2 \end{bmatrix}}
+\newcommand{\bmat}[4]{\begin{bmatrix} #1 \amp #2 \\ #3 \amp #4 \end{bmatrix}}
+
+\fontsize{50}{60}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\)</div>
+<header id="masthead" class="smallbuttons"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><a href="math292-textbook.html"><span class="title">Math 292 PreTeXt Textbook:</span> <span class="subtitle">Differential Equations</span></a></h1>
+<p class="byline"></p>
+</div>
+</div></div>
+<nav xmlns:svg="http://www.w3.org/2000/svg" id="primary-navbar" class="navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active" aria-label="Show or hide table of contents sidebar">Contents</button><div class="tree-nav toolbar toolbar-divisor-3"><span class="threebuttons"><a id="previousbutton" class="previous-button toolbar-item button" href="ch-duhamels-principle.html" title="Previous">Prev</a><a id="upbutton" class="up-button button toolbar-item" href="ch-duhamels-principle.html" title="Up">Up</a><a id="nextbutton" class="next-button button toolbar-item" href="sec-examples-duh.html" title="Next">Next</a></span></div>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="ch-duhamels-principle.html" title="Previous">Prev</a><a class="up-button button toolbar-item" href="ch-duhamels-principle.html" title="Up">Up</a><a class="next-button button toolbar-item" href="sec-examples-duh.html" title="Next">Next</a>
+</div>
+</div></nav></header><div class="page">
+<div xmlns:svg="http://www.w3.org/2000/svg" id="sidebar-left" class="sidebar" role="navigation"><div class="sidebar-content">
+<nav id="toc"><ul>
+<li class="link part"><a href="part-variation-of-parameters.html" data-scroll="part-variation-of-parameters"><span class="codenumber">I</span> <span class="title">Variation of Parameters</span></a></li>
+<li class="link">
+<a href="chap-varofparams.html" data-scroll="chap-varofparams"><span class="codenumber">1</span> <span class="title">Variation of Parameters</span></a><ul>
+<li><a href="sec-desc-varparam.html" data-scroll="sec-desc-varparam">Variation of Parameters</a></li>
+<li><a href="sec-basic-ex-varparam.html" data-scroll="sec-basic-ex-varparam">Some Basic Examples</a></li>
+<li><a href="sec-more-involved-examples.html" data-scroll="sec-more-involved-examples">More Involved Examples</a></li>
+<li><a href="sec-exercises-varparam.html" data-scroll="sec-exercises-varparam">Exercises</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="ch-duhamels-principle.html" data-scroll="ch-duhamels-principle"><span class="codenumber">2</span> <span class="title">Duhamel's Principle</span></a><ul>
+<li><a href="sec-duhamels-principle.html" data-scroll="sec-duhamels-principle" class="active">Duhamel's Principle</a></li>
+<li><a href="sec-examples-duh.html" data-scroll="sec-examples-duh">*Examples</a></li>
+</ul>
+</li>
+<li class="link part"><a href="part-nonhomogeneous-linear-systems.html" data-scroll="part-nonhomogeneous-linear-systems"><span class="codenumber">II</span> <span class="title">Nonhomogeneous Linear Systems</span></a></li>
+<li class="link">
+<a href="chap-nonhomo-ls.html" data-scroll="chap-nonhomo-ls"><span class="codenumber">3</span> <span class="title">Nonhomogeneous Linear Systems (Constant Matrix)</span></a><ul>
+<li><a href="sec-intro-to-linear-systems.html" data-scroll="sec-intro-to-linear-systems">Intro to Linear Systems</a></li>
+<li><a href="sec-solving-xAxg.html" data-scroll="sec-solving-xAxg">Method 1: Solving \(\mathbf{x}' = A \mathbf{x} + \mathbf{g}(t)\)</a></li>
+<li><a href="sec-a-basic-example.html" data-scroll="sec-a-basic-example">A Basic Example</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="ch-matrix-exponentials.html" data-scroll="ch-matrix-exponentials"><span class="codenumber">4</span> <span class="title">Matrix Exponentials</span></a><ul><li><a href="sec-matexp-definition.html" data-scroll="sec-matexp-definition">Definition of \(\exp(A)\)</a></li></ul>
+</li>
+<li class="link part"><a href="part-series-solutions.html" data-scroll="part-series-solutions"><span class="codenumber">III</span> <span class="title">Series Solutions</span></a></li>
+<li class="link">
+<a href="ch-ordinary-regular-singular-points.html" data-scroll="ch-ordinary-regular-singular-points"><span class="codenumber">5</span> <span class="title">Ordinary/Regular Singular Points</span></a><ul>
+<li><a href="sec-definitions.html" data-scroll="sec-definitions">Definitions</a></li>
+<li><a href="sec-examples-of-ordinary-regular-singular-points.html" data-scroll="sec-examples-of-ordinary-regular-singular-points">*Examples of Ordinary and Regular Singular Points</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="ch-series-solutions-around-an-ordinary-point.html" data-scroll="ch-series-solutions-around-an-ordinary-point"><span class="codenumber">6</span> <span class="title">Series Solutions around an Ordinary point</span></a><ul>
+<li><a href="sec-the-method.html" data-scroll="sec-the-method">*The Method</a></li>
+<li><a href="sec-examples-ord.html" data-scroll="sec-examples-ord">*Examples</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="ch-series-solutions-around-a-regular-singular-point.html" data-scroll="ch-series-solutions-around-a-regular-singular-point"><span class="codenumber">7</span> <span class="title">Series Solutions around a Regular Singular Point</span></a><ul>
+<li><a href="sec-frobenius-method.html" data-scroll="sec-frobenius-method">*Frobenius' Method</a></li>
+<li><a href="sec-examples-reg.html" data-scroll="sec-examples-reg">*Examples</a></li>
+</ul>
+</li>
+</ul></nav><div class="extras"><nav><a class="mathbook-link" href="https://pretextbook.org">Authored in PreTeXt</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://www.mathjax.org/badge/badge.gif" alt="Powered by MathJax"></a></nav></div>
+</div></div>
+<main class="main"><div id="content" class="pretext-content"><section xmlns:svg="http://www.w3.org/2000/svg" class="section" id="sec-duhamels-principle"><h2 class="heading hide-type">
+<span class="type">Section</span> <span class="codenumber">2.1</span> <span class="title">Duhamel's Principle</span>
+</h2>
+<article class="assemblage assemblage-like" id="assemblage-duhamels"><h6 class="heading"><span class="title">Straight to the point....</span></h6>
+<p id="p-133">Duhamel's Principle gives us a particular solution \(Y(t)\) to a nonhomogeneous ODE \(p(t) y'' + q(t) y' + r(t) y = g(t)\text{.}\)</p>
+<p id="p-134">Given a function \(S(t;s)\) (variable \(t\) and parameter \(s\)) that satisfies</p>
+<div class="displaymath">
+\begin{align*}
+p(t) S''(t ; s) + q(t) S'(t; s) + r(t) S(t ; s) \amp = 0, \\
+S(s;s) \amp = 0, \\
+S'(s ; s) \amp = 1,
+\end{align*}
+</div>
+<p id="p-135">a particular solution to \(p(t) y'' + q(t) y' + r(t) y = g(t)\) is</p>
+<div class="displaymath">
+\begin{align*}
+Y(t) \amp = \int_{t_0}^t S(t;s) \frac{g(s)}{p(s)} \ ds.
+\end{align*}
+</div>
+<p id="p-136">One thing to note here is that \(Y(t_0) = Y'(t_0) = 0\text{.}\)</p></article><p id="p-137">Duhamel's Principle also gives us a particular solution to a nonhomogeneous ODE of the form \(p(t) y'' + q(t) y' + r(t) y = g(t)\text{.}\) However, it's often a lot easier to obtain this particular solution through Duhamel's principle than it is to obtain it using Variation of Parameters.</p>
+<p id="p-138">Formally, say that we have a function \(S(t ; s)\) (variable \(t\) and parameter \(s\)) that solves the following system:</p>
+<div class="displaymath">
+\begin{align*}
+p(t) S''(t ; s) + q(t) S'(t; s) + r(t) S(t ; s) \amp = 0, \\
+S(s;s) \amp = 0, \\
+S'(s ; s) \amp = 1.
+\end{align*}
+</div>
+<article class="question example-like" id="question-19"><a data-knowl="" class="id-ref question-knowl original" data-refid="hk-question-19"><h6 class="heading">
+<span class="type">Question</span><span class="space"> </span><span class="codenumber">2.1.1</span><span class="period">.</span><span class="space"> </span><span class="title">What does \(S(t;s)\) or \(S'(t;s)\) mean?</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-question-19"><article class="question example-like"><p id="p-139">The notation \(S(t ; s)\) means that we treat \(S\) <em class="emphasis">not as a two-variable function</em>, but as a one-variable function in \(t\) with a parameter \(s\text{.}\)</p>
+<p id="p-140">Following this, we use \(S'(t;s)\) as shorthand for</p>
+<div class="displaymath">
+\begin{align*}
+S'(t;s) \amp = \frac{d}{dt} S(t;s).
+\end{align*}
+</div>
+<p id="p-141">For example, we might set \(S(t ; s) = t^s\text{,}\) for some constant \(s\text{.}\) Then, \(S'(t;s) = st^{s-1}\) and \(S''(t;s) = s(s-1)t^{s-2}\text{.}\)</p></article></div>
+<p id="p-142">Then, the particular solution of \(p(t)y'' + q(t)y' + r(t)y = g(t)\) that Duhamel's principle gives us is</p>
+<div class="displaymath">
+\begin{align*}
+Y(t) \amp = \int_{t_0}^t S(t ; s) \frac{g(s)}{p(s)} \ ds.
+\end{align*}
+</div>
+<p id="p-143">This is all a lot to absorb. The first thing to notice is that \(S(t;s)\) is a solution of the homogeneous system \(p(t) y'' + q(t)y' + r(t)y = 0\text{.}\)</p>
+<p id="p-144">Let's take \(\{y_1,y_2\}\) to be a set of fundamental solutions of the homogeneous ODE. Then, since \(S(t;s)\) is a solution of the homogeneous ODE,</p>
+<div class="displaymath">
+\begin{align*}
+S(t;s) \amp = c_1y_1(t) + c_2y_2(t).
+\end{align*}
+</div>
+<p id="p-145">This was the info extracted from \(p(t) S''(t ; s) + q(t) S'(t; s) + r(t) S(t ; s) = 0\text{.}\)</p>
+<p id="p-146">Looking now at the other conditions, \(S(s;s) = 0\) and \(S'(s;s) = 1\text{,}\) notice that these two give us the following two equations.</p>
+<div class="displaymath">
+\begin{align*}
+c_1y_1(s) + c_2y_2(s) \amp = 0, \\
+c_1y_1'(s) + c_2y_2'(s) \amp = 1. 
+\end{align*}
+</div>
+<p id="p-147">Here, \(y_1(s)\) and \(y_2(s)\) are both knowns and the only unknowns in the above are \(c_1,c_2\text{.}\) This is just begging us to write the system above with a matrix. Let's do that:</p>
+<div class="displaymath">
+\begin{align*}
+\bmat{y_1(s)}{y_2(s)}{y_1'(s)}{y_2'(s)} \bvec{c_1}{c_2} \amp = \bvec01.
+\end{align*}
+</div>
+<p id="p-148">Solving this isn't too bad:</p>
+<div class="displaymath">
+\begin{align*}
+\bvec{c_1}{c_2} \amp = \bmat{y_1(s)}{y_2(s)}{y_1'(s)}{y_2'(s)}^{-1} \bvec01\\
+\amp = \frac1{y_1(s)y_2'(s) - y_1'(s)y_2(s)} \bmat{y_2'(s)}{-y_2(s)}{-y_1'(s)}{y_1(s)} \bvec01\\
+\amp = \frac1{y_1(s)y_2'(s) - y_1'(s)y_2(s)} \bvec{-y_2(s)}{y_1(s)}.
+\end{align*}
+</div>
+<p id="p-149">A lot of things look pretty familiar here. The fraction above has a denominator equal to \(y_1(s)y_2'(s) - y_1'(s)y_2(s)\text{,}\) which is exactly the Wronskian \(W[y_1,y_2](s)\text{.}\)</p>
+<p id="p-150">Another thing to note is that, from the solution of \(c_1,c_2\) above, it's clear that both of these depend on \(s\text{.}\) So, let's write \(c_1 = c_1(s)\) and \(c_2 = c_2(s)\text{.}\) This way, we now have</p>
+<div class="displaymath">
+\begin{align*}
+S(t;s) \amp = c_1(s)y_1(t) + c_2(s) y_2(t),
+\end{align*}
+</div>
+<p id="p-151">where</p>
+<div class="displaymath">
+\begin{align*}
+c_1(s) = -\frac{y_2(s)}{W[y_1,y_2](s)} \amp \quad \text{and} \quad c_2(s) = \frac{y_1(s)}{W[y_1,y_2](s)}.
+\end{align*}
+</div>
+<p id="p-152">The familiarity of the above should become much more pronounced when we plug this into \(Y(t) = \int_{t_0}^t S(t;s) g(s)/p(s) \ ds\text{.}\)</p>
+<div class="displaymath">
+\begin{align*}
+Y(t) \amp = \int_{t_0}^t \Big[c_1(s)y_1(t) + c_2(s) y_2(t)\Big] \frac{g(s)}{p(s)} \ ds \\
+\amp = \int_{t_0}^t \frac{y_1(s)y_2(t) - y_1(t) y_2(s)}{W[y_1,y_2](s)} \cdot \frac{g(s)}{p(s)} \ ds. 
+\end{align*}
+</div>
+<p id="p-153">Hey! This is Variation of Parameters <em class="emphasis">exactly</em>. So, Duhamel's principle is like a “re-skin” of Variation of Parameters. However, as we'll soon see with some examples, it can be a lot easier to work with than variation of parameters.</p></section></div></main>
+</div>
+</body>
+</html>

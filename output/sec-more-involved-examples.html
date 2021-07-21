@@ -1,7 +1,7 @@
 <!DOCTYPE html SYSTEM "about:legacy-compat">
 <!--********************************************-->
 <!--*       Generated from PreTeXt source      *-->
-<!--*       on 2021-06-17T19:11:57-04:00       *-->
+<!--*       on 2021-07-07T18:02:42-04:00       *-->
 <!--*   A recent stable commit (2020-08-09):   *-->
 <!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
 <!--*                                          *-->
@@ -11,7 +11,7 @@
 <html lang="en-US">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>More Involved Examples</title>
+<title>Math292 Textbook More Involved Examples</title>
 <meta name="Keywords" content="Authored in PreTeXt">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script>window.MathJax = {
@@ -74,6 +74,11 @@
 <a class="assistive" href="#content">Skip to main content</a><div xmlns:svg="http://www.w3.org/2000/svg" id="latex-macros" class="hidden-content" style="display:none">\(\newcommand{\lcm}{\operatorname{lcm}}
 \renewcommand{\Re}{\mathrm{Re}}
 \renewcommand{\Im}{\mathrm{Im}}
+
+\newcommand{\bvec}[2]{\begin{bmatrix} #1 \\ #2 \end{bmatrix}}
+\newcommand{\bmat}[4]{\begin{bmatrix} #1 \amp #2 \\ #3 \amp #4 \end{bmatrix}}
+
+\fontsize{50}{60}
 \newcommand{\lt}{&lt;}
 \newcommand{\gt}{&gt;}
 \newcommand{\amp}{&amp;}
@@ -94,6 +99,7 @@
 </div></nav></header><div class="page">
 <div xmlns:svg="http://www.w3.org/2000/svg" id="sidebar-left" class="sidebar" role="navigation"><div class="sidebar-content">
 <nav id="toc"><ul>
+<li class="link part"><a href="part-variation-of-parameters.html" data-scroll="part-variation-of-parameters"><span class="codenumber">I</span> <span class="title">Variation of Parameters</span></a></li>
 <li class="link">
 <a href="chap-varofparams.html" data-scroll="chap-varofparams"><span class="codenumber">1</span> <span class="title">Variation of Parameters</span></a><ul>
 <li><a href="sec-desc-varparam.html" data-scroll="sec-desc-varparam">Variation of Parameters</a></li>
@@ -103,9 +109,39 @@
 </ul>
 </li>
 <li class="link">
-<a href="chap-nonhomo-ls.html" data-scroll="chap-nonhomo-ls"><span class="codenumber">2</span> <span class="title">Nonhomogeneous Linear Systems</span></a><ul>
-<li><a href="sec-section-2-1.html" data-scroll="sec-section-2-1">Section 2.1</a></li>
-<li><a href="sec-section-2-2.html" data-scroll="sec-section-2-2">Section 2.2</a></li>
+<a href="ch-duhamels-principle.html" data-scroll="ch-duhamels-principle"><span class="codenumber">2</span> <span class="title">Duhamel's Principle</span></a><ul>
+<li><a href="sec-duhamels-principle.html" data-scroll="sec-duhamels-principle">Duhamel's Principle</a></li>
+<li><a href="sec-examples-duh.html" data-scroll="sec-examples-duh">*Examples</a></li>
+</ul>
+</li>
+<li class="link part"><a href="part-nonhomogeneous-linear-systems.html" data-scroll="part-nonhomogeneous-linear-systems"><span class="codenumber">II</span> <span class="title">Nonhomogeneous Linear Systems</span></a></li>
+<li class="link">
+<a href="chap-nonhomo-ls.html" data-scroll="chap-nonhomo-ls"><span class="codenumber">3</span> <span class="title">Nonhomogeneous Linear Systems (Constant Matrix)</span></a><ul>
+<li><a href="sec-intro-to-linear-systems.html" data-scroll="sec-intro-to-linear-systems">Intro to Linear Systems</a></li>
+<li><a href="sec-solving-xAxg.html" data-scroll="sec-solving-xAxg">Method 1: Solving \(\mathbf{x}' = A \mathbf{x} + \mathbf{g}(t)\)</a></li>
+<li><a href="sec-a-basic-example.html" data-scroll="sec-a-basic-example">A Basic Example</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="ch-matrix-exponentials.html" data-scroll="ch-matrix-exponentials"><span class="codenumber">4</span> <span class="title">Matrix Exponentials</span></a><ul><li><a href="sec-matexp-definition.html" data-scroll="sec-matexp-definition">Definition of \(\exp(A)\)</a></li></ul>
+</li>
+<li class="link part"><a href="part-series-solutions.html" data-scroll="part-series-solutions"><span class="codenumber">III</span> <span class="title">Series Solutions</span></a></li>
+<li class="link">
+<a href="ch-ordinary-regular-singular-points.html" data-scroll="ch-ordinary-regular-singular-points"><span class="codenumber">5</span> <span class="title">Ordinary/Regular Singular Points</span></a><ul>
+<li><a href="sec-definitions.html" data-scroll="sec-definitions">Definitions</a></li>
+<li><a href="sec-examples-of-ordinary-regular-singular-points.html" data-scroll="sec-examples-of-ordinary-regular-singular-points">*Examples of Ordinary and Regular Singular Points</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="ch-series-solutions-around-an-ordinary-point.html" data-scroll="ch-series-solutions-around-an-ordinary-point"><span class="codenumber">6</span> <span class="title">Series Solutions around an Ordinary point</span></a><ul>
+<li><a href="sec-the-method.html" data-scroll="sec-the-method">*The Method</a></li>
+<li><a href="sec-examples-ord.html" data-scroll="sec-examples-ord">*Examples</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="ch-series-solutions-around-a-regular-singular-point.html" data-scroll="ch-series-solutions-around-a-regular-singular-point"><span class="codenumber">7</span> <span class="title">Series Solutions around a Regular Singular Point</span></a><ul>
+<li><a href="sec-frobenius-method.html" data-scroll="sec-frobenius-method">*Frobenius' Method</a></li>
+<li><a href="sec-examples-reg.html" data-scroll="sec-examples-reg">*Examples</a></li>
 </ul>
 </li>
 </ul></nav><div class="extras"><nav><a class="mathbook-link" href="https://pretextbook.org">Authored in PreTeXt</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://www.mathjax.org/badge/badge.gif" alt="Powered by MathJax"></a></nav></div>
@@ -224,14 +260,125 @@ u_2'(t) \amp = e^{-t}\cos 2t \sin t
 <article class="question example-like" id="question-13"><a data-knowl="" class="id-ref question-knowl original" data-refid="hk-question-13"><h6 class="heading">
 <span class="type">Question</span><span class="space"> </span><span class="codenumber">1.3.6</span><span class="period">.</span><span class="space"> </span><span class="title">How do I do this in Sage? (+ bonus Sage cell).</span>
 </h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-question-13"><article class="question example-like"><p id="p-86">It's just as simple for Sage as the others: if we wanted to integrate \(f(x)\text{,}\) then we'd write <code class="code-inline tex2jax_ignore">integrate(f(x), x)</code>.</p>
-<p id="p-87">Here's a Sage window with the command already in. Try it out by clicking the “Evaluate Sage” button! (Not currently working :/)</p>
-<div class="hidden-sagecell-sage" id="sage-1"><script type="text/x-sage">t = var('t')
-u1(t) = integrate(-exp(-t) * sin(2 * t) * sin(t), x)
-u2(t) = integrate(exp(-t) * cos(2 * t) * sin(t), x)
+<p id="p-87">There's a Sage window below with the commands already in. Try it out by clicking the “Evaluate Sage” button!</p></article></div>
+<div class="sagecell-sage" id="sage-1"><script type="text/x-sage">t = var('t')
+u1(t) = integrate(-exp(-t) * sin(2 * t) * sin(t), t)
+u2(t) = integrate(exp(-t) * cos(2 * t) * sin(t), t)
 print("u1(t) = ", u1(t))
 print("u2(t) = ", u2(t))
-</script></div>
-<div class="code-box" style="width: 100%; margin-left: 0%; margin-right: 0%;"><pre class="console"></pre></div></article></div></section></section></div></main>
+</script></div> Whatever computing package you use, we find that one possible \(u_1(t)\) is<div class="displaymath">
+\begin{gather*}
+u_1(t) = \frac{e^{-t}}{20} (-5\cos t + \cos 3t + 5\sin t - 3\sin t), 
+\end{gather*}
+</div>and that another possible \(u_2(t)\) is<div class="displaymath">
+\begin{gather*}
+u_2(t) = \frac{e^{-t}}{20} (5\cos t - 3\cos 3t + 5\sin t - \sin 3t). 
+\end{gather*}
+</div>So, after all this work, we've finally found a particular solution \(Y(t)\) to the inhomogeneous ODE \(y'' + 2y' + 5y = \sin t\text{!}\) (I'm jumping straight to the answer using Mathematica.)<div class="displaymath">
+\begin{align*}
+Y(t) \amp = u_1(t) y_1(t) + u_2(t) y_2(t) = \frac{e^{-2t}}{20} (-5\cos 3t + \cos 5t + 5\sin 3t - 3\sin 5t). 
+\end{align*}
+</div>All in all, the general solution to \(y'' + 2y' + 5y = \sin t\) is \(y(t) = c_1y_1(t) + c_2y_2(t) + Y(t)\text{.}\) Plugging in all of our stuff into this gives us that<div class="displaymath">
+\begin{align*}
+y(t) \amp = c_1e^{-t} \cos 2t + c_2e^{-t} \sin 2t \\
+\amp \qquad \qquad + \frac{e^{-2t}}{20} (-5\cos 3t + \cos 5t + 5\sin 3t - 3\sin 5t).
+\end{align*}
+</div>What a messy answer! The important thing is to look at the form of \(y(t)\text{,}\) as demonstrated by the following question. <article class="question example-like" id="question-14"><a data-knowl="" class="id-ref question-knowl original" data-refid="hk-question-14"><h6 class="heading">
+<span class="type">Question</span><span class="space"> </span><span class="codenumber">1.3.7</span><span class="period">.</span><span class="space"> </span><span class="title">As \(t \to \infty\) what does \(y(t)\) approach?</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-question-14"><article class="question example-like"><p id="p-88">The answer is pretty simple: as \(t \to \infty\) we get \(y(t) \to 0\text{.}\)</p>
+<p id="p-89">As hinted to before, the general solution \(y(t)\) can be summarized pretty well with the equation</p>
+<div class="displaymath">
+\begin{align*}
+y(t) \amp = e^{-t} y_b(t) + e^{-2t} Y_b(t).
+\end{align*}
+</div>
+<p id="p-90">Both \(y_b(t)\) and \(Y_b(t)\) are <em class="emphasis">bounded</em> for all \(t \in \mathbb{R}\text{.}\)</p>
+<article class="question example-like" id="question-15"><a data-knowl="" class="id-ref question-knowl original" data-refid="hk-question-15"><h6 class="heading">
+<span class="type">Question</span><span class="space"> </span><span class="codenumber">1.3.8</span><span class="period">.</span><span class="space"> </span><span class="title">What does it mean for \(y_b(t)\) to be “bounded”?</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-question-15"><article class="question example-like"><p id="p-91">Intuitively, we mean to say that \(y_b(t)\) never goes to infinity for any real \(t\text{.}\)</p>
+<p id="p-92">More rigourously, we'd say that there exists constants \(A\) and \(B\) such that \(A \leq y_b(t) \leq B\) for all real \(t\text{.}\)</p>
+<p id="p-93">The important takeaway is that \(y_b(t)\) never gets “extremely big”, as big as something like \(e^{t}\) as \(t \to \infty\text{.}\)</p>
+<p id="p-94">You can think of \(y_b\) fitting between two horizontal lines on the \(xy\)-plane.</p></article></div> Since \(e^{-t} \to 0\) and \(e^{-2t} \to 0\) as \(t \to \infty\) we get that \(y(t) \to 0\) too.</article></div></section><section class="subsection" id="subsection-8"><h3 class="heading hide-type">
+<span class="type">Subsection</span> <span class="codenumber">1.3.2</span> <span class="title">Suppose \(y''(t) - 4y'(t) - 5y(t) = e^{-t}\text{.}\) Which initial values \(y(0),y'(0)\) allow \(y(t) \to 0\) as \(t \to \infty\text{?}\)</span>
+</h3>
+<p id="p-95">There's a lot to unpack here! The first thing we might think to do is to solve that ODE. And, as with most inhomogeneous ODEs, we solve the homogeneous ODE version first.</p>
+<article class="question example-like" id="question-16"><a data-knowl="" class="id-ref question-knowl original" data-refid="hk-question-16"><h6 class="heading">
+<span class="type">Question</span><span class="space"> </span><span class="codenumber">1.3.9</span><span class="period">.</span><span class="space"> </span><span class="title">How do I solve \(y''(t) - 4y'(t) - 5y(t) = 0\text{?}\)</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-question-16"><article class="question example-like"> Plug in \(y = e^{rt}\text{.}\) This'll give us \(r^2 - 4r - 5 = 0\text{,}\) which has roots \(r = -1,5\text{.}\) So, the general solution to \(y''(t) - 4y'(t) - 5y(t) = 0\) is<div class="displaymath">
+\begin{align*}
+y(t) \amp = c_1 e^{-t} + c_2 e^{5t}.
+\end{align*}
+</div></article></div>
+<p id="p-96">So now that we know that the general solution to \(y''(t) - 4y'(t) - 5y(t) = 0\) is \(y(t) = c_1 e^{-t} + c_2 e^{5t}\text{,}\) we want to solve \(y''(t) - 4y'(t) - 5y(t) = e^{-t}\text{.}\)</p>
+<p id="p-97">Here, we'll set \(y_1 = e^{-t}\) and \(y_2 = e^{5t}\text{.}\) In line with variation of parameters, we want to find a particular solution of the form \(Y(t) = u_1y_1 + u_2 y_2\) that solves \(y''(t) - 4y'(t) - 5y(t) = e^{-t}\text{.}\)</p>
+<article class="question example-like" id="question-17"><a data-knowl="" class="id-ref question-knowl original" data-refid="hk-question-17"><h6 class="heading">
+<span class="type">Question</span><span class="space"> </span><span class="codenumber">1.3.10</span><span class="period">.</span><span class="space"> </span><span class="title">How do I find \(Y(t)\text{?}\)</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-question-17"><article class="question example-like"><p id="p-98">As we've seen a lot already, it's good to memorize at least one of the forms of variation of parameters. Personally, my favorite form to memorize is</p>
+<div class="displaymath">
+\begin{align*}
+\begin{bmatrix} y_1 \amp y_2 \\ y_1' \amp y_2' \end{bmatrix} \begin{bmatrix} u_1' \\ u_2' \end{bmatrix} = \begin{bmatrix} 0 \\ g(t)/p(t) \end{bmatrix}. 
+\end{align*}
+</div>We have \(y_1 = e^{-t}\) and \(y_2 = e^{5t}\) and \(g(t) / p(t) = e^{-t}\text{.}\) Plugging these in gives us<div class="displaymath">
+\begin{align*}
+\begin{bmatrix} e^{-t} \amp e^{5t} \\ -e^{-t} \amp 5e^{5t} \end{bmatrix} \begin{bmatrix} u_1' \\ u_2' \end{bmatrix} = \begin{bmatrix} 0 \\ e^{-t} \end{bmatrix}. 
+\end{align*}
+</div>And now, we solve this linear equation. In a test environment, be careful to not forget small details like dividing by the determinant for the inverse.<div class="displaymath">
+\begin{align*}
+\begin{bmatrix} u_1' \\ u_2' \end{bmatrix} \amp = \begin{bmatrix} e^{-t} \amp e^{5t} \\ -e^{-t} \amp 5e^{5t} \end{bmatrix}^{-1} \begin{bmatrix} 0 \\ e^{-t} \end{bmatrix} \\
+\amp = \frac{1}{6e^{4t}} \begin{bmatrix} 5e^{5t} \amp -e^{5t} \\ e^{-t} \amp e^{-t} \end{bmatrix} \begin{bmatrix} 0 \\ e^{-t} \end{bmatrix} \\
+\amp = \frac{e^{-4t}}{6} \begin{bmatrix} -e^{4t} \\ e^{-2t} \end{bmatrix} \\
+\amp = \begin{bmatrix} -1/6 \\ e^{-6t} / 6 \end{bmatrix}. 
+\end{align*}
+</div>So we get the relatively nice forms<div class="displaymath">
+\begin{gather*}
+u_1'(t) = -\frac{1}{6} \quad \text{and} \quad u_2'(t) = \frac{e^{-6t}}{6}.
+\end{gather*}
+</div>These are much much much nicer than the previous problem. We take an indefinite integral to find \(u_1,u_2\text{.}\)<div class="displaymath">
+\begin{gather*}
+u_1(t) = -\frac{t}{6} \quad \text{and} \quad u_2(t) = - \frac{e^{-6t}}{36}.
+\end{gather*}
+</div>So, with \(Y(t) = u_1y_1 + u_2y_2\text{,}\) we get<div class="displaymath">
+\begin{gather*}
+Y(t) = -\frac{t}{6} \cdot e^{-t} - \frac{e^{-6t}}{36} \cdot e^{5t} = -\frac{te^{-t}}{6} - \frac{e^{-t}}{36}.
+\end{gather*}
+</div></article></div>
+<p id="p-99">The general solution of \(y''(t) - 4y'(t) - 5y(t) = e^{-t}\) is then equal to \(y(t) = c_1y_1 + c_2y_2 + Y\text{,}\) so</p>
+<div class="displaymath">
+\begin{align*}
+y(t) \amp = c_1 e^{-t} + c_2 e^{5t} - \frac{te^{-t}}{6} - \frac{e^{-t}}{36}.
+\end{align*}
+</div>
+<p id="p-100">Now comes the tricky part, when does \(y(t) \to 0\) as \(t \to \infty\text{?}\) We want to find \(y(0)\) and \(y'(0)\) so that this occurs. From experience with 2nd order ODEs, this should make sense as we always need <em class="emphasis">two</em> initial conditions to jump from a general solution to a particular solution.</p>
+<p id="p-101">Looking at the terms above, we know that \(e^{-t} \to 0\) and \(te^{-t} \to 0\) as \(t \to \infty\text{.}\) But, \(e^{5t} \to \infty\) as \(t \to \infty\text{.}\)</p>
+<p id="p-102">So, as long as \(y(t)\) has an \(e^{5t}\) term, \(y(t) \to \infty\) as \(t \to \infty\text{.}\) The best way to remedy this is to “remove” the \(e^{5t}\) term: just set \(c_2 = 0\text{.}\)</p>
+<p id="p-103">Now, \(y(t) \to 0\) as \(t \to \infty\) since all the other stuff went to \(0\text{.}\) Therefore, we want to find \(y(0)\) such that \(c_1\) is any arbitrary constant and \(c_2 = 0\text{.}\)</p>
+<p id="p-104">Set \(c_2 = 0\text{.}\) With \(t = 0\) in \(y(t)\text{,}\)</p>
+<div class="displaymath">
+\begin{align*}
+y(0) \amp = c_1 - \frac{1}{36}.
+\end{align*}
+</div>
+<article class="question example-like" id="question-18"><a data-knowl="" class="id-ref question-knowl original" data-refid="hk-question-18"><h6 class="heading">
+<span class="type">Question</span><span class="space"> </span><span class="codenumber">1.3.11</span><span class="period">.</span><span class="space"> </span><span class="title">What's \(y'(t)\text{?}\)</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-question-18"><article class="question example-like"><p id="p-105">We took \(c_2 = 0\text{.}\) Differentiating \(y(t)\) give us</p>
+<div class="displaymath">
+\begin{align*}
+y'(t) \amp = -c_1e^{-t} - \frac{1}{6} \Big(e^{-t} - te^{-t}\Big) + \frac{e^{-t}}{36}.
+\end{align*}
+</div></article></div>
+<p id="p-106">With \(t = 0\) in \(y'(t)\text{,}\)</p>
+<div class="displaymath">
+\begin{align*}
+y'(0) \amp = -c_1 - \frac{1}{6} + \frac{1}{36} = -c_1 - \frac{5}{36}.
+\end{align*}
+</div>
+<p id="p-107">What does this all mean? It means that if there is a real number \(c_1\) such that \(y(0) = c_1 - 1/36\) and \(y'(0) = -c_1 - 5/36\text{,}\) then \(y(t) \to 0\) as \(t \to \infty\text{.}\) These conditions are exactly what we wanted to show!</p>
+<p id="p-108">As an added bonus, we can compress this condition quite neatly into one equation by adding \(y(0)\) and \(y'(0)\text{:}\)</p>
+<div class="displaymath">
+\begin{gather*}
+y(0) + y'(0) = -\frac16.
+\end{gather*}
+</div></section></section></div></main>
 </div>
 </body>
 </html>

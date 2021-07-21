@@ -22,7 +22,8 @@
             <!-- Nonhomogeneous Linear Systems -->
             <xi:include href="./nhomo-ls.xml" />
     
-
+            <!-- Series Solutions of ODEs -->
+            <xi:include href="./series-soln.xml" />
 
         </book>
     

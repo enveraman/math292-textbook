@@ -1,7 +1,7 @@
 <!DOCTYPE html SYSTEM "about:legacy-compat">
 <!--********************************************-->
 <!--*       Generated from PreTeXt source      *-->
-<!--*       on 2021-06-17T19:11:57-04:00       *-->
+<!--*       on 2021-07-07T18:02:42-04:00       *-->
 <!--*   A recent stable commit (2020-08-09):   *-->
 <!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
 <!--*                                          *-->
@@ -11,7 +11,7 @@
 <html lang="en-US">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Exercises</title>
+<title>Math292 Textbook Exercises</title>
 <meta name="Keywords" content="Authored in PreTeXt">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script>window.MathJax = {
@@ -66,6 +66,11 @@
 <a class="assistive" href="#content">Skip to main content</a><div xmlns:svg="http://www.w3.org/2000/svg" id="latex-macros" class="hidden-content" style="display:none">\(\newcommand{\lcm}{\operatorname{lcm}}
 \renewcommand{\Re}{\mathrm{Re}}
 \renewcommand{\Im}{\mathrm{Im}}
+
+\newcommand{\bvec}[2]{\begin{bmatrix} #1 \\ #2 \end{bmatrix}}
+\newcommand{\bmat}[4]{\begin{bmatrix} #1 \amp #2 \\ #3 \amp #4 \end{bmatrix}}
+
+\fontsize{50}{60}
 \newcommand{\lt}{&lt;}
 \newcommand{\gt}{&gt;}
 \newcommand{\amp}{&amp;}
@@ -78,14 +83,15 @@
 </div></div>
 <nav xmlns:svg="http://www.w3.org/2000/svg" id="primary-navbar" class="navbar"><div class="container">
 <div class="navbar-top-buttons">
-<button class="sidebar-left-toggle-button button active" aria-label="Show or hide table of contents sidebar">Contents</button><div class="tree-nav toolbar toolbar-divisor-3"><span class="threebuttons"><a id="previousbutton" class="previous-button toolbar-item button" href="sec-more-involved-examples.html" title="Previous">Prev</a><a id="upbutton" class="up-button button toolbar-item" href="chap-varofparams.html" title="Up">Up</a><a id="nextbutton" class="next-button button toolbar-item" href="chap-nonhomo-ls.html" title="Next">Next</a></span></div>
+<button class="sidebar-left-toggle-button button active" aria-label="Show or hide table of contents sidebar">Contents</button><div class="tree-nav toolbar toolbar-divisor-3"><span class="threebuttons"><a id="previousbutton" class="previous-button toolbar-item button" href="sec-more-involved-examples.html" title="Previous">Prev</a><a id="upbutton" class="up-button button toolbar-item" href="chap-varofparams.html" title="Up">Up</a><a id="nextbutton" class="next-button button toolbar-item" href="ch-duhamels-principle.html" title="Next">Next</a></span></div>
 </div>
 <div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
-<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="sec-more-involved-examples.html" title="Previous">Prev</a><a class="up-button button toolbar-item" href="chap-varofparams.html" title="Up">Up</a><a class="next-button button toolbar-item" href="chap-nonhomo-ls.html" title="Next">Next</a>
+<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="sec-more-involved-examples.html" title="Previous">Prev</a><a class="up-button button toolbar-item" href="chap-varofparams.html" title="Up">Up</a><a class="next-button button toolbar-item" href="ch-duhamels-principle.html" title="Next">Next</a>
 </div>
 </div></nav></header><div class="page">
 <div xmlns:svg="http://www.w3.org/2000/svg" id="sidebar-left" class="sidebar" role="navigation"><div class="sidebar-content">
 <nav id="toc"><ul>
+<li class="link part"><a href="part-variation-of-parameters.html" data-scroll="part-variation-of-parameters"><span class="codenumber">I</span> <span class="title">Variation of Parameters</span></a></li>
 <li class="link">
 <a href="chap-varofparams.html" data-scroll="chap-varofparams"><span class="codenumber">1</span> <span class="title">Variation of Parameters</span></a><ul>
 <li><a href="sec-desc-varparam.html" data-scroll="sec-desc-varparam">Variation of Parameters</a></li>
@@ -95,9 +101,39 @@
 </ul>
 </li>
 <li class="link">
-<a href="chap-nonhomo-ls.html" data-scroll="chap-nonhomo-ls"><span class="codenumber">2</span> <span class="title">Nonhomogeneous Linear Systems</span></a><ul>
-<li><a href="sec-section-2-1.html" data-scroll="sec-section-2-1">Section 2.1</a></li>
-<li><a href="sec-section-2-2.html" data-scroll="sec-section-2-2">Section 2.2</a></li>
+<a href="ch-duhamels-principle.html" data-scroll="ch-duhamels-principle"><span class="codenumber">2</span> <span class="title">Duhamel's Principle</span></a><ul>
+<li><a href="sec-duhamels-principle.html" data-scroll="sec-duhamels-principle">Duhamel's Principle</a></li>
+<li><a href="sec-examples-duh.html" data-scroll="sec-examples-duh">*Examples</a></li>
+</ul>
+</li>
+<li class="link part"><a href="part-nonhomogeneous-linear-systems.html" data-scroll="part-nonhomogeneous-linear-systems"><span class="codenumber">II</span> <span class="title">Nonhomogeneous Linear Systems</span></a></li>
+<li class="link">
+<a href="chap-nonhomo-ls.html" data-scroll="chap-nonhomo-ls"><span class="codenumber">3</span> <span class="title">Nonhomogeneous Linear Systems (Constant Matrix)</span></a><ul>
+<li><a href="sec-intro-to-linear-systems.html" data-scroll="sec-intro-to-linear-systems">Intro to Linear Systems</a></li>
+<li><a href="sec-solving-xAxg.html" data-scroll="sec-solving-xAxg">Method 1: Solving \(\mathbf{x}' = A \mathbf{x} + \mathbf{g}(t)\)</a></li>
+<li><a href="sec-a-basic-example.html" data-scroll="sec-a-basic-example">A Basic Example</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="ch-matrix-exponentials.html" data-scroll="ch-matrix-exponentials"><span class="codenumber">4</span> <span class="title">Matrix Exponentials</span></a><ul><li><a href="sec-matexp-definition.html" data-scroll="sec-matexp-definition">Definition of \(\exp(A)\)</a></li></ul>
+</li>
+<li class="link part"><a href="part-series-solutions.html" data-scroll="part-series-solutions"><span class="codenumber">III</span> <span class="title">Series Solutions</span></a></li>
+<li class="link">
+<a href="ch-ordinary-regular-singular-points.html" data-scroll="ch-ordinary-regular-singular-points"><span class="codenumber">5</span> <span class="title">Ordinary/Regular Singular Points</span></a><ul>
+<li><a href="sec-definitions.html" data-scroll="sec-definitions">Definitions</a></li>
+<li><a href="sec-examples-of-ordinary-regular-singular-points.html" data-scroll="sec-examples-of-ordinary-regular-singular-points">*Examples of Ordinary and Regular Singular Points</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="ch-series-solutions-around-an-ordinary-point.html" data-scroll="ch-series-solutions-around-an-ordinary-point"><span class="codenumber">6</span> <span class="title">Series Solutions around an Ordinary point</span></a><ul>
+<li><a href="sec-the-method.html" data-scroll="sec-the-method">*The Method</a></li>
+<li><a href="sec-examples-ord.html" data-scroll="sec-examples-ord">*Examples</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="ch-series-solutions-around-a-regular-singular-point.html" data-scroll="ch-series-solutions-around-a-regular-singular-point"><span class="codenumber">7</span> <span class="title">Series Solutions around a Regular Singular Point</span></a><ul>
+<li><a href="sec-frobenius-method.html" data-scroll="sec-frobenius-method">*Frobenius' Method</a></li>
+<li><a href="sec-examples-reg.html" data-scroll="sec-examples-reg">*Examples</a></li>
 </ul>
 </li>
 </ul></nav><div class="extras"><nav><a class="mathbook-link" href="https://pretextbook.org">Authored in PreTeXt</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://www.mathjax.org/badge/badge.gif" alt="Powered by MathJax"></a></nav></div>
@@ -109,15 +145,51 @@
 <span class="type">Exercises</span> <span class="codenumber"></span> <span class="title">Exercises</span>
 </h3>
 <article class="exercise exercise-like" id="exercise-1"><h6 class="heading"><span class="codenumber">1<span class="period">.</span></span></h6>
-<p id="p-88">Solve \(y'' + 5y' + 6y = e^{-t}\text{.}\)</p>
-<a data-knowl="" class="id-ref hint-knowl original" data-refid="hk-hint-2" id="hint-2"><span class="type">Hint</span></a><div class="hidden-content tex2jax_ignore" id="hk-hint-2"><div class="hint solution-like"><p id="p-89">What are the solutions to \(y'' + 5y' + 6y = 0\text{?}\) Using these, set \(Y(t) = u_1y_1 + u_2y_2\) and continue with variation of parameters.</p></div></div></article><article class="exercise exercise-like" id="exercise-2"><h6 class="heading"><span class="codenumber">2<span class="period">.</span></span></h6>
-<p id="p-90">Solve \(y'' + 5y' + 6y = e^{-2t}\text{.}\)</p></article><article class="exercise exercise-like" id="exercise-3"><h6 class="heading"><span class="codenumber">3<span class="period">.</span></span></h6>
-<p id="p-91">Solve \(4y'' + 4y' + y = g(t)\text{,}\) where</p>
+<p id="p-109">Solve \(y'' - 6y' + 8y = 1\text{.}\)</p>
+<a data-knowl="" class="id-ref hint-knowl original" data-refid="hk-hint-2" id="hint-2"><span class="type">Hint</span></a><div class="hidden-content tex2jax_ignore" id="hk-hint-2"><div class="hint solution-like">
+<p id="p-110">What are the solutions to \(y'' - 6y' + 8y = 0\text{?}\) One might remember variation of parameters gives us a particular solution \(u_1y_1 + u_2y_2\) with</p>
 <div class="displaymath">
 \begin{align*}
-g(t) = \begin{cases} 1 \amp 0 \le t \le 1, \\ 0 \amp t \geq 1. \end{cases} 
+\begin{bmatrix} y_1 \amp y_2 \\ y_1' \amp y_2' \end{bmatrix} \begin{bmatrix} u_1' \\ u_2' \end{bmatrix} = \begin{bmatrix} 0 \\ g(t)/p(t) \end{bmatrix}. 
 \end{align*}
-</div></article></section></section></div></main>
+</div>
+</div></div></article><article class="exercise exercise-like" id="exercise-2"><h6 class="heading"><span class="codenumber">2<span class="period">.</span></span></h6>
+<p id="p-111">Solve \(y'' + 5y' + 6y = e^{-3t}\text{.}\)</p>
+<a data-knowl="" class="id-ref hint-knowl original" data-refid="hk-hint-3" id="hint-3"><span class="type">Hint</span></a><div class="hidden-content tex2jax_ignore" id="hk-hint-3"><div class="hint solution-like"><p id="p-112">Solve the homogeneous version first. Then, use variation of parameters to find a particular solution of the inhomogeneous version.</p></div></div></article><article class="exercise exercise-like" id="exercise-3"><h6 class="heading"><span class="codenumber">3<span class="period">.</span></span></h6>
+<p id="p-113">Solve \(y'' + 5y' + 6y = e^{-2t}\text{.}\)</p></article><article class="exercise exercise-like" id="exercise-4"><h6 class="heading"><span class="codenumber">4<span class="period">.</span></span></h6>
+<p id="p-114">Solve \(4y'' + 4y' + y = g(t)\text{,}\) where</p>
+<div class="displaymath">
+\begin{align*}
+g(t) = \begin{cases} 1 \amp 0 \lt t \lt 1, \\ 0 \amp t \geq 1. \end{cases} 
+\end{align*}
+</div>
+<a data-knowl="" class="id-ref hint-knowl original" data-refid="hk-hint-4" id="hint-4"><span class="type">Hint</span></a><div class="hidden-content tex2jax_ignore" id="hk-hint-4"><div class="hint solution-like">
+<p id="p-115">Break up into cases:</p>
+<p id="p-116">When \(t \geq 1\text{,}\) the ODE to solve becomes \(4y'' + 4y' + y = 0\) (this is homogeneous!)</p>
+<p id="p-117">When \(0 \lt t \lt 1 \text{,}\) the ODE to solve becomes \(4y'' + 4y' + y = 1\) (this is inhomogeneous)</p>
+</div></div></article><article class="exercise exercise-like" id="exercise-5"><h6 class="heading"><span class="codenumber">5<span class="period">.</span></span></h6>
+<p id="p-118">Suppose \(y'' - 9y = 6\text{.}\) Find a condition on \(y(0)\) and \(y'(0)\) such that \(y(t) \to 0\) as \(t \to \infty\text{.}\)</p>
+<p id="p-119">Is it possible for \(y(t)\) to solve this ODE while having \(y(t) \to 0\) as \(t \to -\infty\text{?}\) If so, find a condition on \(y(0)\) and \(y'(0)\) that allows this to happen. What happens if both the condition found here and previously are put together?</p></article><article class="exercise exercise-like" id="exercise-6"><h6 class="heading"><span class="codenumber">6<span class="period">.</span></span></h6>
+<p id="p-120">Solve \(y'' + 2y' + 1 = e^t\text{.}\)</p>
+<p id="p-121">Once you've done that, can you solve \(y'' + 2y' + 1 = e^{at}\) for <em class="emphasis">any</em> real constant \(a \neq 1\text{?}\) Which values of \(a\) allow all solutions \(y(t) \to 0\) as \(t \to \infty\text{?}\)</p></article><article class="exercise exercise-like" id="exercise-7"><h6 class="heading"><span class="codenumber">7<span class="period">.</span></span></h6>
+<p id="p-122">It can be extremely useful to translate real ODEs into complex ones. Here is a guided exercise showing how one might solve \(y'' - y' + 2y = \cos t\text{.}\)</p>
+<ol class="lower-alpha">
+<li id="li-1"><p id="p-123">First, find the general solution to \(y'' - y' + 2y = 0\text{.}\)</p></li>
+<li id="li-2">
+<p id="p-124">Note that \(\cos t = \Re\{e^{it}\}\text{.}\) Prove that if \(z(t)\) solves the ODE \(z'' - z' + 2z = e^{it}\text{,}\) then \(y(t) = \Re\{z(t)\}\) solves the ODE \(y'' - y' + 2y = \Re\{e^{it}\} = \cos t\text{.}\)</p>
+<p id="p-125">This fact can actually be generalized for an ODE of the form \(p(t) z'' + q(t) z' + r(t) z = g(t)\text{.}\)  Here, we'll take \(t \in \mathbb{R}\) and \(p(t), q(t), r(t)\) to all be real-valued functions and \(g(t)\) to be a <em class="emphasis">complex-valued</em> function.</p>
+<a data-knowl="" class="id-ref hint-knowl original" data-refid="hk-hint-5" id="hint-5"><span class="type">Hint</span></a><div class="hidden-content tex2jax_ignore" id="hk-hint-5"><div class="hint solution-like">
+<p id="p-126">Set \(z(t) = y(t) + ix(t)\text{,}\) and substitute this into \(z'' - z' + 2z = e^{it}\text{.}\) What happens when we take the real part of both sides?</p>
+<p id="p-127">For the generalized version, again set \(z(t) = y(t) + ix(t)\) and substitute this into the more general ODE. What happens when we take either the real or imaginary part of both sides?</p>
+</div></div>
+</li>
+<li id="li-3">
+<p id="p-128">Find a particular solution to the ODE \(z'' - z' + 2z = e^{it}\) using variation of parameters. (When performing derivatives or integrals with \(e^{it}\text{,}\) just treat \(i\) as a constant.)</p>
+<p id="p-129">Once you've found a particular solution \(Z(t)\) to \(z'' - z' + 2z = e^{it}\text{,}\) give an appropriate particular solution to \(z'' - z' + 2z = \cos t\text{,}\) and then state the general solution to \(z'' - z' + 2z = \cos t\text{.}\)</p>
+</li>
+</ol></article><article class="exercise exercise-like" id="exercise-8"><h6 class="heading"><span class="codenumber">8<span class="period">.</span></span></h6>
+<p id="p-130">Using the method described in the previous exercise, solve \(y'' + 7y' + 12y = e^{-t}\cos t\text{.}\)</p>
+<a data-knowl="" class="id-ref hint-knowl original" data-refid="hk-hint-6" id="hint-6"><span class="type">Hint</span></a><div class="hidden-content tex2jax_ignore" id="hk-hint-6"><div class="hint solution-like"><p id="p-131">Note that \(e^{-t}\cos t = \Re\{e^{(-1 + i)t}\}\text{.}\)</p></div></div></article></section><p id="p-132">If you want even more exercises, check out <a class="external" href="https://math.libretexts.org/Bookshelves/Differential_Equations/Book%3A_Elementary_Differential_Equations_with_Boundary_Value_Problems_(Trench)/05%3A_Linear_Second_Order_Equations/5.07%3A_Variation_of_Parameters/5.7E%3A_Variation_of_Parameters_(Exercises)" target="_blank">this link</a>. There are way more exercises there than the number a normal person should complete.</p></section></div></main>
 </div>
 </body>
 </html>

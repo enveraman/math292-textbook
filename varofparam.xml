@@ -1,870 +1,1391 @@
-<chapter xml:id="chap-varofparams" xmlns:xi="http://www.w3.org/2001/XInclude">
+<part xml:id="part-variation-of-parameters">
     <title>Variation of Parameters</title>
-
-    <section xml:id="sec-desc-varparam">
+    <chapter xml:id="chap-varofparams" xmlns:xi="http://www.w3.org/2001/XInclude">
         <title>Variation of Parameters</title>
-        
-        <introduction>
 
-            <assemblage xml:id="assemblage-tldr">
-                <title>Straight to the point...</title>
+        <section xml:id="sec-desc-varparam">
+            <title>Variation of Parameters</title>
+            
+            <introduction>
+
+                <assemblage xml:id="assemblage-tldr">
+                    <title>Straight to the point...</title>
+                    
+                        <p>
+                            Variation of Parameters tells us that the ODE <m>p(t) y'' + q(t) y' + r(t)y = g(t)</m> has a particular solution <m>Y(t) = u_1(t) y_1(t) + u_2(t) y_2(t)</m>, where
+
+                            <md>
+                                <mrow> Y(t) = \int_{t_0}^t \frac{y_1(s) y_2(t) - y_1(t) y_2(s)}{W[y_1,y_2](s)} \cdot \frac{g(s)}{p(s)} \ ds. </mrow>
+                            </md>
+                        </p>
+                        
+                        <p>
+                            Here, we take <m>\{y_1, y_2\}</m> to be a fundamental set of solutions of the homogeneous ODE <m>p(t) y'' + q(t) y' + r(t)y = 0</m>, that is to say, <m>y_1 y_2' - y_1'y_2 \neq 0</m>. 
+                        </p>
+
+                        <p>
+                            We also take <m>t_0</m> to be some number that lies in the range of <m>t</m> that the ODE is defined on. Choosing an appropriate <m>t_0</m> can sidestep a lot of the computational work.
+                        </p>
+
+                        <p>
+                            Another way one can look at Variation of Parameters is that, given <m>Y(t) = u_1(t) y_1(t) + u_2(t) y_2(t)</m>, the functions <m>u_1</m> and <m>u_2</m> satisfy the equation
+
+                            <md>
+                                <mrow>
+                                    \begin{bmatrix} y_1 \amp y_2 \\ y_1' \amp y_2' \end{bmatrix} \begin{bmatrix} u_1' \\ u_2' \end{bmatrix} = \begin{bmatrix} 0 \\ g(t)/p(t) \end{bmatrix}.
+                                </mrow>
+                            </md>
+                        </p>
+                    
+                        <p>
+                            Memorizing this (or the process below) is certainly less meticulous than memorizing the direct integral form above. Notice that the <m>2 \times 2</m> matrix on the left hand side above is the matrix whose determinant equals the <m>W[y_1,y_2](t)</m>.
+                        </p>
+
+                </assemblage>
+
+                <p>
+                    We are often interested in finding a particular solution of a nonhomogenous linear ODE <m>p(t) y'' + q(t) y' + r(t)y = g(t)</m>, mainly because the general solution of this ODE is
+
+                    <md>
+                        <mrow> y(t) = h(t) + Y(t), </mrow>
+                    </md>
+
+                    where <m>h(t)</m> is the general solution of the homogeneous linear ODE <m>p(t) y'' + q(t) y' + r(t)y = 0</m> and <m>Y(t)</m> is <em>any</em> particular solution of the nonhomogeneous ODE <m>p(t) y'' + q(t) y' + r(t)y = g(t)</m>.
+                </p>
+
+                <p>
+                    Using <em>Variation of Parameters</em> or <em>Duhamel's Principle</em> helps us find some particular solution <m>Y(t)</m> for the nonhomogeneous ODE. Here, we'll start with <term>Variation of Parameters</term>.
+                </p>
+            </introduction>
+
+            <subsection xml:id="subsec-start-varparam">                    
+                <title>Starting Variation of Parameters</title>
                 
+                <p>
+                    Variation of Parameters begins by assuming that a particular solution <m>Y(t)</m> to
+
+                    <md>
+                        <mrow> p(t) y'' + q(t) y' + r(t)y = g(t) </mrow>
+                    </md>
+
+                    is of the form
+
+                    <md>
+                        <mrow> Y(t) = u_1(t) y_1(t) + u_2(t) y_2(t). </mrow>
+                    </md>
+                </p>
+
+                <p>
+                    Here, <m>y_1</m> and <m>y_2</m> are <em>fundamental</em> solutions to the homogeneous ODE <m>p(t) y'' + q(t) y' + r(t)y = 0</m>, that is, the Wronskian <m>W[y_1,y_2](t) \neq 0</m> for all applicable <m>t</m>. 
+                </p>
+
+                <proof>
+                    <title>Review of Wronskian</title>
+                    
                     <p>
-                        Variation of Parameters tells us that the ODE <m>p(t) y'' + q(t) y' + r(t)y = g(t)</m> has a particular solution <m>Y(t) = u_1(t) y_1(t) + u_2(t) y_2(t)</m>, where
+                        Let <m>y_1, y_2</m> be solutions of the homogeneous ODE <m>p(t) y'' + q(t) y' + r(t)y = 0</m>. Recall that the Wronskian of <m>y_1, y_2</m> is denoted <m>W[y_1, y_2](t)</m>, and
 
                         <md>
-                            <mrow> Y(t) = \int_{t_0}^t \frac{y_1(s) y_2(t) - y_1(t) y_2(s)}{W[y_1,y_2](s)} \cdot \frac{g(s)}{p(s)} \ ds. </mrow>
+                            <mrow> W[y_1, y_2](t) = \det \begin{bmatrix}
+                                y_1(t) \amp y_2(t) \\
+                                y_1'(t) \amp y_2'(t)
+                                \end{bmatrix} = y_1(t) y_2'(t) - y_1'(t) y_2(t). </mrow>
+                        </md>
+                    </p>
+                </proof>
+
+                <p>
+                    The idea behind Variation of Parameters is to kind of "generalize" the general solution of the homogenous ODE. Note that if we have that <m>u_1(t) = c_1</m> and <m>u_2(t) = c_2</m> are constant for all <m>t</m>, then the solution <m>Y(t) = c_1 y_1(t) + c_2 y_2(t)</m> is actually a solution of the <em>homogeneous ODE!</em>
+                </p>
+
+                <p>
+                    So, we generalize the homogeneous solution by <m>Y(t) = u_1(t) y_1(t) + u_2(t) y_2(t)</m> in hopes that we find one (we only need one particular nonhomogeneous solution to describe them all!) solution to the nonhomogeneous ODE.
+                </p>
+
+                <p>
+                    The algebra here can get a bit tricky, but I'll do my best to describe all the steps used!
+                </p>
+
+            </subsection>
+
+            <subsection xml:id="subsec-alg-of-varparam">
+                <title>Equations involving <m>u_1(t)</m> and <m>u_2(t)</m></title>
+                
+                <p>
+                    Now, since <m>Y(t)</m> is a particular solution of <m>p(t) y'' + q(t) y' + r(t)y = g(t)</m>, we have that 
+
+                    <men xml:id="eqn-varparam-Y">
+                        p(t) Y''(t) + q(t) Y'(t) + r(t)Y(t) = g(t).
+                    </men>
+                </p>
+
+                <p>
+                    We'll want to calculate <m>Y'(t)</m> and <m>Y''(t)</m>, using the form <m>Y(t) = u_1(t) y_1(t) + u_2(t) y_2(t)</m>. Doing so will create equations for <m>u_1</m> and <m>u_2</m>, which we will hopefully be able to solve.
+                </p>
+
+                <p>
+                    First, calculate <m>Y'(t)</m>: (try it yourself! Remember that <m>Y(t) = u_1 y_1 + u_2 y_2</m>, all of those terms being functions of <m>t</m>.)
+                </p>
+
+                <question>
+                    <title>What's <m>Y'(t)</m> equal to?</title>
+                    
+                    <p>
+                        We make good use of the product rule! Note that
+                    </p>
+                    
+                    <md>
+                        <mrow> Y'(t) \amp = \Big[ u_1'(t) y_1(t) + u_2'(t) y_2(t) \Big] + u_1(t) y_1'(t) + u_2(t) y_2'(t).</mrow>
+                    </md>
+                </question>
+
+                <p>
+                    We have 4 terms in our representation of <m>Y'(t)</m>. This means that <m>Y''(t)</m> will have 8 terms! To reduce down on the number of terms we have, we set
+                </p>
+
+                <md>
+                    <mrow> u_1'(t) y_1(t) + u_2'(t) y_2(t) = 0. </mrow>
+                </md>
+
+                <p>
+                    This may seem arbitrary for now, but this will ease up a lot of our calculations. We now have that
+                </p>
+
+                <md>
+                    <mrow> Y'(t) \amp = \Big[ u_1'(t) y_1(t) + u_2'(t) y_2(t) \Big] + u_1(t) y_1'(t) + u_2(t) y_2'(t) </mrow>
+                    <mrow> \amp = u_1(t) y_1'(t) + u_2(t) y_2'(t). </mrow>
+                </md>
+
+                <p>
+                    Now, we calculate <m>Y''(t)</m>, using our representation of <m>Y'(t)</m> above.
+                </p>
+
+                <question>
+                    <title>What's <m>Y''(t)</m> equal to?</title>
+                    
+                    <p>
+                        Again, this should be another quick differentiation exercise.
+
+                        <md>
+                            <mrow> Y''(t) = \Big[ u_1'(t) y_1'(t) + u_2'(t) y_2'(t) \Big] + u_1(t) y_1''(t) + u_2(t) y_2''(t).</mrow>
+                        </md>
+                    </p>
+                </question>
+
+                <p>
+                    Now, we have expressions for <m>Y'(t)</m> and <m>Y''(t)</m>. Substitute these into <xref ref="eqn-varparam-Y"/> (Why isn't this working? This should expand out to show equation (1.1.1), will fix later). Doing so would yield that
+
+                    <md>
+                        <mrow> u_1'(t) y_1'(t) + u_2'(t) y_2'(t) = \frac{g(t)}{p(t)}. </mrow>
+                    </md>
+                </p>
+
+                <question>
+                    <title>Why does this occur?</title>
+                    
+                    <p>
+                        Since <m>y_1</m> and <m>y_2</m> are solutions of the homogeneous equation, notice that
+
+                        <md>
+                            <mrow> p(t) y_1''(t) + q(t) y_1'(t) + r(t )y_1(t) = 0, </mrow>
+                        </md>
+
+                        and
+
+                        <md>
+                            <mrow> p(t) y_2''(t) + q(t) y_2'(t) + r(t )y_2(t) = 0. </mrow>
                         </md>
                     </p>
                     
                     <p>
-                        Here, we take <m>\{y_1, y_2\}</m> to be a fundamental set of solutions of the homogeneous ODE <m>p(t) y'' + q(t) y' + r(t)y = 0</m>, that is to say, <m>y_1 y_2' - y_1'y_2 \neq 0</m>. 
-                    </p>
-
-                    <p>
-                        We also take <m>t_0</m> to be some number that lies in the range of <m>t</m> that the ODE is defined on. Choosing an appropriate <m>t_0</m> can sidestep a lot of the computational work.
-                    </p>
-
-                    <p>
-                        Another way one can look at Variation of Parameters is that, given <m>Y(t) = u_1(t) y_1(t) + u_2(t) y_2(t)</m>, the functions <m>u_1</m> and <m>u_2</m> satisfy the equation
+                        Now, we directly substitute <m>Y'(t)</m> and <m>Y''(t)</m> into <xref ref="eqn-varparam-Y"/>:
 
                         <md>
-                            <mrow>
-                                \begin{bmatrix} y_1 \amp y_2 \\ y_1' \amp y_2' \end{bmatrix} \begin{bmatrix} u_1' \\ u_2' \end{bmatrix} = \begin{bmatrix} 0 \\ g(t)/p(t) \end{bmatrix}.
-                            </mrow>
+                            <mrow> g(t) \amp = p(t) \Big[ u_1'(t) y_1'(t) + u_2'(t) y_2'(t) + u_1(t) y_1''(t) + u_2(t) y_2''(t) \Big] </mrow>
+                            <mrow> \amp \quad + \ q(t) \Big[ u_1(t) y_1'(t) + u_2(t) y_2'(t) \Big] </mrow>
+                            <mrow> \amp \quad + \ r(t) \Big[ u_1(t) y_1(t) + u_2(t) y_2(t) \Big], </mrow>
+
+                            <mrow> \amp = u_1(t)\Big[ p(t) y_1''(t) + q(t) y_1'(t) + r(t )y_1(t) \Big] </mrow>
+                            <mrow> \amp \quad + \ u_2(t) \Big[ p(t) y_2''(t) + q(t) y_2'(t) + r(t )y_2(t) \Big] </mrow>
+                            <mrow> \amp \quad + \ p(t) \Big[ u_1'(t) y_1'(t) + u_2'(t) y_2'(t) \Big], </mrow>
+
+                            <mrow> \amp = p(t) \Big[ u_1'(t) y_1'(t) + u_2'(t) y_2'(t) \Big]. </mrow>
                         </md>
+                        
+                        Finish off by dividing <m>p(t)</m> on both sides. Note that we must have that <m>p(t) \neq 0</m> for all <m>t</m> in the appropriate interval.
                     </p>
+                </question>
+
+                With this, we have finally found two equations involving <m>u_1</m> and <m>u_2</m>, which we can solve as a typical system of linear equations:
+
+                <md>
+                    <mrow> u_1' y_1 + u_2' y_2 \amp = 0, </mrow>
+                    <mrow> u_1' y_1' + u_2' y_2' \amp = \frac{g(t)}{p(t)}. </mrow>
+                </md>
+
+
+            </subsection>
+
+            <subsection xml:id="subsec-solve-u1-u2">
+                <title>Solving for <m>u_1(t)</m> and <m>u_2(t)</m></title>
                 
+                <p>
+                    We can write the two equations from the previous section as a matrix system.
+                </p>
+
+                <md>
+                    <mrow> \begin{bmatrix}
+                        y_1 \amp y_2 \\
+                        y_1' \amp y_2'
+                        \end{bmatrix} \begin{bmatrix} 
+                        u_1' \\ u_2'
+                        \end{bmatrix} = \begin{bmatrix}
+                        0 \\ g(t) / p(t)
+                        \end{bmatrix}
+                    </mrow>
+                </md>
+
+                <p>
+                    With our knowledge from linear algebra, we can solve for <m>u_1'</m> and <m>u_2'</m> using matrix inverses:
+                </p>
+
+                <md>
+                    <mrow> \begin{bmatrix} 
+                        u_1' \\ u_2'
+                        \end{bmatrix} \amp = \begin{bmatrix}
+                        y_1 \amp y_2 \\
+                        y_1' \amp y_2'
+                        \end{bmatrix}^{-1} \begin{bmatrix}
+                        0 \\ g(t) / p(t)
+                        \end{bmatrix}
+                    </mrow>
+
+                    <mrow> \amp = \frac{1}{y_1 y_2' - y_1' y_2} \begin{bmatrix}
+                        y_2' \amp -y_2 \\
+                        -y_1' \amp y_1
+                        \end{bmatrix} \begin{bmatrix}
+                        0 \\ g(t) / p(t)
+                        \end{bmatrix}
+                    </mrow>
+
+                    <mrow> \amp = \frac{g(t) / p(t)}{W[y_1, y_2](t)} \begin{bmatrix}
+                        -y_2 \\ y_1
+                        \end{bmatrix}                            
+                    </mrow>
+                </md>
+
+                <p>
+                    At last! We have solved for <m>u_1'(t)</m> and <m>u_2'(t)</m>:
+                </p>
+
+                <md>
+                    <mrow> u_1'(t) = - \frac{y_2(t)}{W[y_1, y_2](t)} \frac{g(t)}{p(t)} \qquad \text{and} \qquad u_2'(t) = \frac{y_1(t)}{W[y_1, y_2](t)} \frac{g(t)}{p(t)}. </mrow>
+                </md>
+
+                <p>
+                    We want <m>u_1</m> and <m>u_2</m>. We can choose <m>t_0</m> to be some number for which <m>u_1(t_0) = 0</m> and <m>u_2(t_0) = 0</m>.
+                </p>
+
+                <question>
+                    <title>Why can we choose <m>t_0</m> to satisfy <m>u_1(t_0) = u_2(t_0) = 0</m>?</title>
+                    
                     <p>
-                        Memorizing this (or the process below) is certainly less meticulous than memorizing the direct integral form above. Notice that the <m>2 \times 2</m> matrix on the left hand side above is the matrix whose determinant equals the <m>W[y_1,y_2](t)</m>.
+                        When we perform "indefinite integrals" we always have to add a constant to our answer (that "<m>+ C</m>"). For example, we would write
+
+                        <md>
+                            <mrow> \int x^2 \ dx = \frac{x^3}3 + C. </mrow>
+                        </md>
+
+                        In general, we have that
+
+                        <md>
+                            <mrow> \int f'(x) \ dx = f(x) + C. </mrow>
+                        </md>
+
+                        That is to say, given <m>f'(x)</m>, we can find <em>infinitely many unique</em> <m>f(x)</m>. As in the case before, any function of the form <m>x^3/3 + C</m>, for any constant <m>C</m>, has the derivative <m>x^2</m>
                     </p>
+                    
+                    <p>
+                        All this is to say that we know what <m>u_1'</m> and <m>u_2'</m> are. But, we can find <em>infinitely many unique</em> <m>u_1</m> and <m>u_2</m> whose derivatives satisfy the forms we have. So we can shift <m>u_1</m> and <m>u_2</m> up or down until both intersect at some <m>t_0</m> with a value of <m>0</m>.
+                    </p>
+                </question>
 
-            </assemblage>
-
-            <p>
-                We are often interested in finding a particular solution of a nonhomogenous linear ODE <m>p(t) y'' + q(t) y' + r(t)y = g(t)</m>, mainly because the general solution of this ODE is
-
-                <md>
-                    <mrow> y(t) = h(t) + Y(t), </mrow>
-                </md>
-
-                where <m>h(t)</m> is the general solution of the homogeneous linear ODE <m>p(t) y'' + q(t) y' + r(t)y = 0</m> and <m>Y(t)</m> is <em>any</em> particular solution of the nonhomogeneous ODE <m>p(t) y'' + q(t) y' + r(t)y = g(t)</m>.
-            </p>
-
-            <p>
-                Using <em>Variation of Parameters</em> or <em>Duhamel's Principle</em> helps us find some particular solution <m>Y(t)</m> for the nonhomogeneous ODE. Here, we'll start with <term>Variation of Parameters</term>.
-            </p>
-        </introduction>
-
-        <subsection xml:id="subsec-start-varparam">                    
-            <title>Starting Variation of Parameters</title>
-            
-            <p>
-                Variation of Parameters begins by assuming that a particular solution <m>Y(t)</m> to
-
-                <md>
-                    <mrow> p(t) y'' + q(t) y' + r(t)y = g(t) </mrow>
-                </md>
-
-                is of the form
-
-                <md>
-                    <mrow> Y(t) = u_1(t) y_1(t) + u_2(t) y_2(t). </mrow>
-                </md>
-            </p>
-
-            <p>
-                Here, <m>y_1</m> and <m>y_2</m> are <em>fundamental</em> solutions to the homogeneous ODE <m>p(t) y'' + q(t) y' + r(t)y = 0</m>, that is, the Wronskian <m>W[y_1,y_2](t) \neq 0</m> for all applicable <m>t</m>. 
-            </p>
-
-            <proof>
-                <title>Review of Wronskian</title>
-                
                 <p>
-                    Let <m>y_1, y_2</m> be solutions of the homogeneous ODE <m>p(t) y'' + q(t) y' + r(t)y = 0</m>. Recall that the Wronskian of <m>y_1, y_2</m> is denoted <m>W[y_1, y_2](t)</m>, and
+                    This helps us in that we can write that
 
                     <md>
-                        <mrow> W[y_1, y_2](t) = \det \begin{bmatrix}
-                            y_1(t) \amp y_2(t) \\
-                            y_1'(t) \amp y_2'(t)
-                            \end{bmatrix} = y_1(t) y_2'(t) - y_1'(t) y_2(t). </mrow>
-                    </md>
-                </p>
-            </proof>
-
-            <p>
-                The idea behind Variation of Parameters is to kind of "generalize" the general solution of the homogenous ODE. Note that if we have that <m>u_1(t) = c_1</m> and <m>u_2(t) = c_2</m> are constant for all <m>t</m>, then the solution <m>Y(t) = c_1 y_1(t) + c_2 y_2(t)</m> is actually a solution of the <em>homogeneous ODE!</em>
-            </p>
-
-            <p>
-                So, we generalize the homogeneous solution by <m>Y(t) = u_1(t) y_1(t) + u_2(t) y_2(t)</m> in hopes that we find one (we only need one particular nonhomogeneous solution to describe them all!) solution to the nonhomogeneous ODE.
-            </p>
-
-            <p>
-                The algebra here can get a bit tricky, but I'll do my best to describe all the steps used!
-            </p>
-
-        </subsection>
-
-        <subsection xml:id="subsec-alg-of-varparam">
-            <title>Equations involving <m>u_1(t)</m> and <m>u_2(t)</m></title>
-            
-            <p>
-                Now, since <m>Y(t)</m> is a particular solution of <m>p(t) y'' + q(t) y' + r(t)y = g(t)</m>, we have that 
-
-                <men xml:id="eqn-varparam-Y">
-                    p(t) Y''(t) + q(t) Y'(t) + r(t)Y(t) = g(t).
-                </men>
-            </p>
-
-            <p>
-                We'll want to calculate <m>Y'(t)</m> and <m>Y''(t)</m>, using the form <m>Y(t) = u_1(t) y_1(t) + u_2(t) y_2(t)</m>. Doing so will create equations for <m>u_1</m> and <m>u_2</m>, which we will hopefully be able to solve.
-            </p>
-
-            <p>
-                First, calculate <m>Y'(t)</m>: (try it yourself! Remember that <m>Y(t) = u_1 y_1 + u_2 y_2</m>, all of those terms being functions of <m>t</m>.)
-            </p>
-
-            <question>
-                <title>What's <m>Y'(t)</m> equal to?</title>
-                
-                <p>
-                    We make good use of the product rule! Note that
-                </p>
-                
-                <md>
-                    <mrow> Y'(t) \amp = \Big[ u_1'(t) y_1(t) + u_2'(t) y_2(t) \Big] + u_1(t) y_1'(t) + u_2(t) y_2'(t).</mrow>
-                </md>
-            </question>
-
-            <p>
-                We have 4 terms in our representation of <m>Y'(t)</m>. This means that <m>Y''(t)</m> will have 8 terms! To reduce down on the number of terms we have, we set
-            </p>
-
-            <md>
-                <mrow> u_1'(t) y_1(t) + u_2'(t) y_2(t) = 0. </mrow>
-            </md>
-
-            <p>
-                This may seem arbitrary for now, but this will ease up a lot of our calculations. We now have that
-            </p>
-
-            <md>
-                <mrow> Y'(t) \amp = \Big[ u_1'(t) y_1(t) + u_2'(t) y_2(t) \Big] + u_1(t) y_1'(t) + u_2(t) y_2'(t) </mrow>
-                <mrow> \amp = u_1(t) y_1'(t) + u_2(t) y_2'(t). </mrow>
-            </md>
-
-            <p>
-                Now, we calculate <m>Y''(t)</m>, using our representation of <m>Y'(t)</m> above.
-            </p>
-
-            <question>
-                <title>What's <m>Y''(t)</m> equal to?</title>
-                
-                <p>
-                    Again, this should be another quick differentiation exercise.
-
-                    <md>
-                        <mrow> Y''(t) = \Big[ u_1'(t) y_1'(t) + u_2'(t) y_2'(t) \Big] + u_1(t) y_1''(t) + u_2(t) y_2''(t).</mrow>
-                    </md>
-                </p>
-            </question>
-
-            <p>
-                Now, we have expressions for <m>Y'(t)</m> and <m>Y''(t)</m>. Substitute these into <xref ref="eqn-varparam-Y"/> (Why isn't this working? This should expand out to show equation (1.1.1), will fix later). Doing so would yield that
-
-                <md>
-                    <mrow> u_1'(t) y_1'(t) + u_2'(t) y_2'(t) = \frac{g(t)}{p(t)}. </mrow>
-                </md>
-            </p>
-
-            <question>
-                <title>Why does this occur?</title>
-                
-                <p>
-                    Since <m>y_1</m> and <m>y_2</m> are solutions of the homogeneous equation, notice that
-
-                    <md>
-                        <mrow> p(t) y_1''(t) + q(t) y_1'(t) + r(t )y_1(t) = 0, </mrow>
+                        <mrow> u_1(t) = \int_{t_0}^t u_1'(s) \ ds = - \int_{t_0}^t \frac{y_2(s)}{W[y_1, y_2](s)} \frac{g(s)}{p(s)} \ ds,
+                            </mrow>
                     </md>
 
                     and
 
                     <md>
-                        <mrow> p(t) y_2''(t) + q(t) y_2'(t) + r(t )y_2(t) = 0. </mrow>
+                        <mrow>
+                            u_2(t) = \int_{t_0}^t u_2'(s) \ ds = \int_{t_0}^t \frac{y_1(s)}{W[y_1, y_2](s)} \frac{g(s)}{p(s)} \ ds.
+                            </mrow>
                     </md>
                 </p>
+            </subsection>
+
+            <subsection xml:id="subsec-final-form-of-y">
+                <title>Final Form of <m>Y(t)</m></title>
                 
                 <p>
-                    Now, we directly substitute <m>Y'(t)</m> and <m>Y''(t)</m> into <xref ref="eqn-varparam-Y"/>:
+                    With all this, our final form of <m>Y(t) = u_1y_1 + u_2y_2</m> becomes
+                </p>
+
+                <md>
+                    <mrow> Y(t) = - y_1(t) \int_{t_0}^t \frac{y_2(s)}{W[y_1, y_2](s)} \frac{g(s)}{p(s)} \ ds + y_2(t) \int_{t_0}^t \frac{y_1(s)}{W[y_1, y_2](s)} \frac{g(s)}{p(s)} \ ds. </mrow>
+                </md>
+
+                <p>
+                    All in one integral, this is expressed as
+                </p>
+
+                <md>
+                    <mrow> Y(t) = \int_{t_0}^t \frac{y_1(s) y_2(t) - y_1(t) y_2(s)}{W[y_1,y_2](s)} \cdot \frac{g(s)}{p(s)} \ ds. </mrow>
+                </md>
+
+                <p>
+                    This is the particular solution we obtain with Variation of Parameters! It's certainly a handful to memorize, but starting with <m>Y = u_1y_1 + u_2y_2</m> and remembering the general steps we took along the way is another good way of remembering variation of parameters.
+                </p>
+
+                <p>
+                    An interesting viewpoint of this is that we can write the general solution to a nonhomogeneous linear second order ODE of the form <m>p(t) y'' + q(t) y' + r(t)y = g(t)</m> using <em>only</em> a fundamental set of solutions <m>\{y_1, y_2\}</m> of the homogeneous ODE <m>p(t) y'' + q(t) y' + r(t)y = 0</m>, and a constant <m>t_0</m> that lies in the interval the ODE is defined on.
+                </p>
+
+                <p>
+                    Namely, the general solution of <m>p(t) y'' + q(t) y' + r(t)y = g(t)</m> is
 
                     <md>
-                        <mrow> g(t) \amp = p(t) \Big[ u_1'(t) y_1'(t) + u_2'(t) y_2'(t) + u_1(t) y_1''(t) + u_2(t) y_2''(t) \Big] </mrow>
-                        <mrow> \amp \quad + \ q(t) \Big[ u_1(t) y_1'(t) + u_2(t) y_2'(t) \Big] </mrow>
-                        <mrow> \amp \quad + \ r(t) \Big[ u_1(t) y_1(t) + u_2(t) y_2(t) \Big], </mrow>
-
-                        <mrow> \amp = u_1(t)\Big[ p(t) y_1''(t) + q(t) y_1'(t) + r(t )y_1(t) \Big] </mrow>
-                        <mrow> \amp \quad + \ u_2(t) \Big[ p(t) y_2''(t) + q(t) y_2'(t) + r(t )y_2(t) \Big] </mrow>
-                        <mrow> \amp \quad + \ p(t) \Big[ u_1'(t) y_1'(t) + u_2'(t) y_2'(t) \Big], </mrow>
-
-                        <mrow> \amp = p(t) \Big[ u_1'(t) y_1'(t) + u_2'(t) y_2'(t) \Big]. </mrow>
+                        <mrow> y(t) = c_1y_1(t) + c_2y_2(t) + \int_{t_0}^t \frac{y_1(s) y_2(t) - y_1(t) y_2(s)}{W[y_1,y_2](s)} \cdot \frac{g(s)}{p(s)} \ ds, </mrow>
                     </md>
+
+                    where <m>c_1,c_2</m> are real constants.
+                </p>
+
+            </subsection>
+        </section>
+
+        <section xml:id="sec-basic-ex-varparam">
+            <title>Some Basic Examples</title>
+
+            <subsection>
+                <title>Solve <m>x''(t) - 4x(t) = e^{t}</m></title>
+                
+                <p>
+                    First, we solve the homogeneous version <m>x'' - 4x = 0</m>. It turns out that the general solution of this ODE is
+                </p>
+
+                <md>
+                    <mrow> x(t) = c_1 e^{2t} + c_2 e^{-2t}.</mrow>
+                </md>
+                
+                <question>
+                    <title>How to solve <m>x'' - 4x = 0</m>?</title>
                     
-                    Finish off by dividing <m>p(t)</m> on both sides. Note that we must have that <m>p(t) \neq 0</m> for all <m>t</m> in the appropriate interval.
-                </p>
-            </question>
-
-            With this, we have finally found two equations involving <m>u_1</m> and <m>u_2</m>, which we can solve as a typical system of linear equations:
-
-            <md>
-                <mrow> u_1' y_1 + u_2' y_2 \amp = 0, </mrow>
-                <mrow> u_1' y_1' + u_2' y_2' \amp = \frac{g(t)}{p(t)}. </mrow>
-            </md>
-
-
-        </subsection>
-
-        <subsection xml:id="subsec-solve-u1-u2">
-            <title>Solving for <m>u_1(t)</m> and <m>u_2(t)</m></title>
-            
-            <p>
-                We can write the two equations from the previous section as a matrix system.
-            </p>
-
-            <md>
-                <mrow> \begin{bmatrix}
-                    y_1 \amp y_2 \\
-                    y_1' \amp y_2'
-                    \end{bmatrix} \begin{bmatrix} 
-                    u_1' \\ u_2'
-                    \end{bmatrix} = \begin{bmatrix}
-                    0 \\ g(t) / p(t)
-                    \end{bmatrix}
-                </mrow>
-            </md>
-
-            <p>
-                With our knowledge from linear algebra, we can solve for <m>u_1'</m> and <m>u_2'</m> using matrix inverses:
-            </p>
-
-            <md>
-                <mrow> \begin{bmatrix} 
-                    u_1' \\ u_2'
-                    \end{bmatrix} \amp = \begin{bmatrix}
-                    y_1 \amp y_2 \\
-                    y_1' \amp y_2'
-                    \end{bmatrix}^{-1} \begin{bmatrix}
-                    0 \\ g(t) / p(t)
-                    \end{bmatrix}
-                </mrow>
-
-                <mrow> \amp = \frac{1}{y_1 y_2' - y_1' y_2} \begin{bmatrix}
-                    y_2' \amp -y_2 \\
-                    -y_1' \amp y_1
-                    \end{bmatrix} \begin{bmatrix}
-                    0 \\ g(t) / p(t)
-                    \end{bmatrix}
-                </mrow>
-
-                <mrow> \amp = \frac{g(t) / p(t)}{W[y_1, y_2](t)} \begin{bmatrix}
-                    -y_2 \\ y_1
-                    \end{bmatrix}                            
-                </mrow>
-            </md>
-
-            <p>
-                At last! We have solved for <m>u_1'(t)</m> and <m>u_2'(t)</m>:
-            </p>
-
-            <md>
-                <mrow> u_1'(t) = - \frac{y_2(t)}{W[y_1, y_2](t)} \frac{g(t)}{p(t)} \qquad \text{and} \qquad u_2'(t) = \frac{y_1(t)}{W[y_1, y_2](t)} \frac{g(t)}{p(t)}. </mrow>
-            </md>
-
-            <p>
-                We want <m>u_1</m> and <m>u_2</m>. We can choose <m>t_0</m> to be some number for which <m>u_1(t_0) = 0</m> and <m>u_2(t_0) = 0</m>.
-            </p>
-
-            <question>
-                <title>Why can we choose <m>t_0</m> to satisfy <m>u_1(t_0) = u_2(t_0) = 0</m>?</title>
-                
-                <p>
-                    When we perform "indefinite integrals" we always have to add a constant to our answer (that "<m>+ C</m>"). For example, we would write
-
-                    <md>
-                        <mrow> \int x^2 \ dx = \frac{x^3}3 + C. </mrow>
-                    </md>
-
-                    In general, we have that
-
-                    <md>
-                        <mrow> \int f'(x) \ dx = f(x) + C. </mrow>
-                    </md>
-
-                    That is to say, given <m>f'(x)</m>, we can find <em>infinitely many unique</em> <m>f(x)</m>. As in the case before, any function of the form <m>x^3/3 + C</m>, for any constant <m>C</m>, has the derivative <m>x^2</m>
-                </p>
-                
-                <p>
-                    All this is to say that we know what <m>u_1'</m> and <m>u_2'</m> are. But, we can find <em>infinitely many unique</em> <m>u_1</m> and <m>u_2</m> whose derivatives satisfy the forms we have. So we can shift <m>u_1</m> and <m>u_2</m> up or down until both intersect at some <m>t_0</m> with a value of <m>0</m>.
-                </p>
-            </question>
-
-            <p>
-                This helps us in that we can write that
-
-                <md>
-                    <mrow> u_1(t) = \int_{t_0}^t u_1'(s) \ ds = - \int_{t_0}^t \frac{y_2(s)}{W[y_1, y_2](s)} \frac{g(s)}{p(s)} \ ds,
-                        </mrow>
-                </md>
-
-                and
-
-                <md>
-                    <mrow>
-                        u_2(t) = \int_{t_0}^t u_2'(s) \ ds = \int_{t_0}^t \frac{y_1(s)}{W[y_1, y_2](s)} \frac{g(s)}{p(s)} \ ds.
-                        </mrow>
-                </md>
-            </p>
-        </subsection>
-
-        <subsection xml:id="subsec-final-form-of-y">
-            <title>Final Form of <m>Y(t)</m></title>
-            
-            <p>
-                With all this, our final form of <m>Y(t) = u_1y_1 + u_2y_2</m> becomes
-            </p>
-
-            <md>
-                <mrow> Y(t) = - y_1(t) \int_{t_0}^t \frac{y_2(s)}{W[y_1, y_2](s)} \frac{g(s)}{p(s)} \ ds + y_2(t) \int_{t_0}^t \frac{y_1(s)}{W[y_1, y_2](s)} \frac{g(s)}{p(s)} \ ds. </mrow>
-            </md>
-
-            <p>
-                All in one integral, this is expressed as
-            </p>
-
-            <md>
-                <mrow> Y(t) = \int_{t_0}^t \frac{y_1(s) y_2(t) - y_1(t) y_2(s)}{W[y_1,y_2](s)} \cdot \frac{g(s)}{p(s)} \ ds. </mrow>
-            </md>
-
-            <p>
-                This is the particular solution we obtain with Variation of Parameters! It's certainly a handful to memorize, but starting with <m>Y = u_1y_1 + u_2y_2</m> and remembering the general steps we took along the way is another good way of remembering variation of parameters.
-            </p>
-
-            <p>
-                An interesting viewpoint of this is that we can write the general solution to a nonhomogeneous linear second order ODE of the form <m>p(t) y'' + q(t) y' + r(t)y = g(t)</m> using <em>only</em> a fundamental set of solutions <m>\{y_1, y_2\}</m> of the homogeneous ODE <m>p(t) y'' + q(t) y' + r(t)y = 0</m>, and a constant <m>t_0</m> that lies in the interval the ODE is defined on.
-            </p>
-
-            <p>
-                Namely, the general solution of <m>p(t) y'' + q(t) y' + r(t)y = g(t)</m> is
-
-                <md>
-                    <mrow> y(t) = c_1y_1(t) + c_2y_2(t) + \int_{t_0}^t \frac{y_1(s) y_2(t) - y_1(t) y_2(s)}{W[y_1,y_2](s)} \cdot \frac{g(s)}{p(s)} \ ds, </mrow>
-                </md>
-
-                where <m>c_1,c_2</m> are real constants.
-            </p>
-
-        </subsection>
-    </section>
-
-    <section xml:id="sec-basic-ex-varparam">
-        <title>Some Basic Examples</title>
-
-        <subsection>
-            <title>Solve <m>x''(t) - 4x(t) = e^{t}</m></title>
-            
-            <p>
-                First, we solve the homogeneous version <m>x'' - 4x = 0</m>. It turns out that the general solution of this ODE is
-            </p>
-
-            <md>
-                <mrow> x(t) = c_1 e^{2t} + c_2 e^{-2t}.</mrow>
-            </md>
-            
-            <question>
-                <title>How to solve <m>x'' - 4x = 0</m>?</title>
-                
-                <p>
-                    For 2nd order linear ODEs (basically ODEs of the form <m>a x'' + bx' + cx = 0</m> for <em>constants</em> <m>a,b,c</m>), remember that we always start off by plugging in <m>x = e^{rt}</m>.
-                </p>
-
-                <p>
-                    If <m>x = e^{rt}</m>, then <m>x' = re^{rt}</m> and <m>x'' = r^2e^{rt}</m>. Substituting these into <m>x'' - 4x = 0</m> shows that
-                </p>
-
-                <md>
-                    <mrow> r^2e^{rt} - 4e^{rt} = 0.</mrow>
-                </md>
-
-                <p>
-                    Dividing out by <m>e^{rt} > 0</m> gives us the <em>characteristic polynomial</em> <m>r^2 - 4 = 0</m>. Solving this has solutions <m>r = \pm 2</m>. This means that <m>e^{2t}</m> and <m>e^{-2t}</m> are solutions of <m>x'' - 4x = 0</m>.
-                </p>
-
-                <p>
-                    So, we get that <m>x(t) = c_1 e^{2t} + c_2 e^{-2t}</m> is the general solution of <m>x'' - 4x = 0</m>.
-                </p>
-
-            </question>
-
-            <p>
-                This makes it clear that we should take <m>y_1(t) = e^{2t}</m> and <m>y_2(t) = e^{-2t}</m>. The Wronskian <m>W[y_1,y_2](t) = -4</m>, so these are fundamental solutions.
-            </p>
-
-            <p>
-                All we need to find is a particular solution of <m>x'' + 4x = e^t</m>. This is quite easy if we've memorized the solution variation of parameters gives us.
-            </p>
-
-            <example>
-                <title>If you've memorized the form of the solution</title>
-                
-                <p>
-                    Great! Then, this should be a simple task of plugging in stuff (although the simplification might be a little messy).
-                </p>
-
-                <p>
-                    In this exercise, we have <m>g(t) = e^t</m> and <m>p(t) = 1</m>. Let's also take <m>t_0 = 0</m>, just to hopefully make the integration a little easier. So, directly from the formula, the particular solution <m>Y(t)</m> that we want is
-                </p>
-
-                <md>
-                    <mrow> Y(t) \amp = \int_{t_0}^t \frac{y_1(s) y_2(t) - y_1(t) y_2(s)}{W[y_1,y_2](s)} \cdot \frac{g(s)}{p(s)} \ ds, </mrow>
-
-                    <mrow> \amp = \int_0^t \frac{e^{2s} \cdot e^{-2t} - e^{2t} \cdot e^{-2s}}{e^{2s} \cdot (-2 e^{-2s}) - (2 e^{2s}) \cdot e^{-2s} } \cdot e^s \ ds. </mrow>
-                </md>
-
-                <p>
-                    Simplifying this will be a bit of a hassle, but the integration shouldn't be too bad:
-                </p>
-
-                <md>
-                    <mrow> Y(t) \amp = \int_0^t \frac{e^{2s - 2t} - e^{2t - 2s}}{(-4)} \cdot e^s \ ds, </mrow>
-
-                    <mrow> \amp = -\frac{1}{4} \int_0^t \Big[ e^{3s - 2t} - e^{2t - s} \Big] \ ds, </mrow>
-
-                    <mrow> \amp = -\frac{1}{4} \Big[ \frac{1}{3} e^{3s - 2t} + e^{2t - s} \Big]_{s=0}^{s=t}, </mrow>
-
-                    <mrow> \amp = -\frac{1}{3}e^t + \frac{1}{12} e^{-2t} + \frac{1}{4} e^{2t}.</mrow>
-                </md>
-
-                <p>
-                    Although not necessary, with a little careful observation, one may note that <m>e^{-2t}/12 + e^{2t}/4</m> solves <m>x'' - 4x = 0</m>, so we may instead take <m>Y(t) = -e^t/3</m> to be our particular solution of choice.
-                </p>
-
-
-            </example>
-
-            <example>
-                <title>Memorizing it is too much!</title>
-                
-                <p>
-                    This is okay! The solution that variation of parameters gives is long, and misremembering one small detail could waste a lot of time. A lot of the work to find this solution the <q>long way</q> is slightly tedious, so I'll skip over some more of the computational details.
-                </p>
-
-                <p>
-                    Remember that the basic principle of variation of parameters is that we set <m>x = Y(t) = u_1(t) y_1(t) + u_2(t) y_2(t)</m>. In this case, we set <m>Y(t) = u_1(t) e^{2t} + u_2(t) e^{-2t}</m>. We want to solve for <m>u_1</m> and <m>u_2</m>.
-                </p>
-
-                <p>
-                    Now, calculate <m>Y'(t)</m>.
-                </p>
-
-                <md>
-                    <mrow> Y'(t) = u_1'(t)e^{2t} + u_2'(t) e^{-2t} + 2 u_1(t) e^{2t} - 2 u_2(t) e^{-2t}.</mrow>
-                </md>
-
-                <p>
-                    We set <m>u_1'(t)e^{2t} + u_2'(t) e^{-2t} = 0</m>, and keep this in the back of our heads. Next up, calculate <m>Y''(t)</m>:
-                </p>
-
-                <md>
-                    <mrow> Y''(t) = 2u_1'(t) e^{2t} - 2u_2'(t) e^{-2t} + 4u_1(t) e^{2t} + 4u_2(t) e^{-2t}.</mrow>
-                </md>
-
-                <p>
-                    Substitute <m>x = Y(t)</m> into <m>x'' - 4x = e^t</m> to get
-                </p>
-                
-                <md>
-                    <mrow> e^t \amp = \Big( 2u_1'(t) e^{2t} - 2u_2'(t) e^{-2t} + 4u_1(t) e^{2t} + 4u_2(t) e^{-2t} \Big) - \Big( 4u_1(t) e^{2t} + 4u_2(t) e^{-2t} \Big), </mrow>
-
-                    <mrow> \amp = 2u_1'(t) e^{2t} - 2u_2'(t) e^{-2t}</mrow>
-                </md>
-
-                <p>
-                    So in all, we get a system of equations (which is what we should expect).                        
-                </p>
-
-                <md>
-                    <mrow> 0 \amp = u_1'(t) e^{2t} + u_2'(t) e^{-2t} </mrow>
-                    <mrow> e^t \amp = 2u_1'(t) e^{2t} - 2u_2'(t) e^{-2t} </mrow>
-                </md>
-
-                <p>
-                    Turn this into a matrix equation to get
-                </p>
-
-                <md>
-                    <mrow>
-                        \begin{bmatrix} u_1' \\ u_2' \end{bmatrix} \amp = \begin{bmatrix}
-                            e^{2t} \amp e^{-2t} \\
-                            2e^{2t} \amp -2e^{-2t}
-                        \end{bmatrix}
-                        \begin{bmatrix} 0 \\ e^t \end{bmatrix}
-                    </mrow>
-
-                    <mrow> \amp = \frac{1}{4} \begin{bmatrix} e^{-t} \\ -e^{3t} \end{bmatrix} </mrow>
-                </md>
-
-                <p>
-                    Now, we have <m>u_1'(t) = e^{-t}/4</m> and <m>u_2'(t) = -e^{3t}/4</m>. We can choose <em>any</em> <m>u_1, u_2</m> with these derivatives, so for sake of simplicity, choose <m>u_1(t) = -e^{-t}/4</m> and <m>u_2(t) = -e^{3t}/12</m>.
-                </p>
-
-                <p>
-                    Substitute these into <m>Y(t) = u_1(t) e^{2t} + u_2(t) e^{-2t}</m>:
-                </p>
-
-                <md>
-                    <mrow> Y(t) = -\frac{1}{4} e^{-t} e^{2t} - \frac{1}{12} e^{3t} e^{-2t} = -\frac{1}{3} e^t. </mrow>
-                </md>
-
-            </example>
-
-            <p>
-                In both cases, we found that <m>Y(t) = -e^t/3</m> is a particular solution to <m>x'' - 4x = e^t</m>. So, the general solution to <m>x'' - 4x = e^t</m> is
-            </p> 
-
-            <md>
-                <mrow> \boxed{x(t) = c_1 e^{2t} + c_2 e^{-2t} + \frac{1}{3} e^t.} </mrow>
-            </md>
-
-        </subsection>
-
-        <subsection>
-            <title>Solve <m>x'' - 3x' + 2x = 1</m></title>
-            
-            <p>
-                Try it yourself! First, solve <m>x'' - 3x' + 2x = 0</m>.
-            </p>
-            
-            <question>
-                <title>How do I solve <m>x'' - 3x' + 2x = 0</m>?</title>
-                
-                <p>
-                    Set <m>x = e^{rt}</m>. Substituting this into <m>x'' - 3x' + 2x = 0</m> shows that
-
-                    <md>
-                        <mrow> r^2 - 3r + 2 = 0. </mrow>
-                    </md>
-
-                    This occurs when <m>r = 1,2</m>, so the general solution to <m>x'' - 3x' + 2x = 0</m> is
-
-                    <md>
-                        <mrow> x(t) = c_1e^t + c_2e^{2t}. </mrow>
-                    </md>
-
-                </p>
-                
-            </question>
-
-            <p>
-                Next, we need a particular solution. Use variation of parameters to find some particular solution <m>Y(t)</m> of <m>x'' - 3x' + 2x = 1</m>.
-            </p>
-
-            <question>
-                <title>I need some help with starting variation of parameters!</title>
-                
-                <p>
-                    Set <m>Y(t) = u_1(t) y_1(t) + u_2(t) y_2(t)</m>. Then, find <m>Y'</m> and <m>Y''</m>, using the special condition that we've set before (it's to avoid terms like <m>u_1''</m> and <m>u_2''</m>)
-                </p>
-
-                <p>
-                    Substituting these into <m>x'' - 3x' + 2x = 1</m>, along with the special condition, gives us a system of equations that we can solve!
-                </p>
-
-                <hint>
                     <p>
-                        Alternatively, one might remember that <m>Y(t)</m> takes the form
+                        For 2nd order linear ODEs (basically ODEs of the form <m>a x'' + bx' + cx = 0</m> for <em>constants</em> <m>a,b,c</m>), remember that we always start off by plugging in <m>x = e^{rt}</m>.
+                    </p>
+
+                    <p>
+                        If <m>x = e^{rt}</m>, then <m>x' = re^{rt}</m> and <m>x'' = r^2e^{rt}</m>. Substituting these into <m>x'' - 4x = 0</m> shows that
                     </p>
 
                     <md>
-                        <mrow> Y(t) = \int_{t_0}^t \frac{y_1(s) y_2(t) - y_1(t) y_2(s)}{W[y_1,y_2](s)} \cdot \frac{g(s)}{p(s)} \ ds. </mrow>
+                        <mrow> r^2e^{rt} - 4e^{rt} = 0.</mrow>
                     </md>
 
-                    <p>What's <m>g(t)</m> and <m>p(t)</m> in the ODE <m>x'' - 3x' + 2x = 1</m>?</p>
-                </hint>
-                
-            </question>
+                    <p>
+                        Dividing out by <m>e^{rt} > 0</m> gives us the <em>characteristic polynomial</em> <m>r^2 - 4 = 0</m>. Solving this has solutions <m>r = \pm 2</m>. This means that <m>e^{2t}</m> and <m>e^{-2t}</m> are solutions of <m>x'' - 4x = 0</m>.
+                    </p>
 
-            <p>
-                Finally, the general solution to <m>x'' - 3x' + 2x = 1</m> is of the form
-            </p>
+                    <p>
+                        So, we get that <m>x(t) = c_1 e^{2t} + c_2 e^{-2t}</m> is the general solution of <m>x'' - 4x = 0</m>.
+                    </p>
 
-            <md>
-                <mrow> x(t) = c_1 y_1(t) + c_2y_2(t) + Y(t). </mrow>
-            </md>
+                </question>
 
-            <answer>
                 <p>
-                    Here's one possible general solution (there are multiple, based on the <m>Y(t)</m> chosen)
+                    This makes it clear that we should take <m>y_1(t) = e^{2t}</m> and <m>y_2(t) = e^{-2t}</m>. The Wronskian <m>W[y_1,y_2](t) = -4</m>, so these are fundamental solutions.
+                </p>
+
+                <p>
+                    All we need to find is a particular solution of <m>x'' + 4x = e^t</m>. This is quite easy if we've memorized the solution variation of parameters gives us.
+                </p>
+
+                <example>
+                    <title>If you've memorized the form of the solution</title>
+                    
+                    <p>
+                        Great! Then, this should be a simple task of plugging in stuff (although the simplification might be a little messy).
+                    </p>
+
+                    <p>
+                        In this exercise, we have <m>g(t) = e^t</m> and <m>p(t) = 1</m>. Let's also take <m>t_0 = 0</m>, just to hopefully make the integration a little easier. So, directly from the formula, the particular solution <m>Y(t)</m> that we want is
+                    </p>
 
                     <md>
-                        <mrow> \boxed{x(t) = c_1 e^t + c_2 e^{2t} + \frac{1}{2}.} </mrow>
+                        <mrow> Y(t) \amp = \int_{t_0}^t \frac{y_1(s) y_2(t) - y_1(t) y_2(s)}{W[y_1,y_2](s)} \cdot \frac{g(s)}{p(s)} \ ds, </mrow>
+
+                        <mrow> \amp = \int_0^t \frac{e^{2s} \cdot e^{-2t} - e^{2t} \cdot e^{-2s}}{e^{2s} \cdot (-2 e^{-2s}) - (2 e^{2s}) \cdot e^{-2s} } \cdot e^s \ ds. </mrow>
                     </md>
+
+                    <p>
+                        Simplifying this will be a bit of a hassle, but the integration shouldn't be too bad:
+                    </p>
+
+                    <md>
+                        <mrow> Y(t) \amp = \int_0^t \frac{e^{2s - 2t} - e^{2t - 2s}}{(-4)} \cdot e^s \ ds, </mrow>
+
+                        <mrow> \amp = -\frac{1}{4} \int_0^t \Big[ e^{3s - 2t} - e^{2t - s} \Big] \ ds, </mrow>
+
+                        <mrow> \amp = -\frac{1}{4} \Big[ \frac{1}{3} e^{3s - 2t} + e^{2t - s} \Big]_{s=0}^{s=t}, </mrow>
+
+                        <mrow> \amp = -\frac{1}{3}e^t + \frac{1}{12} e^{-2t} + \frac{1}{4} e^{2t}.</mrow>
+                    </md>
+
+                    <p>
+                        Although not necessary, with a little careful observation, one may note that <m>e^{-2t}/12 + e^{2t}/4</m> solves <m>x'' - 4x = 0</m>, so we may instead take <m>Y(t) = -e^t/3</m> to be our particular solution of choice.
+                    </p>
+
+
+                </example>
+
+                <example>
+                    <title>Memorizing it is too much!</title>
                     
+                    <p>
+                        This is okay! The solution that variation of parameters gives is long, and misremembering one small detail could waste a lot of time. A lot of the work to find this solution the <q>long way</q> is slightly tedious, so I'll skip over some more of the computational details.
+                    </p>
+
+                    <p>
+                        Remember that the basic principle of variation of parameters is that we set <m>x = Y(t) = u_1(t) y_1(t) + u_2(t) y_2(t)</m>. In this case, we set <m>Y(t) = u_1(t) e^{2t} + u_2(t) e^{-2t}</m>. We want to solve for <m>u_1</m> and <m>u_2</m>.
+                    </p>
+
+                    <p>
+                        Now, calculate <m>Y'(t)</m>.
+                    </p>
+
+                    <md>
+                        <mrow> Y'(t) = u_1'(t)e^{2t} + u_2'(t) e^{-2t} + 2 u_1(t) e^{2t} - 2 u_2(t) e^{-2t}.</mrow>
+                    </md>
+
+                    <p>
+                        We set <m>u_1'(t)e^{2t} + u_2'(t) e^{-2t} = 0</m>, and keep this in the back of our heads. Next up, calculate <m>Y''(t)</m>:
+                    </p>
+
+                    <md>
+                        <mrow> Y''(t) = 2u_1'(t) e^{2t} - 2u_2'(t) e^{-2t} + 4u_1(t) e^{2t} + 4u_2(t) e^{-2t}.</mrow>
+                    </md>
+
+                    <p>
+                        Substitute <m>x = Y(t)</m> into <m>x'' - 4x = e^t</m> to get
+                    </p>
+                    
+                    <md>
+                        <mrow> e^t \amp = \Big( 2u_1'(t) e^{2t} - 2u_2'(t) e^{-2t} + 4u_1(t) e^{2t} + 4u_2(t) e^{-2t} \Big) - \Big( 4u_1(t) e^{2t} + 4u_2(t) e^{-2t} \Big), </mrow>
+
+                        <mrow> \amp = 2u_1'(t) e^{2t} - 2u_2'(t) e^{-2t}</mrow>
+                    </md>
+
+                    <p>
+                        So in all, we get a system of equations (which is what we should expect).                        
+                    </p>
+
+                    <md>
+                        <mrow> 0 \amp = u_1'(t) e^{2t} + u_2'(t) e^{-2t} </mrow>
+                        <mrow> e^t \amp = 2u_1'(t) e^{2t} - 2u_2'(t) e^{-2t} </mrow>
+                    </md>
+
+                    <p>
+                        Turn this into a matrix equation to get
+                    </p>
+
+                    <md>
+                        <mrow>
+                            \begin{bmatrix} u_1' \\ u_2' \end{bmatrix} \amp = \begin{bmatrix}
+                                e^{2t} \amp e^{-2t} \\
+                                2e^{2t} \amp -2e^{-2t}
+                            \end{bmatrix}
+                            \begin{bmatrix} 0 \\ e^t \end{bmatrix}
+                        </mrow>
+
+                        <mrow> \amp = \frac{1}{4} \begin{bmatrix} e^{-t} \\ -e^{3t} \end{bmatrix} </mrow>
+                    </md>
+
+                    <p>
+                        Now, we have <m>u_1'(t) = e^{-t}/4</m> and <m>u_2'(t) = -e^{3t}/4</m>. We can choose <em>any</em> <m>u_1, u_2</m> with these derivatives, so for sake of simplicity, choose <m>u_1(t) = -e^{-t}/4</m> and <m>u_2(t) = -e^{3t}/12</m>.
+                    </p>
+
+                    <p>
+                        Substitute these into <m>Y(t) = u_1(t) e^{2t} + u_2(t) e^{-2t}</m>:
+                    </p>
+
+                    <md>
+                        <mrow> Y(t) = -\frac{1}{4} e^{-t} e^{2t} - \frac{1}{12} e^{3t} e^{-2t} = -\frac{1}{3} e^t. </mrow>
+                    </md>
+
+                </example>
+
+                <p>
+                    In both cases, we found that <m>Y(t) = -e^t/3</m> is a particular solution to <m>x'' - 4x = e^t</m>. So, the general solution to <m>x'' - 4x = e^t</m> is
+                </p> 
+
+                <md>
+                    <mrow> \boxed{x(t) = c_1 e^{2t} + c_2 e^{-2t} + \frac{1}{3} e^t.} </mrow>
+                </md>
+
+            </subsection>
+
+            <subsection>
+                <title>Solve <m>x'' - 3x' + 2x = 1</m></title>
+                
+                <p>
+                    Try it yourself! First, solve <m>x'' - 3x' + 2x = 0</m>.
                 </p>
-            </answer>
+                
+                <question>
+                    <title>How do I solve <m>x'' - 3x' + 2x = 0</m>?</title>
+                    
+                    <p>
+                        Set <m>x = e^{rt}</m>. Substituting this into <m>x'' - 3x' + 2x = 0</m> shows that
 
-        </subsection>
-    </section>
+                        <md>
+                            <mrow> r^2 - 3r + 2 = 0. </mrow>
+                        </md>
 
-    <section xml:id="sec-more-involved-examples">
-        <title>More Involved Examples</title>
+                        This occurs when <m>r = 1,2</m>, so the general solution to <m>x'' - 3x' + 2x = 0</m> is
+
+                        <md>
+                            <mrow> x(t) = c_1e^t + c_2e^{2t}. </mrow>
+                        </md>
+
+                    </p>
+                    
+                </question>
+
+                <p>
+                    Next, we need a particular solution. Use variation of parameters to find some particular solution <m>Y(t)</m> of <m>x'' - 3x' + 2x = 1</m>.
+                </p>
+
+                <question>
+                    <title>I need some help with starting variation of parameters!</title>
+                    
+                    <p>
+                        Set <m>Y(t) = u_1(t) y_1(t) + u_2(t) y_2(t)</m>. Then, find <m>Y'</m> and <m>Y''</m>, using the special condition that we've set before (it's to avoid terms like <m>u_1''</m> and <m>u_2''</m>)
+                    </p>
+
+                    <p>
+                        Substituting these into <m>x'' - 3x' + 2x = 1</m>, along with the special condition, gives us a system of equations that we can solve!
+                    </p>
+
+                    <hint>
+                        <p>
+                            Alternatively, one might remember that <m>Y(t)</m> takes the form
+                        </p>
+
+                        <md>
+                            <mrow> Y(t) = \int_{t_0}^t \frac{y_1(s) y_2(t) - y_1(t) y_2(s)}{W[y_1,y_2](s)} \cdot \frac{g(s)}{p(s)} \ ds. </mrow>
+                        </md>
+
+                        <p>What's <m>g(t)</m> and <m>p(t)</m> in the ODE <m>x'' - 3x' + 2x = 1</m>?</p>
+                    </hint>
+                    
+                </question>
+
+                <p>
+                    Finally, the general solution to <m>x'' - 3x' + 2x = 1</m> is of the form
+                </p>
+
+                <md>
+                    <mrow> x(t) = c_1 y_1(t) + c_2y_2(t) + Y(t). </mrow>
+                </md>
+
+                <answer>
+                    <p>
+                        Here's one possible general solution (there are multiple, based on the <m>Y(t)</m> chosen)
+
+                        <md>
+                            <mrow> \boxed{x(t) = c_1 e^t + c_2 e^{2t} + \frac{1}{2}.} </mrow>
+                        </md>
+                        
+                    </p>
+                </answer>
+
+            </subsection>
+        </section>
+
+        <section xml:id="sec-more-involved-examples">
+            <title>More Involved Examples</title>
+            
+            <subsection xml:id="subsec-involved-1">
+                <title>Solve <m>y'' + 2y' + 5y = \sin t</m></title>
+                
+                <p>
+                    As with always, we begin by solving <m>y'' + 2y' + 5y = 0</m>. The general solution of this ODE is
+                </p>
+
+                <md>
+                    <mrow> y(t) = c_1e^{-t} \cos 2t + c_2 e^{-t} \sin 2t </mrow>
+                </md>
+
+                <question>
+                    <title>How do I solve <m>y'' + 2y' + 5y = 0</m>?</title>
+                    
+                    <p>
+                        Set <m>y = e^{rt}</m> to obtain <m>r^2 + 2r + 5 = 0</m>. This holds when
+                    </p>
+
+                    <md>
+                        <mrow> r = \frac{-2 \pm \sqrt{4 - 4\cdot 5}}{2} = -1 \pm 2i.</mrow>
+                    </md>
+
+                    <p>
+                        So, <m>y = e^{(-1 + 2i)t}</m> is a solution of <m>y'' + 2y' + 5y = 0</m>. Recall that if <m>y(t)</m> is a solution of a linear ODE, then so are <m>\Re\{y(t)\}</m> (real part of <m>y</m>) and <m>\Im\{y(t)\}</m> (imaginary part of <m>y</m>). Writing out <m>e^{(-1 + 2i)t}</m> shows that
+                    </p>
+
+                    <md>
+                        <mrow> e^{(-1 + 2i)t} = e^{-t} \cos 2t + ie^{-t} \sin 2t. </mrow>
+                    </md>
+
+                    <p>
+                        Therefore, the general solution of <m>y'' + 2y' + 5y = 0</m> is
+                    </p>
+                    
+                    <md>
+                        <mrow> y(t) = c_1e^{-t} \cos 2t + c_2 e^{-t} \sin 2t. </mrow>
+                    </md>
+
+                </question>
+
+                <p>
+                    With the general solution of the homogeneous ODE <m>y'' + 2y' + 5y = 0</m>, we now look for a particular solution of the inhomogeneous ODE <m>y'' + 2y' + 5y = \sin t</m>, using variation of parameters of course.
+                </p>
+
+                <p>
+                    One might remember variation of parameters of the form
+                </p>
+
+                <men xml:id="eqn-linear-varparam">
+                    \begin{bmatrix} y_1 \amp y_2 \\ y_1' \amp y_2' \end{bmatrix} \begin{bmatrix} u_1' \\ u_2' \end{bmatrix} = \begin{bmatrix} 0 \\ g(t)/p(t) \end{bmatrix}.
+                </men>
+
+                <p>
+                    This gave us a neat solution for <m>u_1',u_2'</m>:
+                </p>
+
+                <md>
+                    <mrow> 
+                        \begin{bmatrix} u_1' \\ u_2' \end{bmatrix} = \begin{bmatrix} y_1 \amp y_2 \\ y_1' \amp y_2' \end{bmatrix}^{-1} \begin{bmatrix} 0 \\ g(t)/p(t) \end{bmatrix} = \frac{1}{W[y_1,y_2](t)} \begin{bmatrix} y_2' \amp -y_2 \\ -y_1' \amp y_1 \end{bmatrix} \begin{bmatrix} 0 \\ g(t)/p(t) \end{bmatrix}.
+                    </mrow>
+                </md>
+
+                <p>
+                    The expression <m>W[y_1, y_2](t)</m> may look intimidating, but this is just equal to <m>y_1y_2' - y_1'y_2</m>.
+                </p>
+
+                <p>
+                    There's a lot to unpack here! We have <m>y_1 = e^{-t} \cos 2t</m> and <m>y_2 = e^{-t} \sin 2t</m>, and <m>g(t)/p(t) = \sin t</m>. We need to calculate <m>y_1'</m> and <m>y_2'</m> first, before we continue with our form of variation of parameters above:
+                </p>
+
+                <md>
+                    <mrow> y_1'(t) \amp = -e^{-t} \cos 2t - 2e^{-t} \sin 2t, </mrow>
+                    <mrow> y_2'(t) \amp = -e^{-t} \sin 2t + 2e^{-t} \cos 2t. </mrow>
+                </md>
+
+                <p>
+                    Next, we have to compute <m>W[y_1, y_2](t) = y_1y_2' - y_1'y_2</m>. This is pretty annoying computationally, but trudging through it anyway gives us a pretty nice form of <m>W[y_1, y_2](t)</m>:
+                </p>
+
+                <md>
+                    <mrow> W[y_1, y_2](t) = 2e^{-2t} </mrow>
+                </md>
+
+                <question>
+                    <title>How did you calculate <m>W[y_1, y_2](t)</m>?</title>
+                    
+                    <p>
+                        Here's the work of all this:
+                    </p>
+
+                    <md>
+                        <mrow> W[y_1, y_2](t) \amp = \bigg[ e^{-t} \cos 2t \bigg] \bigg[ -e^{-t} \sin 2t + 2e^{-t} \cos 2t \bigg] - \bigg[ -e^{-t} \cos 2t - 2e^{-t} \sin 2t \bigg] \bigg[ e^{-t} \sin 2t \bigg], </mrow>
         
-        <subsection xml:id="subsec-involved-1">
-            <title>Solve <m>y'' + 2y' + 5y = \sin t</m></title>
-            
-            <p>
-                As with always, we begin by solving <m>y'' + 2y' + 5y = 0</m>. The general solution of this ODE is
-            </p>
+                        <mrow> \amp = -e^{-2t} \sin 2t \cos 2t + 2e^{-2t} \cos^2 2t </mrow>
+                        <mrow> \amp \qquad + e^{-2t} \sin 2t \cos 2t + 2e^{-2t} \sin^2 2t, </mrow>
+        
+                        <mrow> \amp = 2e^{-2t} \cos^2 2t + 2e^{-2t} \sin^2 2t, </mrow>
+        
+                        <mrow> \amp = 2e^{-2t}. </mrow>
+                    </md>
 
-            <md>
-                <mrow> y(t) = c_1e^{-t} \cos 2t + c_2 e^{-t} \sin 2t </mrow>
-            </md>
-
-            <question>
-                <title>How do I solve <m>y'' + 2y' + 5y = 0</m>?</title>
+                </question>
                 
                 <p>
-                    Set <m>y = e^{rt}</m> to obtain <m>r^2 + 2r + 5 = 0</m>. This holds when
+                    Now we have all the parts we need for <xref ref="eqn-linear-varparam"/>! Substituting all this stuff into there and expanding seems like a lot of work again, but the expansion itself is not too bad:
                 </p>
 
                 <md>
-                    <mrow> r = \frac{-2 \pm \sqrt{4 - 4\cdot 5}}{2} = -1 \pm 2i.</mrow>
+                    <mrow> \begin{bmatrix} u_1' \\ u_2' \end{bmatrix} \amp = \frac{1}{2e^{-2t}}
+                        \begin{bmatrix}
+                            -e^{-t} \sin 2t + 2e^{-t} \cos 2t \amp -e^{-t} \sin 2t \\
+                            -e^{-t} \cos 2t - 2e^{-t} \sin 2t \amp e^{-t} \cos 2t
+                        \end{bmatrix}
+                        \begin{bmatrix} 0 \\ \sin t \end{bmatrix}, </mrow>
+
+                    <mrow> \amp = \begin{bmatrix} -e^{-t}\sin 2t \sin t \\ e^{-t}\cos 2t \sin t \end{bmatrix}. </mrow>
                 </md>
 
                 <p>
-                    So, <m>y = e^{(-1 + 2i)t}</m> is a solution of <m>y'' + 2y' + 5y = 0</m>. Recall that if <m>y(t)</m> is a solution of a linear ODE, then so are <m>\Re\{y(t)\}</m> (real part of <m>y</m>) and <m>\Im\{y(t)\}</m> (imaginary part of <m>y</m>). Writing out <m>e^{(-1 + 2i)t}</m> shows that
+                    We've found <m>u_1'</m> and <m>u_2'</m>:
                 </p>
 
                 <md>
-                    <mrow> e^{(-1 + 2i)t} = e^{-t} \cos 2t + ie^{-t} \sin 2t. </mrow>
+                    <mrow> u_1'(t) \amp = -e^{-t}\sin 2t \sin t </mrow>
+                    <mrow> u_2'(t) \amp = e^{-t}\cos 2t \sin t </mrow>
                 </md>
 
                 <p>
-                    Therefore, the general solution of <m>y'' + 2y' + 5y = 0</m> is
-                </p>
-                
-                <md>
-                    <mrow> y(t) = c_1e^{-t} \cos 2t + c_2 e^{-t} \sin 2t. </mrow>
-                </md>
-
-            </question>
-
-            <p>
-                With the general solution of the homogeneous ODE <m>y'' + 2y' + 5y = 0</m>, we now look for a particular solution of the inhomogeneous ODE <m>y'' + 2y' + 5y = \sin t</m>, using variation of parameters of course.
-            </p>
-
-            <p>
-                One might remember variation of parameters of the form
-            </p>
-
-            <men xml:id="eqn-linear-varparam">
-                \begin{bmatrix} y_1 \amp y_2 \\ y_1' \amp y_2' \end{bmatrix} \begin{bmatrix} u_1' \\ u_2' \end{bmatrix} = \begin{bmatrix} 0 \\ g(t)/p(t) \end{bmatrix}.
-            </men>
-
-            <p>
-                This gave us a neat solution for <m>u_1',u_2'</m>:
-            </p>
-
-            <md>
-                <mrow> 
-                    \begin{bmatrix} u_1' \\ u_2' \end{bmatrix} = \begin{bmatrix} y_1 \amp y_2 \\ y_1' \amp y_2' \end{bmatrix}^{-1} \begin{bmatrix} 0 \\ g(t)/p(t) \end{bmatrix} = \frac{1}{W[y_1,y_2](t)} \begin{bmatrix} y_2' \amp -y_2 \\ -y_1' \amp y_1 \end{bmatrix} \begin{bmatrix} 0 \\ g(t)/p(t) \end{bmatrix}.
-                </mrow>
-            </md>
-
-            <p>
-                The expression <m>W[y_1, y_2](t)</m> may look intimidating, but this is just equal to <m>y_1y_2' - y_1'y_2</m>.
-            </p>
-
-            <p>
-                There's a lot to unpack here! We have <m>y_1 = e^{-t} \cos 2t</m> and <m>y_2 = e^{-t} \sin 2t</m>, and <m>g(t)/p(t) = \sin t</m>. We need to calculate <m>y_1'</m> and <m>y_2'</m> first, before we continue with our form of variation of parameters above:
-            </p>
-
-            <md>
-                <mrow> y_1'(t) \amp = -e^{-t} \cos 2t - 2e^{-t} \sin 2t, </mrow>
-                <mrow> y_2'(t) \amp = -e^{-t} \sin 2t + 2e^{-t} \cos 2t. </mrow>
-            </md>
-
-            <p>
-                Next, we have to compute <m>W[y_1, y_2](t) = y_1y_2' - y_1'y_2</m>. This is pretty annoying computationally, but trudging through it anyway gives us a pretty nice form of <m>W[y_1, y_2](t)</m>:
-            </p>
-
-            <md>
-                <mrow> W[y_1, y_2](t) = 2e^{-2t} </mrow>
-            </md>
-
-            <question>
-                <title>How did you calculate <m>W[y_1, y_2](t)</m>?</title>
-                
-                <p>
-                    Here's the work of all this:
+                    We want to take the indefinite integral of both of these, to see what forms <m>u_1</m> and <m>u_2</m> can take. But integrating either of these is going to be pretty brutal. That's why it's good to rely on computing packages!
                 </p>
 
-                <md>
-                    <mrow> W[y_1, y_2](t) \amp = \bigg[ e^{-t} \cos 2t \bigg] \bigg[ -e^{-t} \sin 2t + 2e^{-t} \cos 2t \bigg] - \bigg[ -e^{-t} \cos 2t - 2e^{-t} \sin 2t \bigg] \bigg[ e^{-t} \sin 2t \bigg], </mrow>
-    
-                    <mrow> \amp = -e^{-2t} \sin 2t \cos 2t + 2e^{-2t} \cos^2 2t </mrow>
-                    <mrow> \amp \qquad + e^{-2t} \sin 2t \cos 2t + 2e^{-2t} \sin^2 2t, </mrow>
-    
-                    <mrow> \amp = 2e^{-2t} \cos^2 2t + 2e^{-2t} \sin^2 2t, </mrow>
-    
-                    <mrow> \amp = 2e^{-2t}. </mrow>
-                </md>
+                <question>
+                    <title>How do I do this in Mathematica?</title>
+                    
+                    <p>
+                        When we want to calculate <m>\displaystyle\int f(x) \ dx</m>, we use the command <c>Integrate[f[x], x]</c>. 
+                    </p>
 
-            </question>
-            
-            <p>
-                Now we have all the parts we need for <xref ref="eqn-linear-varparam"/>! Substituting all this stuff into there and expanding seems like a lot of work again, but the expansion itself is not too bad:
-            </p>
+                    <p>
+                        In this case, the integrals of <m>u_1'(t)</m> and <m>u_2'(t)</m> can be calculated using
+                    </p>
 
-            <md>
-                <mrow> \begin{bmatrix} u_1' \\ u_2' \end{bmatrix} \amp = \frac{1}{2e^{-2t}}
-                    \begin{bmatrix}
-                        -e^{-t} \sin 2t + 2e^{-t} \cos 2t \amp -e^{-t} \sin 2t \\
-                        -e^{-t} \cos 2t - 2e^{-t} \sin 2t \amp e^{-t} \cos 2t
-                    \end{bmatrix}
-                    \begin{bmatrix} 0 \\ \sin t \end{bmatrix}, </mrow>
+                    <cd>
+                        <cline> u1[t_] = Integrate[Exp[-t] * Sin[2t] * Sin[t], t] </cline>
+                        <cline> u2[t_] = Integrate[Exp[-t] * Cos[2t] * Sin[t], t] </cline>
+                    </cd>
+                </question>
 
-                <mrow> \amp = \begin{bmatrix} -e^{-t}\sin 2t \sin t \\ e^{-t}\cos 2t \sin t \end{bmatrix}. </mrow>
-            </md>
+                <question>
+                    <title>How do I do this in Matlab?</title>
+                    
+                    <p>
+                        When we want to calculate <m>\displaystyle\int f(x) \ dx</m>, we use the command <c>int(f(x), x)</c>. 
+                    </p>
+                    
+                    <p>
+                        Here, we can calculate the integrals of <m>u_1'</m> and <m>u_2'</m> using
+                    </p>
 
-            <p>
-                We've found <m>u_1'</m> and <m>u_2'</m>:
-            </p>
+                    <cd>
+                        <cline> u1(t) = int(-exp(-t) * sin(2 * t) * sin(t), t) </cline>
+                        <cline> u2(t) = int(-exp(-t) * cos(2 * t) * sin(t), t) </cline>
+                    </cd>
+                </question>
 
-            <md>
-                <mrow> u_1'(t) \amp = -e^{-t}\sin 2t \sin t </mrow>
-                <mrow> u_2'(t) \amp = e^{-t}\cos 2t \sin t </mrow>
-            </md>
+                <question>
+                    <title>How do I do this in Maple?</title>
+                    
+                    <p>
+                        The integration command is actually very similar to what you'd use for Matlab, so you'd use
+                    </p>
+                    
+                    <cd>
+                        <cline> u1 := int(-exp(-t) * sin(2 * t) * sin(t), t) </cline>
+                        <cline> u2 := int(-exp(-t) * cos(2 * t) * sin(t), t) </cline>
+                    </cd>
 
-            <p>
-                We want to take the indefinite integral of both of these, to see what forms <m>u_1</m> and <m>u_2</m> can take. But integrating either of these is going to be pretty brutal. That's why it's good to rely on computing packages!
-            </p>
+                </question>
 
-            <question>
-                <title>How do I do this in Mathematica?</title>
-                
-                <p>
-                    When we want to calculate <m>\displaystyle\int f(x) \ dx</m>, we use the command <c>Integrate[f[x], x]</c>. 
-                </p>
+                <question>
+                    <title>How do I do this in Sage? (+ bonus Sage cell)</title>
+                    
+                    <p>
+                        It's just as simple for Sage as the others: if we wanted to integrate <m>f(x)</m>, then we'd write <c>integrate(f(x), x)</c>.
+                    </p>
 
-                <p>
-                    In this case, the integrals of <m>u_1'(t)</m> and <m>u_2'(t)</m> can be calculated using
-                </p>
+                    <p>
+                        There's a Sage window below with the commands already in. Try it out by clicking the <q>Evaluate Sage</q> button! 
+                    </p>
 
-                <cd>
-                    <cline> u1[t_] = Integrate[Exp[-t] * Sin[2t] * Sin[t], t] </cline>
-                    <cline> u2[t_] = Integrate[Exp[-t] * Cos[2t] * Sin[t], t] </cline>
-                </cd>
-            </question>
-
-            <question>
-                <title>How do I do this in Matlab?</title>
-                
-                <p>
-                    When we want to calculate <m>\displaystyle\int f(x) \ dx</m>, we use the command <c>int(f(x), x)</c>. 
-                </p>
-                
-                <p>
-                    Here, we can calculate the integrals of <m>u_1'</m> and <m>u_2'</m> using
-                </p>
-
-                <cd>
-                    <cline> u1(t) = int(-exp(-t) * sin(2 * t) * sin(t), t) </cline>
-                    <cline> u2(t) = int(-exp(-t) * cos(2 * t) * sin(t), t) </cline>
-                </cd>
-            </question>
-
-            <question>
-                <title>How do I do this in Maple?</title>
-                
-                <p>
-                    The integration command is actually very similar to what you'd use for Matlab, so you'd use
-                </p>
-                
-                <cd>
-                    <cline> u1 := int(-exp(-t) * sin(2 * t) * sin(t), t) </cline>
-                    <cline> u2 := int(-exp(-t) * cos(2 * t) * sin(t), t) </cline>
-                </cd>
-
-            </question>
-
-            <question>
-                <title>How do I do this in Sage? (+ bonus Sage cell)</title>
-                
-                <p>
-                    It's just as simple for Sage as the others: if we wanted to integrate <m>f(x)</m>, then we'd write <c>integrate(f(x), x)</c>.
-                </p>
-
-                <p>
-                    Here's a Sage window with the command already in. Try it out by clicking the <q>Evaluate Sage</q> button! (Not currently working :/)
-                </p>
+                </question>
 
                 <sage>
                     <input>
                         t = var('t')
-                        u1(t) = integrate(-exp(-t) * sin(2 * t) * sin(t), x)
-                        u2(t) = integrate(exp(-t) * cos(2 * t) * sin(t), x)
+                        u1(t) = integrate(-exp(-t) * sin(2 * t) * sin(t), t)
+                        u2(t) = integrate(exp(-t) * cos(2 * t) * sin(t), t)
                         print("u1(t) = ", u1(t))
                         print("u2(t) = ", u2(t))
                     </input>
                     <output>
-                        u1(t) =  -x*e^(-t)*sin(2*t)*sin(t)
-                        u2(t) =  x*cos(2*t)*e^(-t)*sin(t)
+                        u1(t) =  -1/20*(cos(3*t) - 3*sin(3*t))*e^(-t) + 1/4*(cos(t) - sin(t))*e^(-t)
+                        u2(t) =  -1/20*(3*cos(3*t) + sin(3*t))*e^(-t) + 1/4*(cos(t) + sin(t))*e^(-t)
                     </output>
                 </sage>
 
+                Whatever computing package you use, we find that one possible <m>u_1(t)</m> is
 
-            </question>
+                <md>
+                    <mrow> u_1(t) = \frac{e^{-t}}{20} (-5\cos t + \cos 3t + 5\sin t - 3\sin t), </mrow>
+                </md>
 
-        </subsection>
+                and that another possible <m>u_2(t)</m> is
 
-    </section>
+                <md>
+                    <mrow> u_2(t) = \frac{e^{-t}}{20} (5\cos t - 3\cos 3t + 5\sin t - \sin 3t). </mrow>
+                </md>
 
-    <section xml:id="sec-exercises-varparam">
-        <title>Exercises</title>
-        
-        <exercises xml:id="exercises-varparam">
-            <exercise number="1">
-                <p>
-                    Solve <m>y'' + 5y' + 6y = e^{-t}</m>.
-                </p>
+                So, after all this work, we've finally found a particular solution <m>Y(t)</m> to the inhomogeneous ODE <m>y'' + 2y' + 5y = \sin t</m>! (I'm jumping straight to the answer using Mathematica.)
 
-                <hint>
+                <md>
+                    <mrow> Y(t) \amp = u_1(t) y_1(t) + u_2(t) y_2(t) = \frac{e^{-2t}}{20} (-5\cos 3t + \cos 5t + 5\sin 3t - 3\sin 5t). </mrow>
+                </md>
+
+                All in all, the general solution to <m>y'' + 2y' + 5y = \sin t</m> is <m>y(t) = c_1y_1(t) + c_2y_2(t) + Y(t)</m>. Plugging in all of our stuff into this gives us that
+
+                <md>
+                    <mrow> y(t) \amp = c_1e^{-t} \cos 2t + c_2e^{-t} \sin 2t </mrow>
+                    <mrow> \amp \qquad \qquad + \frac{e^{-2t}}{20} (-5\cos 3t + \cos 5t + 5\sin 3t - 3\sin 5t).</mrow>
+                </md>
+
+                What a messy answer! The important thing is to look at the form of <m>y(t)</m>, as demonstrated by the following question.
+
+                <question>
+                    <title>As <m>t \to \infty</m> what does <m>y(t)</m> approach?</title>
+                    
                     <p>
-                        What are the solutions to <m>y'' + 5y' + 6y = 0</m>? Using these, set <m>Y(t) = u_1y_1 + u_2y_2</m> and continue with variation of parameters.
+                        The answer is pretty simple: as <m>t \to \infty</m> we get <m>y(t) \to 0</m>.
                     </p>
-                </hint>
 
-            </exercise>
+                    <p>
+                        As hinted to before, the general solution <m>y(t)</m> can be summarized pretty well with the equation
+                    </p>
 
-            <exercise number="2">
+                    <md>
+                        <mrow>y(t) \amp = e^{-t} y_b(t) + e^{-2t} Y_b(t).</mrow>
+                    </md>
+
+                    <p>
+                        Both <m>y_b(t)</m> and <m>Y_b(t)</m> are <em>bounded</em> for all <m>t \in \mathbb{R}</m>.
+                    </p>
+
+                    <question>
+                        <title>What does it mean for <m>y_b(t)</m> to be <q>bounded</q>?</title>
+                        
+                        <p>
+                            Intuitively, we mean to say that <m>y_b(t)</m> never goes to infinity for any real <m>t</m>.
+                        </p>
+
+                        <p>
+                            More rigourously, we'd say that there exists constants <m>A</m> and <m>B</m> such that <m>A \leq y_b(t) \leq B</m> for all real <m>t</m>.
+                        </p>
+
+                        <p>
+                            The important takeaway is that <m>y_b(t)</m> never gets <q>extremely big</q>, as big as something like <m>e^{t}</m> as <m>t \to \infty</m>.
+                        </p>
+
+                        <p>
+                            You can think of <m>y_b</m> fitting between two horizontal lines on the <m>xy</m>-plane.
+                        </p>
+
+                    </question>
+
+                    Since <m>e^{-t} \to 0</m> and <m>e^{-2t} \to 0</m> as <m>t \to \infty</m> we get that <m>y(t) \to 0</m> too.
+
+                </question>
+
+            </subsection>
+
+            <subsection>
+                <title>Suppose <m>y''(t) - 4y'(t) - 5y(t) = e^{-t}</m>. Which initial values <m>y(0),y'(0)</m> allow <m>y(t) \to 0</m> as <m>t \to \infty</m>?</title>
+                
                 <p>
-                    Solve <m>y'' + 5y' + 6y = e^{-2t}</m>.
+                    There's a lot to unpack here! The first thing we might think to do is to solve that ODE. And, as with most inhomogeneous ODEs, we solve the homogeneous ODE version first.
                 </p>
-            </exercise>
 
-            <exercise>
+                <question>
+                    <title>How do I solve <m>y''(t) - 4y'(t) - 5y(t) = 0</m>?</title>
+                    
+                    Plug in <m>y = e^{rt}</m>. This'll give us <m>r^2 - 4r - 5 = 0</m>, which has roots <m>r = -1,5</m>. So, the general solution to <m>y''(t) - 4y'(t) - 5y(t) = 0</m> is
+
+                    <md>
+                        <mrow>y(t) \amp = c_1 e^{-t} + c_2 e^{5t}.</mrow>
+                    </md>
+
+                </question>
+                
                 <p>
-                    Solve <m>4y'' + 4y' + y = g(t)</m>, where
+                    So now that we know that the general solution to <m>y''(t) - 4y'(t) - 5y(t) = 0</m> is <m>y(t) = c_1 e^{-t} + c_2 e^{5t}</m>, we want to solve <m>y''(t) - 4y'(t) - 5y(t) = e^{-t}</m>.
+                </p>
+
+                <p>
+                    Here, we'll set <m>y_1 = e^{-t}</m> and <m>y_2 = e^{5t}</m>. In line with variation of parameters, we want to find a particular solution of the form <m>Y(t) = u_1y_1 + u_2 y_2</m> that solves <m>y''(t) - 4y'(t) - 5y(t) = e^{-t}</m>.
+                </p>
+
+                <question>
+                    <title>How do I find <m>Y(t)</m>?</title>
+                    
+                    <p>
+                        As we've seen a lot already, it's good to memorize at least one of the forms of variation of parameters. Personally, my favorite form to memorize is
+                    </p>
+
+                    <md>
+                        <mrow> \begin{bmatrix} y_1 \amp y_2 \\ y_1' \amp y_2' \end{bmatrix} \begin{bmatrix} u_1' \\ u_2' \end{bmatrix} = \begin{bmatrix} 0 \\ g(t)/p(t) \end{bmatrix}. </mrow>
+                    </md>
+                    
+                    We have <m>y_1 = e^{-t}</m> and <m>y_2 = e^{5t}</m> and <m>g(t) / p(t) = e^{-t}</m>. Plugging these in gives us
+
+                    <md>
+                        <mrow> \begin{bmatrix} e^{-t} \amp e^{5t} \\ -e^{-t} \amp 5e^{5t} \end{bmatrix} \begin{bmatrix} u_1' \\ u_2' \end{bmatrix} = \begin{bmatrix} 0 \\ e^{-t} \end{bmatrix}. </mrow>
+                    </md>
+
+                    And now, we solve this linear equation. In a test environment, be careful to not forget small details like dividing by the determinant for the inverse.
+
+                    <md>
+                        <mrow> \begin{bmatrix} u_1' \\ u_2' \end{bmatrix} \amp = \begin{bmatrix} e^{-t} \amp e^{5t} \\ -e^{-t} \amp 5e^{5t} \end{bmatrix}^{-1} \begin{bmatrix} 0 \\ e^{-t} \end{bmatrix} </mrow>
+
+                        <mrow> \amp = \frac{1}{6e^{4t}} \begin{bmatrix} 5e^{5t} \amp -e^{5t} \\ e^{-t} \amp e^{-t} \end{bmatrix} \begin{bmatrix} 0 \\ e^{-t} \end{bmatrix} </mrow>
+
+                        <mrow> \amp = \frac{e^{-4t}}{6} \begin{bmatrix} -e^{4t} \\ e^{-2t} \end{bmatrix} </mrow>
+
+                        <mrow> \amp = \begin{bmatrix} -1/6 \\ e^{-6t} / 6 \end{bmatrix}. </mrow>
+
+                    </md>
+
+                    So we get the relatively nice forms
+
+                    <md>
+                        <mrow>u_1'(t) = -\frac{1}{6} \quad \text{and} \quad u_2'(t) = \frac{e^{-6t}}{6}.</mrow>
+                    </md>
+
+                    These are much much much nicer than the previous problem. We take an indefinite integral to find <m>u_1,u_2</m>.
+
+                    <md>
+                        <mrow>u_1(t) = -\frac{t}{6} \quad \text{and} \quad u_2(t) = - \frac{e^{-6t}}{36}.</mrow>
+                    </md>
+                    
+                    So, with <m>Y(t) = u_1y_1 + u_2y_2</m>, we get
+
+                    <md>
+                        <mrow>Y(t) = -\frac{t}{6} \cdot e^{-t} - \frac{e^{-6t}}{36} \cdot e^{5t} = -\frac{te^{-t}}{6} - \frac{e^{-t}}{36}.</mrow>
+                    </md>
+
+                </question>
+
+                <p>
+                    The general solution of <m>y''(t) - 4y'(t) - 5y(t) = e^{-t}</m> is then equal to <m>y(t) = c_1y_1 + c_2y_2 + Y</m>, so
                 </p>
 
                 <md>
-                    <mrow> g(t) = \begin{cases} 1 \amp 0 \le t \le 1, \\ 0 \amp t \geq 1. \end{cases} </mrow>
+                    <mrow>y(t) \amp = c_1 e^{-t} + c_2 e^{5t} - \frac{te^{-t}}{6} - \frac{e^{-t}}{36}.</mrow>
                 </md>
 
-            </exercise>
+                <p>
+                    Now comes the tricky part, when does <m>y(t) \to 0</m> as <m>t \to \infty</m>? We want to find <m>y(0)</m> and <m>y'(0)</m> so that this occurs. From experience with 2nd order ODEs, this should make sense as we always need <em>two</em> initial conditions to jump from a general solution to a particular solution.
+                </p>
 
-        </exercises>
+                <p>
+                    Looking at the terms above, we know that <m>e^{-t} \to 0</m> and <m>te^{-t} \to 0</m> as <m>t \to \infty</m>. But, <m>e^{5t} \to \infty</m> as <m>t \to \infty</m>. 
+                </p>
 
-    </section>
+                <p>
+                    So, as long as <m>y(t)</m> has an <m>e^{5t}</m> term, <m>y(t) \to \infty</m> as <m>t \to \infty</m>. The best way to remedy this is to <q>remove</q> the <m>e^{5t}</m> term: just set <m>c_2 = 0</m>.
+                </p>
 
-</chapter>
+                <p>
+                    Now, <m>y(t) \to 0</m> as <m>t \to \infty</m> since all the other stuff went to <m>0</m>. Therefore, we want to find <m>y(0)</m> such that <m>c_1</m> is any arbitrary constant and <m>c_2 = 0</m>.
+                </p>
+
+                <p>
+                    Set <m>c_2 = 0</m>. With <m>t = 0</m> in <m>y(t)</m>,
+                </p>
+
+                <md>
+                    <mrow>y(0) \amp = c_1 - \frac{1}{36}.</mrow>
+                </md>
+
+                <question>
+                    <title>What's <m>y'(t)</m>?</title>
+                    
+                    <p>
+                        We took <m>c_2 = 0</m>. Differentiating <m>y(t)</m> give us
+                    </p>
+
+                    <md>
+                        <mrow>y'(t) \amp = -c_1e^{-t} - \frac{1}{6} \Big(e^{-t} - te^{-t}\Big) + \frac{e^{-t}}{36}.</mrow>
+                    </md>
+
+                </question>
+
+                <p>
+                    With <m>t = 0</m> in <m>y'(t)</m>,
+                </p>
+
+                <md>
+                    <mrow>y'(0) \amp = -c_1 - \frac{1}{6} + \frac{1}{36} = -c_1 - \frac{5}{36}.</mrow>
+                </md>
+
+                <p>
+                    What does this all mean? It means that if there is a real number <m>c_1</m> such that <m>y(0) = c_1 - 1/36</m> and <m>y'(0) = -c_1 - 5/36</m>, then <m>y(t) \to 0</m> as <m>t \to \infty</m>. These conditions are exactly what we wanted to show!
+                </p>
+
+                <p>
+                    As an added bonus, we can compress this condition quite neatly into one equation by adding <m>y(0)</m> and <m>y'(0)</m>:
+
+                    <md>
+                        <mrow>y(0) + y'(0) = -\frac16.</mrow>
+                    </md>
+                </p>
+
+            </subsection>
+
+        </section>
+
+        <section xml:id="sec-exercises-varparam">
+            <title>Exercises</title>
+            
+            <exercises xml:id="exercises-varparam">
+                <exercise>
+                    <p>
+                        Solve <m>y'' - 6y' + 8y = 1</m>.
+                    </p>
+
+                    <hint>
+                        <p>
+                            What are the solutions to <m>y'' - 6y' + 8y = 0</m>? One might remember variation of parameters gives us a particular solution <m>u_1y_1 + u_2y_2</m> with
+
+                            <md>
+                                <mrow> \begin{bmatrix} y_1 \amp y_2 \\ y_1' \amp y_2' \end{bmatrix} \begin{bmatrix} u_1' \\ u_2' \end{bmatrix} = \begin{bmatrix} 0 \\ g(t)/p(t) \end{bmatrix}. </mrow>
+                            </md>
+
+                        </p>
+                    </hint>
+
+                </exercise>
+
+                <exercise>
+                    <p>
+                        Solve <m>y'' + 5y' + 6y = e^{-3t}</m>.
+                    </p>
+
+                    <hint>
+                        <p>
+                            Solve the homogeneous version first. Then, use variation of parameters to find a particular solution of the inhomogeneous version.
+                        </p>
+                    </hint>
+                </exercise>
+
+                <exercise>
+                    <p>
+                        Solve <m>y'' + 5y' + 6y = e^{-2t}</m>.
+                    </p>
+                </exercise>
+
+                <exercise>
+                    <p>
+                        Solve <m>4y'' + 4y' + y = g(t)</m>, where
+                    </p>
+
+                    <md>
+                        <mrow> g(t) = \begin{cases} 1 \amp 0 \lt t \lt 1, \\ 0 \amp t \geq 1. \end{cases} </mrow>
+                    </md>
+
+
+                    <hint>
+                        <p>
+                            Break up into cases:
+                        </p>
+
+                        <p>
+                            When <m>t \geq 1</m>, the ODE to solve becomes <m>4y'' + 4y' + y = 0</m> (this is homogeneous!)
+                        </p>
+
+                        <p>
+                            When <m>0 \lt t \lt 1 </m>, the ODE to solve becomes <m>4y'' + 4y' + y = 1</m> (this is inhomogeneous)
+                        </p>
+
+                    </hint>
+
+                </exercise>
+
+                <exercise>
+                    <p>
+                        Suppose <m>y'' - 9y = 6</m>. Find a condition on <m>y(0)</m> and <m>y'(0)</m> such that <m>y(t) \to 0</m> as <m>t \to \infty</m>.
+                    </p>
+
+                    <p>
+                        Is it possible for <m>y(t)</m> to solve this ODE while having <m>y(t) \to 0</m> as <m>t \to -\infty</m>? If so, find a condition on <m>y(0)</m> and <m>y'(0)</m> that allows this to happen. What happens if both the condition found here and previously are put together?
+                    </p>
+                </exercise>
+
+                <exercise>
+                    <p>
+                        Solve <m>y'' + 2y' + 1 = e^t</m>.
+                    </p>
+
+                    <p>
+                        Once you've done that, can you solve <m>y'' + 2y' + 1 = e^{at}</m> for <em>any</em> real constant <m>a \neq 1</m>? Which values of <m>a</m> allow all solutions <m>y(t) \to 0</m> as <m>t \to \infty</m>?
+                    </p>
+                </exercise>
+
+                <exercise>
+                    <p>
+                        It can be extremely useful to translate real ODEs into complex ones. Here is a guided exercise showing how one might solve <m>y'' - y' + 2y = \cos t</m>.
+                    </p>
+
+                    <ol>
+                        <li>
+                            <p>
+                                First, find the general solution to <m>y'' - y' + 2y = 0</m>.
+                            </p>
+                        </li>
+
+                        <li>
+                            <p>
+                                Note that <m>\cos t = \Re\{e^{it}\}</m>. Prove that if <m>z(t)</m> solves the ODE <m>z'' - z' + 2z = e^{it}</m>, then <m>y(t) = \Re\{z(t)\}</m> solves the ODE <m>y'' - y' + 2y = \Re\{e^{it}\} = \cos t</m>.
+                            </p>
+
+                            <p>
+                                This fact can actually be generalized for an ODE of the form <m>p(t) z'' + q(t) z' + r(t) z = g(t)</m>.  Here, we'll take <m>t \in \mathbb{R}</m> and <m>p(t), q(t), r(t)</m> to all be real-valued functions and <m>g(t)</m> to be a <em>complex-valued</em> function.
+                            </p>
+
+                            <hint>
+                                <p>
+                                    Set <m>z(t) = y(t) + ix(t)</m>, and substitute this into <m>z'' - z' + 2z = e^{it}</m>. What happens when we take the real part of both sides?
+                                </p>
+
+                                <p>
+                                    For the generalized version, again set <m>z(t) = y(t) + ix(t)</m> and substitute this into the more general ODE. What happens when we take either the real or imaginary part of both sides?
+                                </p>
+                            </hint>
+                        </li>
+                        
+                        <li>
+                            <p>
+                                Find a particular solution to the ODE <m>z'' - z' + 2z = e^{it}</m> using variation of parameters. (When performing derivatives or integrals with <m>e^{it}</m>, just treat <m>i</m> as a constant.)
+                            </p>
+
+                            <p>
+                                Once you've found a particular solution <m>Z(t)</m> to <m>z'' - z' + 2z = e^{it}</m>, give an appropriate particular solution to <m>z'' - z' + 2z = \cos t</m>, and then state the general solution to <m>z'' - z' + 2z = \cos t</m>.
+                            </p>
+                        </li>
+                    </ol>
+                </exercise>
+
+                <exercise>
+                    <p>
+                        Using the method described in the previous exercise, solve <m>y'' + 7y' + 12y = e^{-t}\cos t</m>.
+                    </p>
+
+                    <hint>
+                        <p>
+                            Note that <m>e^{-t}\cos t = \Re\{e^{(-1 + i)t}\}</m>.
+                        </p>
+                    </hint>
+                </exercise>
+
+            </exercises>
+
+            <p>
+                If you want even more exercises, check out <url href="https://math.libretexts.org/Bookshelves/Differential_Equations/Book%3A_Elementary_Differential_Equations_with_Boundary_Value_Problems_(Trench)/05%3A_Linear_Second_Order_Equations/5.07%3A_Variation_of_Parameters/5.7E%3A_Variation_of_Parameters_(Exercises)">this link</url>. There are way more exercises there than the number a normal person should complete.
+            </p>
+
+        </section>
+
+    </chapter>
+
+    <chapter xml:id="ch-duhamels-principle">
+        <title>Duhamel's Principle</title>
+        
+        <section xml:id="sec-duhamels-principle">
+            <title>Duhamel's Principle</title>
+            
+            <assemblage xml:id="assemblage-duhamels">
+                <title>Straight to the point...</title>
+
+                <p>
+                    Duhamel's Principle gives us a particular solution <m>Y(t)</m> to a nonhomogeneous ODE <m>p(t) y'' + q(t) y' + r(t) y = g(t)</m>.
+                </p>
+
+                <p>
+                    Given a function <m>S(t;s)</m> (variable <m>t</m> and parameter <m>s</m>) that satisfies
+
+                    <md>
+                        <mrow>p(t) S''(t ; s) + q(t) S'(t; s) + r(t) S(t ; s) \amp = 0, </mrow>
+                        <mrow> S(s;s) \amp = 0, </mrow>
+                        <mrow> S'(s ; s) \amp = 1,</mrow>
+                    </md>
+                </p>
+
+                <p>
+                    a particular solution to <m>p(t) y'' + q(t) y' + r(t) y = g(t)</m> is
+
+                    <md>
+                        <mrow>Y(t) \amp = \int_{t_0}^t S(t;s) \frac{g(s)}{p(s)} \ ds.</mrow>
+                    </md>
+                </p>
+
+                <p>
+                    One thing to note here is that <m>Y(t_0) = Y'(t_0) = 0</m>.
+                </p>
+
+            </assemblage>
+
+            <p>
+                Duhamel's Principle also gives us a particular solution to a nonhomogeneous ODE of the form <m>p(t) y'' + q(t) y' + r(t) y = g(t)</m>. However, it's often a lot easier to obtain this particular solution through Duhamel's principle than it is to obtain it using Variation of Parameters.
+            </p>
+
+            <p>
+                Formally, say that we have a function <m>S(t ; s)</m> (variable <m>t</m> and parameter <m>s</m>) that solves the following system:
+            </p>
+
+            <md>
+                <mrow>p(t) S''(t ; s) + q(t) S'(t; s) + r(t) S(t ; s) \amp = 0, </mrow>
+                <mrow> S(s;s) \amp = 0, </mrow>
+                <mrow> S'(s ; s) \amp = 1.</mrow>
+            </md>
+
+            <question>
+                <title>What does <m>S(t;s)</m> or <m>S'(t;s)</m> mean?</title>
+                
+                <p>
+                    The notation <m>S(t ; s)</m> means that we treat <m>S</m> <em>not as a two-variable function</em>, but as a one-variable function in <m>t</m> with a parameter <m>s</m>.
+                </p>
+
+                <p>
+                    Following this, we use <m>S'(t;s)</m> as shorthand for
+                </p>
+
+                <md>
+                    <mrow>S'(t;s) \amp = \frac{d}{dt} S(t;s).</mrow>
+                </md>
+
+                <p>
+                    For example, we might set <m>S(t ; s) = t^s</m>, for some constant <m>s</m>. Then, <m>S'(t;s) = st^{s-1}</m> and <m>S''(t;s) = s(s-1)t^{s-2}</m>.
+                </p>
+                
+            </question>
+
+            <p>
+                Then, the particular solution of <m>p(t)y'' + q(t)y' + r(t)y = g(t)</m> that Duhamel's principle gives us is
+            </p>
+
+            <md>
+                <mrow>Y(t) \amp = \int_{t_0}^t S(t ; s) \frac{g(s)}{p(s)} \ ds.</mrow>
+            </md>
+
+            <p>
+                This is all a lot to absorb. The first thing to notice is that <m>S(t;s)</m> is a solution of the homogeneous system <m>p(t) y'' + q(t)y' + r(t)y = 0</m>.
+            </p>
+
+            <p>
+                Let's take <m>\{y_1,y_2\}</m> to be a set of fundamental solutions of the homogeneous ODE. Then, since <m>S(t;s)</m> is a solution of the homogeneous ODE,
+            </p>
+
+            <md>
+                <mrow>S(t;s) \amp = c_1y_1(t) + c_2y_2(t).</mrow>
+            </md>
+
+            <p>
+                This was the info extracted from <m>p(t) S''(t ; s) + q(t) S'(t; s) + r(t) S(t ; s) = 0</m>.
+            </p>
+
+            <p>
+                Looking now at the other conditions, <m>S(s;s) = 0</m> and <m>S'(s;s) = 1</m>, notice that these two give us the following two equations.
+            </p>
+
+            <md>
+                <mrow> c_1y_1(s) + c_2y_2(s) \amp = 0, </mrow>
+                <mrow> c_1y_1'(s) + c_2y_2'(s) \amp = 1. </mrow>
+            </md>
+
+            <p>
+                Here, <m>y_1(s)</m> and <m>y_2(s)</m> are both knowns and the only unknowns in the above are <m>c_1,c_2</m>. This is just begging us to write the system above with a matrix. Let's do that:
+            </p>
+
+            <md>
+                <mrow>\bmat{y_1(s)}{y_2(s)}{y_1'(s)}{y_2'(s)} \bvec{c_1}{c_2} \amp = \bvec01.</mrow>
+            </md>
+
+            <p>
+                Solving this isn't too bad:
+            </p>
+
+            <md>
+                <mrow>\bvec{c_1}{c_2} \amp = \bmat{y_1(s)}{y_2(s)}{y_1'(s)}{y_2'(s)}^{-1} \bvec01</mrow>
+                <mrow>\amp = \frac1{y_1(s)y_2'(s) - y_1'(s)y_2(s)} \bmat{y_2'(s)}{-y_2(s)}{-y_1'(s)}{y_1(s)} \bvec01</mrow>
+                <mrow>\amp = \frac1{y_1(s)y_2'(s) - y_1'(s)y_2(s)} \bvec{-y_2(s)}{y_1(s)}.</mrow>
+            </md>
+
+            <p>
+                A lot of things look pretty familiar here. The fraction above has a denominator equal to <m>y_1(s)y_2'(s) - y_1'(s)y_2(s)</m>, which is exactly the Wronskian <m>W[y_1,y_2](s)</m>. 
+            </p>
+
+            <p>
+                Another thing to note is that, from the solution of <m>c_1,c_2</m> above, it's clear that both of these depend on <m>s</m>. So, let's write <m>c_1 = c_1(s)</m> and <m>c_2 = c_2(s)</m>. This way, we now have
+            </p>
+
+            <md>
+                <mrow> S(t;s) \amp = c_1(s)y_1(t) + c_2(s) y_2(t),</mrow>
+            </md>
+
+            <p>
+                where 
+            </p>
+
+            <md>
+                <mrow>c_1(s) = -\frac{y_2(s)}{W[y_1,y_2](s)} \amp \quad \text{and} \quad c_2(s) = \frac{y_1(s)}{W[y_1,y_2](s)}.</mrow>
+            </md>
+
+            <p>
+                The familiarity of the above should become much more pronounced when we plug this into <m>Y(t) = \int_{t_0}^t S(t;s) g(s)/p(s) \ ds</m>.
+            </p>
+
+            <md>
+                <mrow>Y(t) \amp = \int_{t_0}^t \Big[c_1(s)y_1(t) + c_2(s) y_2(t)\Big] \frac{g(s)}{p(s)} \ ds </mrow>
+                <mrow> \amp = \int_{t_0}^t \frac{y_1(s)y_2(t) - y_1(t) y_2(s)}{W[y_1,y_2](s)} \cdot \frac{g(s)}{p(s)} \ ds. </mrow>
+            </md>
+
+            <p>
+                Hey! This is Variation of Parameters <em>exactly</em>. So, Duhamel's principle is like a <q>re-skin</q> of Variation of Parameters. However, as we'll soon see with some examples, it can be a lot easier to work with than variation of parameters.
+            </p>
+
+        </section>
+
+        <section xml:id="sec-examples-duh">
+            <title>*Examples</title>
+            
+            <p>
+                Duhamel's Principle can look pretty complicated at first (mainly because of the <m>S(t;s)</m>), but the particular solution it gives is quite elegant.
+            </p>
+
+            <p>
+                At it's core, Duhamel's Principle <q>off-loads</q> solving a nonhomogeneous ODE <m>p(t)y''+q(t)y' + r(t)y = g(t)</m> into solving the homogeneous initial value problem
+            </p>
+
+            <md>
+                <mrow>p(t) x'' + q(t)x' + r(t)x \amp = 0, </mrow>
+                <mrow>x(s) \amp = 0, </mrow>
+                <mrow>x'(s) \amp = 1.</mrow>
+            </md>
+
+            <p>
+                Once we solve the above IVP for general <m>s</m>, we're done! If, say, <m>x_s(t)</m> solves the above IVP, then our particular solution is
+            </p>
+
+            <md>
+                <mrow>Y(t) \amp = \int_{t_0}^t x_s(t) g(s) \ ds,</mrow>
+            </md>
+
+            <p>
+                where <m>t_0</m> is a constant on the interval the original inhomogeneous ODE is defined on.
+            </p>
+
+        </section>
+
+    </chapter>
+    
+</part>

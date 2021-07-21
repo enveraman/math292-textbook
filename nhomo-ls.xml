@@ -1,28 +1,534 @@
-<chapter xml:id="chap-nonhomo-ls" xmlns:xi="http://www.w3.org/2001/XInclude">
+<part xml:id="part-nonhomogeneous-linear-systems">
     <title>Nonhomogeneous Linear Systems</title>
+    
+    <chapter xml:id="chap-nonhomo-ls" xmlns:xi="http://www.w3.org/2001/XInclude">
+        <title>Nonhomogeneous Linear Systems (Constant Matrix)</title>
+    
+        <section xml:id="sec-intro-to-linear-systems">
+            <title>Intro to Linear Systems</title>
 
-    <section xml:id="sec-section-2-1">
-        <title>Section 2.1</title>
+            <p>
+                A <em>homogeneous linear system</em> with a <em>constant matrix</em> looks like
+            </p>
 
-        This is Section 2.1.
+            <md>
+                <mrow>x'(t) \amp = ax(t) + by(t)</mrow>
+                <mrow>y'(t) \amp = cx(t) + dy(t)</mrow>
+            </md>
 
-        <subsection xml:id="subsec-subsection-c">
-            <title>subsection-c</title>
+            <p>
+                for constants <m>a,b,c,d</m>. 
+            </p>
             
-            This is Subsection C.
-        </subsection>
-    </section>
+            <p>
+                This is less of a handful to look at when we set <m>\mathbf{x}(t) = \begin{bmatrix} x(t) \\ y(t) \end{bmatrix}</m>, so that we have 
+            </p>
 
-    <section xml:id="sec-section-2-2">
-        <title>Section 2.2</title>
+            <md>
+                <mrow>\mathbf{x}'(t) \amp = \begin{bmatrix} a \amp b \\ c \amp d \end{bmatrix} \mathbf{x}(t).</mrow>
+            </md>
 
-        This is Section 2.2
+            <p>
+                Typically, a homogeneous linear system will look like <m>\mathbf{x}' = A \mathbf{x}</m> for some constant matrix <m>A</m>
+            </p>
 
-        <subsection xml:id="subsec-subsection-d">
-            <title>subsection-d</title>
+            <question>
+                <title>What about non-constant <m>A</m>?</title>
+                
+                <p>
+                    More generally, a homogeneous linear system looks like <m>\mathbf{x}' = P(t) \mathbf{x}</m>. This chapter will mainly go over the case with <m>P(t) = A</m>.
+                </p>
+
+            </question>
+
+            <p>
+                Now, as one might guess, a <em>nonhomogeneous linear system</em> looks like
+            </p>
+
+            <md>
+                <mrow>\mathbf{x}'(t) \amp = A \mathbf{x}(t) + \mathbf{g}(t).</mrow>
+            </md>
+
+            <p>
+                We'll go over how to solve the above linear system (with some conditions that usually apply).
+            </p>
+
+        </section>
+    
+        <section xml:id="sec-solving-xAxg">
+            <title>Method 1: Solving <m>\mathbf{x}' = A \mathbf{x} + \mathbf{g}(t)</m></title>
             
-            This is Subsection D.
-        </subsection>
-    </section>
+            <p>
+                Let's say <m>A</m> is diagonalizable. I'll also only focus on the case where <m>A</m> is a <m>2 \times 2</m> matrix.
+            </p>
 
-</chapter>
+            <question>
+                <title>What does diagonalizable mean?</title>
+                
+                <p>
+                    Technically, a matrix <m>A</m> is diagonalizable when there exists an invertible matrix <m>V</m> and diagonal matrix <m>D</m> such that <m>A = VDV^{-1}</m>.
+                </p>
+
+                <p>
+                    This is a bit of an outlandish definition. But, know that <m>A</m> is diagonalizable if <m>A</m> has two <em>unique</em> eigenvalues.
+                </p>
+
+                <p>
+                    Let's say the <em>unique</em> eigenvalues of <m>A</m> are <m>\lambda_1</m> and <m>\lambda_2</m>, and that the corresponding eigenvectors are <m>\mathbf{v}_1</m> and <m>\mathbf{v}_2</m>. Then,
+                </p>
+
+                <md>
+                    <mrow>A \amp = V D V^{-1},</mrow>
+                </md>
+
+                <p>
+                    where
+                </p>
+
+                <md>
+                    <mrow>V = \begin{bmatrix} \mathbf{v}_1 \amp \mathbf{v}_2 \end{bmatrix} \qquad \text{and} \qquad D = \begin{bmatrix} \lambda_1 \amp 0 \\ 0 \amp \lambda_2 \end{bmatrix}. </mrow>
+                </md>
+
+                <p>
+                    (<m>V</m> is the matrix whose first column is <m>\mathbf{v}_1</m> and whose second column is <m>\mathbf{v}_2</m>.)
+                </p>
+
+            </question>
+
+            <p>
+                Since <m>A</m> is diagonalizable, we can write <m>A = VDV^{-1}</m> where
+            </p>
+
+            <md>
+                <mrow>V = \begin{bmatrix} \mathbf{v}_1 \amp \mathbf{v}_2 \end{bmatrix} \qquad \text{and} \qquad D = \begin{bmatrix} \lambda_1 \amp 0 \\ 0 \amp \lambda_2 \end{bmatrix}. </mrow>
+            </md>
+
+            <p>
+                Now, solving <m>\mathbf{x}' = A \mathbf{x} + \mathbf{g}(t)</m> follows from a few steps.
+            </p>
+
+            <ol>
+                <li>
+                    <p>
+                        Set <m>\mathbf{x} = V \mathbf{y}</m> to obtain
+                    </p>
+
+                    <md>
+                        <mrow>V\mathbf{y}' = A V\mathbf{y} + \mathbf{g}(t)</mrow>
+                    </md>
+                </li>
+
+                <li>
+                    <p>
+                        Multiply by <m>V^{-1}</m> on both sides of the new ODE to get
+                    </p>
+
+                    <md>
+                        <mrow>\mathbf{y} = V^{-1}AV \mathbf{y} + V^{-1} \mathbf{g}(t).</mrow>
+                    </md>
+                </li>
+
+                <li>
+                    <p>
+                        Since <m>A = VDV^{-1}</m>, we have <m>V^{-1}AV = D</m>. Also, set <m>\mathbf{y}(t) = \begin{bmatrix} y_1(t) \\ y_2(t) \end{bmatrix}</m> and <m>\mathbf{h}(t) = V^{-1} \mathbf{g}(t) = \begin{bmatrix} h_1(t) \\ h_2(t) \end{bmatrix}</m>.
+                    </p>
+                </li>
+
+                <li>
+                    <p>
+                        These give us the linear system
+                    </p>
+
+                    <md>
+                        <mrow>y_1'(t) \amp = \lambda_1 y_1(t) + h_1(t),</mrow>
+                        <mrow>y_2'(t) \amp = \lambda_2 y_2(t) + h_2(t).</mrow>
+                    </md>
+                </li>
+
+                <li>
+                    <p>
+                        Both of these can be solved using integrating factors. Once we have <m>\mathbf{y}(t)</m>, remember to get the general solution in <m>\mathbf{x} = V \mathbf{y}</m>.
+                    </p>
+                </li>
+            </ol>
+
+            <p>
+                That's pretty much all you need to know to solve <m>\mathbf{x}' = A \mathbf{x} + \mathbf{g}(t)</m>. Of course, it's really important to remember that <m>A</m> <alert>must</alert> be diagonalizable.
+            </p>
+
+        </section>
+    
+        <section xml:id="sec-a-basic-example">
+            <title>A Basic Example</title>
+            
+            <subsection xml:id="subsec-nhls-example-1">
+                <title>Solve <m>\mathbf{x}'(t) = \begin{bmatrix} 2 \amp 3 \\ 4 \amp 1 \end{bmatrix} \mathbf{x}(t) + \begin{bmatrix} -e^{-t} \\ 2e^{-t} \end{bmatrix}</m></title>
+                
+                <p>
+                    Let's label <m>A = \begin{bmatrix} 2 \amp 3 \\ 4 \amp 1 \end{bmatrix}</m>. First, we'll find the eigenvalues <m>\lambda_1, \lambda_2</m> of <m>A</m>, and the corresponding eigenvectors <m>\mathbf{v}_1, \mathbf{v}_2</m>.
+                </p>
+
+                <question>
+                    <title>How do I find the eigenvalues and eigenvectors of <m>A</m>?</title>
+                    
+                    <p>
+                        You can find eigenvalues <m>\lambda</m> of <m>A</m> by solving the equation <m>\det(A - \lambda I_2) = 0</m> for <m>\lambda</m>.
+                    </p>
+                    
+                    <md>
+                        <mrow>0 = \det \begin{bmatrix} 2 - \lambda \amp 3 \\ 4 \amp 1 - \lambda \end{bmatrix} = (\lambda - 2) (\lambda - 1) - 12 = \lambda^2 -3\lambda - 10 = (\lambda + 2) (\lambda - 5).</mrow>
+                    </md>
+
+                    <p>
+                        Thus, the eigenvalues of <m>A</m> are <m>\lambda_1 = -2</m> and <m>\lambda_2 = 5</m>. 
+                    </p>
+
+                    <p>
+                        If <m>\mathbf{v}</m> is an eigenvector of <m>A</m> with eigenvalue <m>\lambda</m>, then <m>(A - \lambda I_2) \mathbf{v} = \mathbf{0}</m>.
+                    </p>
+
+                    <p>
+                        So, corresponding to <m>\lambda_1 = -2</m>, we find that
+                    </p>
+
+                    <md>
+                        <mrow> (A - (-2) I_2) \mathbf{v} = \begin{bmatrix} 4 \amp 3 \\ 4 \amp 3 \end{bmatrix} \begin{bmatrix} v_1 \\ v_2 \end{bmatrix} = \begin{bmatrix} 0 \\ 0 \end{bmatrix}. </mrow>
+                    </md>
+
+                    <p>
+                        Hence, <m>4v_1 + 3v_2 = 0</m>, so the vector <m>\mathbf{v}_1 = \bvec{-3}{4}</m> is an eigenvector of <m>A</m> with eigenvalue <m>\lambda_1 = -2</m>.
+                    </p>
+
+                    <p>
+                        By a similar process, we find that the vector <m>\mathbf{v}_2 = \bvec{1}{-1}</m> is an eigenvector of <m>A</m> with eigenvalue <m>\lambda_2 = 5</m>.
+                    </p>
+
+                </question>
+
+                <p>
+                    Here we've got eigenvalues <m>\lambda_1 = -2</m> and <m>\lambda_2 = 5</m>. Correspondingly, we have eigenvectors <m>\mathbf{v}_1 = \bvec{-3}4</m> and <m>\mathbf{v}_2 = \bvec1{-1}</m>.
+                </p>
+
+                <p>
+                    So, we can write <m>A = VDV^{-1}</m> (ie. <m>A</m> is diagonalizable) where
+                </p>
+
+                <md>
+                    <mrow> V = [\mathbf{v}_1 \ \ \mathbf{v}_2] = \bmat{-3}{1}{4}{-1} \qquad \text{and} \qquad D = \bmat{-2}{0}{0}5 </mrow>
+                </md>
+
+                <p>
+                    Following our steps, we write <m>\mathbf x = V \mathbf y</m>, so that we have
+                </p>
+
+                <md>
+                    <mrow>V \mathbf y' \amp = AV \mathbf y + \bvec{-e^{-t}}{2e^{-t}}</mrow>
+                    <mrow> \implies \mathbf y ' \amp = D \mathbf y + V^{-1} \bvec{-e^{-t}}{2e^{-t}}</mrow>
+                </md>
+
+                <p>
+                    Next, we should simplify <m>V^{-1}\bvec{-e^{-t}}{2e^{-t}}</m>, for which it turns out that
+                </p>
+
+                <md>
+                    <mrow> V^{-1} \bvec{-e^{-t}}{2e^{-t}} = \bvec{e^{-t}}{2e^{-t}}. </mrow>
+                </md>
+
+                <question>
+                    <title>I wanna see the work!</title>
+                    
+                    <p>
+                        First, we find <m>V^{-1}</m>.
+                    </p>
+
+                    <md>
+                        <mrow>V^{-1} \amp = \frac1{\det V} \bmat{-1}{-1}{-4}{-3} = \bmat1143.</mrow>
+                    </md>
+    
+                    <p>
+                        So,
+                    </p>
+    
+                    <md>
+                        <mrow> V^{-1} \bvec{-e^{-t}}{2e^{-t}} = \bmat1143 \bvec{-1}{2} e^{-t} = \bvec{e^{-t}}{2e^{-t}}.</mrow>
+                    </md>
+                    
+                </question>
+
+                <p>
+                    Setting <m>\mathbf y = \bvec{y_1}{y_2}</m>, we now have to solve
+                </p>
+
+                <md>
+                    <mrow>\bvec{y_1'}{y_2'} = \bmat{-2}005 \bvec{y_1}{y_2} + \bvec{e^{-t}}{2e^{-t}}, </mrow>
+                </md>
+
+                <p>
+                    which is equivalent to the linear system of ODEs
+                </p>
+
+                <md>
+                    <mrow>y_1' \amp = -2y_1 + e^{-t}, </mrow>
+                    <mrow>y_2' \amp = 5y_2 + 2e^{-t}.</mrow>
+                </md>
+
+                <p>
+                    Both of these can be solved using integrating factors.
+                </p>
+
+                <question>
+                    <title>How do I solve them?</title>
+                    
+                    <p>
+                        For the ODE <m>y_1' = -2y_1 + e^{-t}</m>, first write
+                    </p>
+
+                    <md>
+                        <mrow> y_1' + 2y_1 \amp = e^{-t}. </mrow>
+                    </md>
+
+                    <p>
+                        The expression <m>e^{2t}</m> is a good integrating factor since
+                    </p>
+
+                    <md>
+                        <mrow> e^{2t} y_1' + 2e^{2t} y_1 = [e^{2t} y_1]' </mrow>
+                    </md>
+
+                    <p>
+                        So, multiplying the ODE by <m>e^{2t}</m>, we get
+                    </p>
+
+                    <md>
+                        <mrow>e^{2t} y_1' + 2e^{2t} y_1 = [e^{2t} y_1]' = e^t.</mrow>
+                    </md>
+
+                    <p>
+                        Integrating gives us <m>e^{2t} y_1 = e^t + c_1</m>, for some constant <m>c_1</m>. Thus, the general solution for <m>y_1</m> is
+
+                        <md>
+                            <mrow>y_1(t) \amp = e^{-t} + c_1e^{-2t}.</mrow>
+                        </md>
+                    </p>
+
+                    <p>
+                        By a similar process, we find that <m>e^{-5t}</m> is a good integrating factor for <m>y_2' - 5y_2 = 2e^{-t}</m>, so
+                    </p>
+
+                    <md>
+                        <mrow>[e^{-5t}y_2]' = 2e^{-6t} \quad\implies\quad e^{-5t}y_2 = \frac13 e^{-6t} + c_2.</mrow>
+                    </md>
+
+                    <p>
+                        Hence, the general solution for <m>y_2</m> is
+
+                        <md>
+                            <mrow>y_2(t) \amp = \frac13 e^{-t} + c_2e^{5t}.</mrow>
+                        </md>
+                    </p>
+                </question>
+
+                <p>
+                    Using integrating factors gives us the general solutions of <m>y_1</m> and <m>y_2</m> separately:
+                </p>
+
+                <md>
+                    <mrow> y_1(t) \amp = e^{-t} + c_1e^{-2t}, </mrow>
+                    <mrow> y_2(t) \amp = \frac13 e^{-t} + c_2e^{5t}. </mrow>
+                </md>
+
+                <p>
+                    When we put these back into <m>\mathbf y = \bvec{y_1}{y_2}</m>, it might initially look a bit messy. But, separating the terms will give you a clearer picture of what the solution is!
+                </p>
+
+                <md>
+                    <mrow> \mathbf y \amp = \bvec{e^{-t} + c_1e^{-2t}}{\frac13 e^{-t} + c_2e^{5t}},</mrow>
+                    <mrow> \amp = c_1 \bvec{e^{-2t}}0 + c_2 \bvec0{e^{5t}} + \frac{e^{-t}}3 \bvec3{-1}. </mrow>
+                </md>
+
+                <p>
+                    Now we only need to calculate <m>\mathbf x = V \mathbf y</m>. Computing this is not too bad with the expanded form above.
+                </p>
+
+                <md>
+                    <mrow> \mathbf x \amp = V \mathbf y = \bvec{-3}14{-1} \mathbf y </mrow>
+                    <mrow> \amp = c_1 e^{-2t} \bvec{-3}14{-1} \bvec{1}0 + c_2 e^{5t} \bvec{-3}14{-1} \bvec0{1} + \frac{e^{-t}}3 \bvec{-3}14{-1} \bvec3{-1}</mrow>
+                    <mrow> \amp = c_1 e^{-2t} \bvec{-3}4 + c_2 e^{5t} \bvec1{-1} + \frac{e^{-t}}3 \bvec{-8}{13}. </mrow>
+                </md>
+
+                <p>
+                    At last, we've found that the general solution <m>\mathbf x(t)</m> to <m>\mathbf{x}'(t) = A \mathbf{x}(t) + \begin{bmatrix} -e^{-t} \\ 2e^{-t} \end{bmatrix}</m> is 
+                </p>
+
+                <md>
+                    <mrow> \boxed{\mathbf x(t) = c_1 e^{-2t} \bvec{-3}4 + c_2 e^{5t} \bvec1{-1} + \frac{e^{-t}}3 \bvec{-8}{13}}.</mrow>
+                </md>
+
+                <question>
+                    <title>Bonus: Which values of <m>\mathbf x(0)</m> let <m>\mathbf x(t) \to \mathbf 0</m> as <m>t \to \infty</m>? </title>
+                    
+                    <p>
+                        Just looking at the form of the solution, the only condition we need to have is <m>c_2 = 0</m>.
+                    </p>
+
+                    <p>
+                        Now, in the general solution, setting <m>t = 0</m> shows that
+                    </p>
+
+                    <md>
+                        <mrow>\mathbf x(0) \amp = c_1 \bvec{-3}4 + c_2 \bvec11 + \bvec{-8/3}{13/3} = \bvec{-3c_1 + c_2 - 8/3}{4c_1 + c_2 + 13/3}.</mrow>
+                    </md>
+
+                    <p>
+                        Setting <m>c_2 = 0</m> and <m>c_1 = k</m> (just changing the name of <m>c_1</m>) shows that
+                    </p>
+
+                    <md>
+                        <mrow>\mathbf x(0) \amp = k \bvec{-3}4 + \bvec{-8/3}{13/3}.</mrow>
+                    </md>
+
+                    <p>
+                        This completes the question, as it shows that <m>\mathbf x(0)</m> takes on values along a line.
+                    </p>
+
+                </question>
+
+            </subsection>
+
+        </section>
+
+    </chapter>
+
+    <chapter xml:id="ch-matrix-exponentials">
+        <title>Matrix Exponentials</title>
+        
+        <section xml:id="sec-matexp-definition">
+            <title>Definition of <m>\exp(A)</m></title>
+            
+            <definition xml:id="def-expa">
+                <statement>
+                    <p>
+                        For any <m>n \times n</m> matrix <m>A</m>, the matrix <m>\exp(A)</m> or <m>e^A</m> is called the <em>matrix exponential of <m>A</m></em> and is calculated by
+                    </p>
+
+                    <md>
+                        <mrow>\exp(A) \amp = I_n + \sum_{k=1}^\infty \frac{A^k}{k!}.</mrow>
+                    </md>
+
+                    <p>
+                        Note that the sum above always converges.
+                    </p>
+                </statement>
+            </definition>
+
+            <p>
+                We'll be interested in <m>2 \times 2</m> matrices <m>A</m> and the exponential of the form <m>\exp(tA)</m>.
+            </p>
+
+            <theorem xml:id="thm-diag-a">
+                <title><m>\exp(tA)</m> for diagonalizable <m>A</m></title>
+                
+                <statement>
+                    <p>
+                        Suppose <m>A</m> is diagonalizable as <m>A = VDV^{-1}</m>. Then,
+                    </p>
+
+                    <md>
+                        <mrow>\exp(tA) \amp = V e^{tD} V^{-1}.</mrow>
+                    </md>
+
+                    <p>
+                        Furthermore, if <m>D = \bmat a00b</m>, then
+                    </p>
+
+                    <md>
+                        <mrow>\exp(tA) \amp V \bmat{e^{at}}00{e^{tb}} V^{-1}.</mrow>
+                    </md>
+
+                </statement>
+
+                <proof>
+                    <p>
+                        We have that
+                    </p>
+
+                    <md>
+                        <mrow>\exp(tA) \amp = I_n + \sum_{k=1}^\infty \frac{A^kt^k}{k!},</mrow>
+                        <mrow> \amp = I_n + \sum_{k=1}^\infty \frac{V D^k V^{-1} t^k}{k!}, </mrow>
+                        <mrow> \amp = V \biggl( I_n + \sum_{k=1}^\infty \frac{D^k t^k}{k!} \biggr) V^{-1}, </mrow>
+                        <mrow> \amp = V e^{tD} V^{-1}.</mrow>
+                    </md>
+
+                    <p>
+                        For the second part, note that if <m>D = \bmat a00b</m>, then
+                    </p>
+
+                    <md>
+                        <mrow>D^k = \bmat{a^k}00{b^k}, </mrow>
+                    </md>
+
+                    <p>
+                        so, 
+                    </p>
+
+                    <md>
+                        <mrow>e^{tD} \amp = I_n + \sum_{k=1}^\infty \frac{D^k t^k}{k!} = \sum_{k=0}^\infty \frac{t^k}{k!} \bmat{a^k}00{b^k} = \bmat{e^{at}}00{e^{bt}}.</mrow>
+                    </md>
+
+                </proof>
+            </theorem>
+            
+            <p>
+                We don't need <m>A</m> to be diagonalizable in order for <m>\exp(tA)</m> to exist. When <m>A</m> is not diagonalizable, try to find a general form of <m>A^k</m>.
+            </p>
+
+            <example>
+                <title>Calculating <m>\exp(tA)</m> for <m>A = \bmat0100</m></title>
+                
+                <p>
+                    Note that
+                </p>
+
+                <md>
+                    <mrow>A^2 \amp = \bmat0100^2 = \bmat0000,</mrow>
+                </md>
+
+                <p>
+                    so <m>A^k = \bmat0000</m> for all <m>k \geq 2</m>. In calculating <m>\exp(tA)</m>, we get that
+                </p>
+
+                <md>
+                    <mrow>\exp(tA) \amp = I_2 + \sum_{k=1}^\infty \frac{A^kt^k}{n!} = \bmat1001 + t\bmat0100 = \bmat1t01.</mrow>
+                </md>
+            </example>
+            
+            <p>
+                A very intriguing property of <m>e^{tA}</m> is that
+            </p>
+
+            <md>
+                <mrow>\frac d{dt} e^{tA} \amp = Ae^{tA}.</mrow>
+            </md>
+
+            <question>
+                <title>Why does this occur?</title>
+                
+                <p>
+                    Take a look at the series representation of <m>e^{tA}</m> and differentiate it with respect to <m>t</m>:
+                </p>
+
+                <md>
+                    <mrow>\frac d{dt} e^{tA} \amp = \sum_{k=1}^\infty \frac{k A^k t^{k-1}}{k!} = A \biggl( I_n + \sum_{k=1}^\infty \frac{A^k t^k}{k!} \biggr) = Ae^{tA}.</mrow>
+                </md>
+
+            </question>
+
+            <p>
+                So, <m>\mathbf x(t) = e^{tA} \mathbf x_0</m> is the general solution of <m>\mathbf x' = A \mathbf x</m> with <m>\mathbf x(0) = \mathbf x_0</m>.
+            </p>
+
+        </section>
+
+    </chapter>
+
+</part>

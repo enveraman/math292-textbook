@@ -6,17 +6,24 @@
 
     <author-biographies length="short" />
 
+    <font size="3"/>
+
     <!-- Logo? -->
     <!-- <brandlogo url="http://abstract.pugetsound.edu" source="images/cover_aata_2014.png" /> -->
 
     <!-- Prefix to enhance Sage notebook contents (?) -->
-    <!-- <initialism>Math292 Textbook</initialism> -->
+    <initialism>Math292 Textbook</initialism>
 
     <!-- LaTeX newcommands here! -->
     <macros>
     \newcommand{\lcm}{\operatorname{lcm}}
     \renewcommand{\Re}{\mathrm{Re}}
     \renewcommand{\Im}{\mathrm{Im}}
+
+    \newcommand{\bvec}[2]{\begin{bmatrix} #1 \\ #2 \end{bmatrix}}
+    \newcommand{\bmat}[4]{\begin{bmatrix} #1 \amp #2 \\ #3 \amp #4 \end{bmatrix}}
+
+    \fontsize{50}{60}
     </macros>
 
     <!-- this is the default, but supresses a warning -->

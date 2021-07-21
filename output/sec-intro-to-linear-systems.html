@@ -1,0 +1,171 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*       on 2021-07-07T18:02:42-04:00       *-->
+<!--*   A recent stable commit (2020-08-09):   *-->
+<!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<html lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Math292 Textbook Intro to Linear Systems</title>
+<meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script>window.MathJax = {
+  tex: {
+    inlineMath: [['\\(','\\)']],
+    tags: "none",
+    useLabelIds: true,
+    tagSide: "right",
+    tagIndent: ".8em",
+    packages: {'[+]': ['base', 'extpfeil', 'ams', 'amscd', 'newcommand', 'knowl']}
+  },
+  options: {
+    ignoreHtmlClass: "tex2jax_ignore",
+    processHtmlClass: "has_am",
+    renderActions: {
+        findScript: [10, function (doc) {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(function(node) {
+                var display = !!node.type.match(/; *mode=display/);
+                var math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                var text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = {node: text, delim: '', n: 0};
+                math.end = {node: text, delim: '', n: 0};
+                doc.math.push(math);
+            });
+        }, '']
+    },
+  },
+  chtml: {
+    scale: 0.88,
+    mtextInheritFont: true
+  },
+  loader: {
+    load: ['input/asciimath', '[tex]/extpfeil', '[tex]/amscd', '[tex]/newcommand', '[pretext]/mathjaxknowl3.js'],
+    paths: {pretext: "https://pretextbook.org/js/lib"},
+  },
+};
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.min.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.sticky.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.espy.min.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/0.13/pretext.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/0.13/pretext_add_on.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script xmlns:svg="http://www.w3.org/2000/svg">sagecellEvalName='Evaluate (Sage)';
+</script><link xmlns:svg="http://www.w3.org/2000/svg" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://fonts.googleapis.com/css?family=Inconsolata:400,700&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/pretext.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/pretext_add_on.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/banner_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/toc_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/knowls_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/style_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/colors_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/setcolors.css" rel="stylesheet" type="text/css">
+<!-- 2019-10-12: Temporary - CSS file for experiments with styling --><link xmlns:svg="http://www.w3.org/2000/svg" href="developer.css" rel="stylesheet" type="text/css">
+</head>
+<body class="mathbook-book has-toc has-sidebar-left">
+<a class="assistive" href="#content">Skip to main content</a><div xmlns:svg="http://www.w3.org/2000/svg" id="latex-macros" class="hidden-content" style="display:none">\(\newcommand{\lcm}{\operatorname{lcm}}
+\renewcommand{\Re}{\mathrm{Re}}
+\renewcommand{\Im}{\mathrm{Im}}
+
+\newcommand{\bvec}[2]{\begin{bmatrix} #1 \\ #2 \end{bmatrix}}
+\newcommand{\bmat}[4]{\begin{bmatrix} #1 \amp #2 \\ #3 \amp #4 \end{bmatrix}}
+
+\fontsize{50}{60}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\)</div>
+<header id="masthead" class="smallbuttons"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><a href="math292-textbook.html"><span class="title">Math 292 PreTeXt Textbook:</span> <span class="subtitle">Differential Equations</span></a></h1>
+<p class="byline"></p>
+</div>
+</div></div>
+<nav xmlns:svg="http://www.w3.org/2000/svg" id="primary-navbar" class="navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active" aria-label="Show or hide table of contents sidebar">Contents</button><div class="tree-nav toolbar toolbar-divisor-3"><span class="threebuttons"><a id="previousbutton" class="previous-button toolbar-item button" href="chap-nonhomo-ls.html" title="Previous">Prev</a><a id="upbutton" class="up-button button toolbar-item" href="chap-nonhomo-ls.html" title="Up">Up</a><a id="nextbutton" class="next-button button toolbar-item" href="sec-solving-xAxg.html" title="Next">Next</a></span></div>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="chap-nonhomo-ls.html" title="Previous">Prev</a><a class="up-button button toolbar-item" href="chap-nonhomo-ls.html" title="Up">Up</a><a class="next-button button toolbar-item" href="sec-solving-xAxg.html" title="Next">Next</a>
+</div>
+</div></nav></header><div class="page">
+<div xmlns:svg="http://www.w3.org/2000/svg" id="sidebar-left" class="sidebar" role="navigation"><div class="sidebar-content">
+<nav id="toc"><ul>
+<li class="link part"><a href="part-variation-of-parameters.html" data-scroll="part-variation-of-parameters"><span class="codenumber">I</span> <span class="title">Variation of Parameters</span></a></li>
+<li class="link">
+<a href="chap-varofparams.html" data-scroll="chap-varofparams"><span class="codenumber">1</span> <span class="title">Variation of Parameters</span></a><ul>
+<li><a href="sec-desc-varparam.html" data-scroll="sec-desc-varparam">Variation of Parameters</a></li>
+<li><a href="sec-basic-ex-varparam.html" data-scroll="sec-basic-ex-varparam">Some Basic Examples</a></li>
+<li><a href="sec-more-involved-examples.html" data-scroll="sec-more-involved-examples">More Involved Examples</a></li>
+<li><a href="sec-exercises-varparam.html" data-scroll="sec-exercises-varparam">Exercises</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="ch-duhamels-principle.html" data-scroll="ch-duhamels-principle"><span class="codenumber">2</span> <span class="title">Duhamel's Principle</span></a><ul>
+<li><a href="sec-duhamels-principle.html" data-scroll="sec-duhamels-principle">Duhamel's Principle</a></li>
+<li><a href="sec-examples-duh.html" data-scroll="sec-examples-duh">*Examples</a></li>
+</ul>
+</li>
+<li class="link part"><a href="part-nonhomogeneous-linear-systems.html" data-scroll="part-nonhomogeneous-linear-systems"><span class="codenumber">II</span> <span class="title">Nonhomogeneous Linear Systems</span></a></li>
+<li class="link">
+<a href="chap-nonhomo-ls.html" data-scroll="chap-nonhomo-ls"><span class="codenumber">3</span> <span class="title">Nonhomogeneous Linear Systems (Constant Matrix)</span></a><ul>
+<li><a href="sec-intro-to-linear-systems.html" data-scroll="sec-intro-to-linear-systems" class="active">Intro to Linear Systems</a></li>
+<li><a href="sec-solving-xAxg.html" data-scroll="sec-solving-xAxg">Method 1: Solving \(\mathbf{x}' = A \mathbf{x} + \mathbf{g}(t)\)</a></li>
+<li><a href="sec-a-basic-example.html" data-scroll="sec-a-basic-example">A Basic Example</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="ch-matrix-exponentials.html" data-scroll="ch-matrix-exponentials"><span class="codenumber">4</span> <span class="title">Matrix Exponentials</span></a><ul><li><a href="sec-matexp-definition.html" data-scroll="sec-matexp-definition">Definition of \(\exp(A)\)</a></li></ul>
+</li>
+<li class="link part"><a href="part-series-solutions.html" data-scroll="part-series-solutions"><span class="codenumber">III</span> <span class="title">Series Solutions</span></a></li>
+<li class="link">
+<a href="ch-ordinary-regular-singular-points.html" data-scroll="ch-ordinary-regular-singular-points"><span class="codenumber">5</span> <span class="title">Ordinary/Regular Singular Points</span></a><ul>
+<li><a href="sec-definitions.html" data-scroll="sec-definitions">Definitions</a></li>
+<li><a href="sec-examples-of-ordinary-regular-singular-points.html" data-scroll="sec-examples-of-ordinary-regular-singular-points">*Examples of Ordinary and Regular Singular Points</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="ch-series-solutions-around-an-ordinary-point.html" data-scroll="ch-series-solutions-around-an-ordinary-point"><span class="codenumber">6</span> <span class="title">Series Solutions around an Ordinary point</span></a><ul>
+<li><a href="sec-the-method.html" data-scroll="sec-the-method">*The Method</a></li>
+<li><a href="sec-examples-ord.html" data-scroll="sec-examples-ord">*Examples</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="ch-series-solutions-around-a-regular-singular-point.html" data-scroll="ch-series-solutions-around-a-regular-singular-point"><span class="codenumber">7</span> <span class="title">Series Solutions around a Regular Singular Point</span></a><ul>
+<li><a href="sec-frobenius-method.html" data-scroll="sec-frobenius-method">*Frobenius' Method</a></li>
+<li><a href="sec-examples-reg.html" data-scroll="sec-examples-reg">*Examples</a></li>
+</ul>
+</li>
+</ul></nav><div class="extras"><nav><a class="mathbook-link" href="https://pretextbook.org">Authored in PreTeXt</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://www.mathjax.org/badge/badge.gif" alt="Powered by MathJax"></a></nav></div>
+</div></div>
+<main class="main"><div id="content" class="pretext-content"><section xmlns:svg="http://www.w3.org/2000/svg" class="section" id="sec-intro-to-linear-systems"><h2 class="heading hide-type">
+<span class="type">Section</span> <span class="codenumber">3.1</span> <span class="title">Intro to Linear Systems</span>
+</h2>
+<p id="p-158">A <em class="emphasis">homogeneous linear system</em> with a <em class="emphasis">constant matrix</em> looks like</p>
+<div class="displaymath">
+\begin{align*}
+x'(t) \amp = ax(t) + by(t)\\
+y'(t) \amp = cx(t) + dy(t)
+\end{align*}
+</div>
+<p id="p-159">for constants \(a,b,c,d\text{.}\)</p>
+<p id="p-160">This is less of a handful to look at when we set \(\mathbf{x}(t) = \begin{bmatrix} x(t) \\ y(t) \end{bmatrix}\text{,}\) so that we have</p>
+<div class="displaymath">
+\begin{align*}
+\mathbf{x}'(t) \amp = \begin{bmatrix} a \amp b \\ c \amp d \end{bmatrix} \mathbf{x}(t).
+\end{align*}
+</div>
+<p id="p-161">Typically, a homogeneous linear system will look like \(\mathbf{x}' = A \mathbf{x}\) for some constant matrix \(A\)</p>
+<article class="question example-like" id="question-20"><a data-knowl="" class="id-ref question-knowl original" data-refid="hk-question-20"><h6 class="heading">
+<span class="type">Question</span><span class="space"> </span><span class="codenumber">3.1.1</span><span class="period">.</span><span class="space"> </span><span class="title">What about non-constant \(A\text{?}\)</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-question-20"><article class="question example-like"><p id="p-162">More generally, a homogeneous linear system looks like \(\mathbf{x}' = P(t) \mathbf{x}\text{.}\) This chapter will mainly go over the case with \(P(t) = A\text{.}\)</p></article></div>
+<p id="p-163">Now, as one might guess, a <em class="emphasis">nonhomogeneous linear system</em> looks like</p>
+<div class="displaymath">
+\begin{align*}
+\mathbf{x}'(t) \amp = A \mathbf{x}(t) + \mathbf{g}(t).
+\end{align*}
+</div>
+<p id="p-164">We'll go over how to solve the above linear system (with some conditions that usually apply).</p></section></div></main>
+</div>
+</body>
+</html>

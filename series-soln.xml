@@ -1,0 +1,122 @@
+<part xml:id="part-series-solutions">
+    <title>Series Solutions</title>
+    
+    <chapter xml:id="ch-ordinary-regular-singular-points">
+        <title>Ordinary/Regular Singular Points</title>
+        
+        <section xml:id="sec-definitions">
+            <title>Definitions</title>
+            
+            <p>
+                We'll focus on ODEs of the form
+            </p>
+
+            <md>
+                <mrow>P(x) y'' + Q(x) y' + R(x) y \amp = 0.</mrow>
+            </md>
+
+            <p>
+                Suppose also that <m>P(x), Q(x), R(x)</m> all have a power series representation around <m>x = x_0</m>. <alert>This is a very important condition for the next few definitions.</alert>
+            </p>
+
+            <definition xml:id="def-ordinary-pts">
+                <title>Ordinary Points</title>
+
+                <statement>
+                    <p>
+                        The point <m>x = x_0</m> is an <em>ordinary point</em> if <m>P(x_0) \neq 0</m>.
+                    </p>
+                </statement>
+            </definition>
+
+            <p> Let <m>q(x) = Q(x)/P(x)</m> and <m>r(x) = R(x)/P(x)</m>. </p>
+
+            <definition xml:id="def-singular-pts">
+                <title>Singular Points</title>
+
+                <statement>
+                    <p>
+                        The point <m>x = x_0</m> is a <em>singular point</em> if either <m>q(x)</m> or <m>r(x)</m> goes to <m>\pm \infty</m> as <m>x \to x_0</m>.
+                    </p>
+                </statement>
+            </definition>
+
+            <definition xml:id="def-regular-pts">
+                <title>Regular Singular Points</title>
+                
+                <statement>
+                    <p>
+                        The point <m>x = x_0</m> is a <em>regular singular point</em> if <m>x = x_0</m> is a singular point and both limits
+                    </p>
+
+                    <md>
+                        <mrow>\lim_{x \to x_0} (x - x_0) q(x) \qquad \text{and} \qquad \lim_{x \to x_0} (x - x_0)^2 r(x) </mrow>
+                    </md>
+
+                    <p>
+                        are both finite.
+                    </p>
+
+                </statement>
+            </definition>
+
+            <definition xml:id="def-irregular-pts">
+                <title>Irregular Singular Points</title>
+                
+                <statement>
+                    <p>
+                        If the point <m>x = x_0</m> is a singular point but is not regular, then the point <m>x = x_0</m> is an <em>irregular singular point</em>.
+                    </p>
+                </statement>
+            </definition>
+
+        </section>
+
+        <section xml:id="sec-examples-of-ordinary-regular-singular-points">
+            <title>*Examples of Ordinary and Regular Singular Points</title>
+            
+            <!-- Content here -->
+
+        </section>
+
+    </chapter>
+
+    <chapter xml:id="ch-series-solutions-around-an-ordinary-point">
+        <title>Series Solutions around an Ordinary point</title>
+        
+        <section xml:id="sec-the-method">
+            <title>*The Method</title>
+            
+            <!-- Content here -->
+
+        </section>
+
+        <section xml:id="sec-examples-ord">
+            <title>*Examples</title>
+            
+            <!-- Content here -->
+
+        </section>
+
+    </chapter>
+
+    <chapter xml:id="ch-series-solutions-around-a-regular-singular-point">
+        <title>Series Solutions around a Regular Singular Point</title>
+        
+        <section xml:id="sec-frobenius-method">
+            <title>*Frobenius' Method</title>
+            
+            <!-- Content here -->
+
+        </section>
+
+        <section xml:id="sec-examples-reg">
+            <title>*Examples</title>
+            
+            <!-- Content here -->
+
+        </section>
+
+    </chapter>
+
+</part>

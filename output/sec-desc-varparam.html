@@ -1,7 +1,7 @@
 <!DOCTYPE html SYSTEM "about:legacy-compat">
 <!--********************************************-->
 <!--*       Generated from PreTeXt source      *-->
-<!--*       on 2021-06-17T19:11:57-04:00       *-->
+<!--*       on 2021-07-07T18:02:42-04:00       *-->
 <!--*   A recent stable commit (2020-08-09):   *-->
 <!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
 <!--*                                          *-->
@@ -11,7 +11,7 @@
 <html lang="en-US">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Variation of Parameters</title>
+<title>Math292 Textbook Variation of Parameters</title>
 <meta name="Keywords" content="Authored in PreTeXt">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script>window.MathJax = {
@@ -66,6 +66,11 @@
 <a class="assistive" href="#content">Skip to main content</a><div xmlns:svg="http://www.w3.org/2000/svg" id="latex-macros" class="hidden-content" style="display:none">\(\newcommand{\lcm}{\operatorname{lcm}}
 \renewcommand{\Re}{\mathrm{Re}}
 \renewcommand{\Im}{\mathrm{Im}}
+
+\newcommand{\bvec}[2]{\begin{bmatrix} #1 \\ #2 \end{bmatrix}}
+\newcommand{\bmat}[4]{\begin{bmatrix} #1 \amp #2 \\ #3 \amp #4 \end{bmatrix}}
+
+\fontsize{50}{60}
 \newcommand{\lt}{&lt;}
 \newcommand{\gt}{&gt;}
 \newcommand{\amp}{&amp;}
@@ -86,6 +91,7 @@
 </div></nav></header><div class="page">
 <div xmlns:svg="http://www.w3.org/2000/svg" id="sidebar-left" class="sidebar" role="navigation"><div class="sidebar-content">
 <nav id="toc"><ul>
+<li class="link part"><a href="part-variation-of-parameters.html" data-scroll="part-variation-of-parameters"><span class="codenumber">I</span> <span class="title">Variation of Parameters</span></a></li>
 <li class="link">
 <a href="chap-varofparams.html" data-scroll="chap-varofparams"><span class="codenumber">1</span> <span class="title">Variation of Parameters</span></a><ul>
 <li><a href="sec-desc-varparam.html" data-scroll="sec-desc-varparam" class="active">Variation of Parameters</a></li>
@@ -95,9 +101,39 @@
 </ul>
 </li>
 <li class="link">
-<a href="chap-nonhomo-ls.html" data-scroll="chap-nonhomo-ls"><span class="codenumber">2</span> <span class="title">Nonhomogeneous Linear Systems</span></a><ul>
-<li><a href="sec-section-2-1.html" data-scroll="sec-section-2-1">Section 2.1</a></li>
-<li><a href="sec-section-2-2.html" data-scroll="sec-section-2-2">Section 2.2</a></li>
+<a href="ch-duhamels-principle.html" data-scroll="ch-duhamels-principle"><span class="codenumber">2</span> <span class="title">Duhamel's Principle</span></a><ul>
+<li><a href="sec-duhamels-principle.html" data-scroll="sec-duhamels-principle">Duhamel's Principle</a></li>
+<li><a href="sec-examples-duh.html" data-scroll="sec-examples-duh">*Examples</a></li>
+</ul>
+</li>
+<li class="link part"><a href="part-nonhomogeneous-linear-systems.html" data-scroll="part-nonhomogeneous-linear-systems"><span class="codenumber">II</span> <span class="title">Nonhomogeneous Linear Systems</span></a></li>
+<li class="link">
+<a href="chap-nonhomo-ls.html" data-scroll="chap-nonhomo-ls"><span class="codenumber">3</span> <span class="title">Nonhomogeneous Linear Systems (Constant Matrix)</span></a><ul>
+<li><a href="sec-intro-to-linear-systems.html" data-scroll="sec-intro-to-linear-systems">Intro to Linear Systems</a></li>
+<li><a href="sec-solving-xAxg.html" data-scroll="sec-solving-xAxg">Method 1: Solving \(\mathbf{x}' = A \mathbf{x} + \mathbf{g}(t)\)</a></li>
+<li><a href="sec-a-basic-example.html" data-scroll="sec-a-basic-example">A Basic Example</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="ch-matrix-exponentials.html" data-scroll="ch-matrix-exponentials"><span class="codenumber">4</span> <span class="title">Matrix Exponentials</span></a><ul><li><a href="sec-matexp-definition.html" data-scroll="sec-matexp-definition">Definition of \(\exp(A)\)</a></li></ul>
+</li>
+<li class="link part"><a href="part-series-solutions.html" data-scroll="part-series-solutions"><span class="codenumber">III</span> <span class="title">Series Solutions</span></a></li>
+<li class="link">
+<a href="ch-ordinary-regular-singular-points.html" data-scroll="ch-ordinary-regular-singular-points"><span class="codenumber">5</span> <span class="title">Ordinary/Regular Singular Points</span></a><ul>
+<li><a href="sec-definitions.html" data-scroll="sec-definitions">Definitions</a></li>
+<li><a href="sec-examples-of-ordinary-regular-singular-points.html" data-scroll="sec-examples-of-ordinary-regular-singular-points">*Examples of Ordinary and Regular Singular Points</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="ch-series-solutions-around-an-ordinary-point.html" data-scroll="ch-series-solutions-around-an-ordinary-point"><span class="codenumber">6</span> <span class="title">Series Solutions around an Ordinary point</span></a><ul>
+<li><a href="sec-the-method.html" data-scroll="sec-the-method">*The Method</a></li>
+<li><a href="sec-examples-ord.html" data-scroll="sec-examples-ord">*Examples</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="ch-series-solutions-around-a-regular-singular-point.html" data-scroll="ch-series-solutions-around-a-regular-singular-point"><span class="codenumber">7</span> <span class="title">Series Solutions around a Regular Singular Point</span></a><ul>
+<li><a href="sec-frobenius-method.html" data-scroll="sec-frobenius-method">*Frobenius' Method</a></li>
+<li><a href="sec-examples-reg.html" data-scroll="sec-examples-reg">*Examples</a></li>
 </ul>
 </li>
 </ul></nav><div class="extras"><nav><a class="mathbook-link" href="https://pretextbook.org">Authored in PreTeXt</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://www.mathjax.org/badge/badge.gif" alt="Powered by MathJax"></a></nav></div>

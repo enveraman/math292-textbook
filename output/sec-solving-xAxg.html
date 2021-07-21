@@ -1,0 +1,201 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*       on 2021-07-07T18:02:42-04:00       *-->
+<!--*   A recent stable commit (2020-08-09):   *-->
+<!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<html lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Math292 Textbook Method 1: Solving \(\mathbf{x}' = A \mathbf{x} + \mathbf{g}(t)\)</title>
+<meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script>window.MathJax = {
+  tex: {
+    inlineMath: [['\\(','\\)']],
+    tags: "none",
+    useLabelIds: true,
+    tagSide: "right",
+    tagIndent: ".8em",
+    packages: {'[+]': ['base', 'extpfeil', 'ams', 'amscd', 'newcommand', 'knowl']}
+  },
+  options: {
+    ignoreHtmlClass: "tex2jax_ignore",
+    processHtmlClass: "has_am",
+    renderActions: {
+        findScript: [10, function (doc) {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(function(node) {
+                var display = !!node.type.match(/; *mode=display/);
+                var math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                var text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = {node: text, delim: '', n: 0};
+                math.end = {node: text, delim: '', n: 0};
+                doc.math.push(math);
+            });
+        }, '']
+    },
+  },
+  chtml: {
+    scale: 0.88,
+    mtextInheritFont: true
+  },
+  loader: {
+    load: ['input/asciimath', '[tex]/extpfeil', '[tex]/amscd', '[tex]/newcommand', '[pretext]/mathjaxknowl3.js'],
+    paths: {pretext: "https://pretextbook.org/js/lib"},
+  },
+};
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.min.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.sticky.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.espy.min.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/0.13/pretext.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/0.13/pretext_add_on.js"></script><script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script xmlns:svg="http://www.w3.org/2000/svg">sagecellEvalName='Evaluate (Sage)';
+</script><link xmlns:svg="http://www.w3.org/2000/svg" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://fonts.googleapis.com/css?family=Inconsolata:400,700&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/pretext.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/pretext_add_on.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/banner_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/toc_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/knowls_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/style_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/colors_default.css" rel="stylesheet" type="text/css">
+<link xmlns:svg="http://www.w3.org/2000/svg" href="https://pretextbook.org/css/0.31/setcolors.css" rel="stylesheet" type="text/css">
+<!-- 2019-10-12: Temporary - CSS file for experiments with styling --><link xmlns:svg="http://www.w3.org/2000/svg" href="developer.css" rel="stylesheet" type="text/css">
+</head>
+<body class="mathbook-book has-toc has-sidebar-left">
+<a class="assistive" href="#content">Skip to main content</a><div xmlns:svg="http://www.w3.org/2000/svg" id="latex-macros" class="hidden-content" style="display:none">\(\newcommand{\lcm}{\operatorname{lcm}}
+\renewcommand{\Re}{\mathrm{Re}}
+\renewcommand{\Im}{\mathrm{Im}}
+
+\newcommand{\bvec}[2]{\begin{bmatrix} #1 \\ #2 \end{bmatrix}}
+\newcommand{\bmat}[4]{\begin{bmatrix} #1 \amp #2 \\ #3 \amp #4 \end{bmatrix}}
+
+\fontsize{50}{60}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\)</div>
+<header id="masthead" class="smallbuttons"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><a href="math292-textbook.html"><span class="title">Math 292 PreTeXt Textbook:</span> <span class="subtitle">Differential Equations</span></a></h1>
+<p class="byline"></p>
+</div>
+</div></div>
+<nav xmlns:svg="http://www.w3.org/2000/svg" id="primary-navbar" class="navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active" aria-label="Show or hide table of contents sidebar">Contents</button><div class="tree-nav toolbar toolbar-divisor-3"><span class="threebuttons"><a id="previousbutton" class="previous-button toolbar-item button" href="sec-intro-to-linear-systems.html" title="Previous">Prev</a><a id="upbutton" class="up-button button toolbar-item" href="chap-nonhomo-ls.html" title="Up">Up</a><a id="nextbutton" class="next-button button toolbar-item" href="sec-a-basic-example.html" title="Next">Next</a></span></div>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="sec-intro-to-linear-systems.html" title="Previous">Prev</a><a class="up-button button toolbar-item" href="chap-nonhomo-ls.html" title="Up">Up</a><a class="next-button button toolbar-item" href="sec-a-basic-example.html" title="Next">Next</a>
+</div>
+</div></nav></header><div class="page">
+<div xmlns:svg="http://www.w3.org/2000/svg" id="sidebar-left" class="sidebar" role="navigation"><div class="sidebar-content">
+<nav id="toc"><ul>
+<li class="link part"><a href="part-variation-of-parameters.html" data-scroll="part-variation-of-parameters"><span class="codenumber">I</span> <span class="title">Variation of Parameters</span></a></li>
+<li class="link">
+<a href="chap-varofparams.html" data-scroll="chap-varofparams"><span class="codenumber">1</span> <span class="title">Variation of Parameters</span></a><ul>
+<li><a href="sec-desc-varparam.html" data-scroll="sec-desc-varparam">Variation of Parameters</a></li>
+<li><a href="sec-basic-ex-varparam.html" data-scroll="sec-basic-ex-varparam">Some Basic Examples</a></li>
+<li><a href="sec-more-involved-examples.html" data-scroll="sec-more-involved-examples">More Involved Examples</a></li>
+<li><a href="sec-exercises-varparam.html" data-scroll="sec-exercises-varparam">Exercises</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="ch-duhamels-principle.html" data-scroll="ch-duhamels-principle"><span class="codenumber">2</span> <span class="title">Duhamel's Principle</span></a><ul>
+<li><a href="sec-duhamels-principle.html" data-scroll="sec-duhamels-principle">Duhamel's Principle</a></li>
+<li><a href="sec-examples-duh.html" data-scroll="sec-examples-duh">*Examples</a></li>
+</ul>
+</li>
+<li class="link part"><a href="part-nonhomogeneous-linear-systems.html" data-scroll="part-nonhomogeneous-linear-systems"><span class="codenumber">II</span> <span class="title">Nonhomogeneous Linear Systems</span></a></li>
+<li class="link">
+<a href="chap-nonhomo-ls.html" data-scroll="chap-nonhomo-ls"><span class="codenumber">3</span> <span class="title">Nonhomogeneous Linear Systems (Constant Matrix)</span></a><ul>
+<li><a href="sec-intro-to-linear-systems.html" data-scroll="sec-intro-to-linear-systems">Intro to Linear Systems</a></li>
+<li><a href="sec-solving-xAxg.html" data-scroll="sec-solving-xAxg" class="active">Method 1: Solving \(\mathbf{x}' = A \mathbf{x} + \mathbf{g}(t)\)</a></li>
+<li><a href="sec-a-basic-example.html" data-scroll="sec-a-basic-example">A Basic Example</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="ch-matrix-exponentials.html" data-scroll="ch-matrix-exponentials"><span class="codenumber">4</span> <span class="title">Matrix Exponentials</span></a><ul><li><a href="sec-matexp-definition.html" data-scroll="sec-matexp-definition">Definition of \(\exp(A)\)</a></li></ul>
+</li>
+<li class="link part"><a href="part-series-solutions.html" data-scroll="part-series-solutions"><span class="codenumber">III</span> <span class="title">Series Solutions</span></a></li>
+<li class="link">
+<a href="ch-ordinary-regular-singular-points.html" data-scroll="ch-ordinary-regular-singular-points"><span class="codenumber">5</span> <span class="title">Ordinary/Regular Singular Points</span></a><ul>
+<li><a href="sec-definitions.html" data-scroll="sec-definitions">Definitions</a></li>
+<li><a href="sec-examples-of-ordinary-regular-singular-points.html" data-scroll="sec-examples-of-ordinary-regular-singular-points">*Examples of Ordinary and Regular Singular Points</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="ch-series-solutions-around-an-ordinary-point.html" data-scroll="ch-series-solutions-around-an-ordinary-point"><span class="codenumber">6</span> <span class="title">Series Solutions around an Ordinary point</span></a><ul>
+<li><a href="sec-the-method.html" data-scroll="sec-the-method">*The Method</a></li>
+<li><a href="sec-examples-ord.html" data-scroll="sec-examples-ord">*Examples</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="ch-series-solutions-around-a-regular-singular-point.html" data-scroll="ch-series-solutions-around-a-regular-singular-point"><span class="codenumber">7</span> <span class="title">Series Solutions around a Regular Singular Point</span></a><ul>
+<li><a href="sec-frobenius-method.html" data-scroll="sec-frobenius-method">*Frobenius' Method</a></li>
+<li><a href="sec-examples-reg.html" data-scroll="sec-examples-reg">*Examples</a></li>
+</ul>
+</li>
+</ul></nav><div class="extras"><nav><a class="mathbook-link" href="https://pretextbook.org">Authored in PreTeXt</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://www.mathjax.org/badge/badge.gif" alt="Powered by MathJax"></a></nav></div>
+</div></div>
+<main class="main"><div id="content" class="pretext-content"><section xmlns:svg="http://www.w3.org/2000/svg" class="section" id="sec-solving-xAxg"><h2 class="heading hide-type">
+<span class="type">Section</span> <span class="codenumber">3.2</span> <span class="title">Method 1: Solving \(\mathbf{x}' = A \mathbf{x} + \mathbf{g}(t)\)</span>
+</h2>
+<p id="p-165">Let's say \(A\) is diagonalizable. I'll also only focus on the case where \(A\) is a \(2 \times 2\) matrix.</p>
+<article class="question example-like" id="question-21"><a data-knowl="" class="id-ref question-knowl original" data-refid="hk-question-21"><h6 class="heading">
+<span class="type">Question</span><span class="space"> </span><span class="codenumber">3.2.1</span><span class="period">.</span><span class="space"> </span><span class="title">What does diagonalizable mean?</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-question-21"><article class="question example-like"><p id="p-166">Technically, a matrix \(A\) is diagonalizable when there exists an invertible matrix \(V\) and diagonal matrix \(D\) such that \(A = VDV^{-1}\text{.}\)</p>
+<p id="p-167">This is a bit of an outlandish definition. But, know that \(A\) is diagonalizable if \(A\) has two <em class="emphasis">unique</em> eigenvalues.</p>
+<p id="p-168">Let's say the <em class="emphasis">unique</em> eigenvalues of \(A\) are \(\lambda_1\) and \(\lambda_2\text{,}\) and that the corresponding eigenvectors are \(\mathbf{v}_1\) and \(\mathbf{v}_2\text{.}\) Then,</p>
+<div class="displaymath">
+\begin{align*}
+A \amp = V D V^{-1},
+\end{align*}
+</div>
+<p id="p-169">where</p>
+<div class="displaymath">
+\begin{align*}
+V = \begin{bmatrix} \mathbf{v}_1 \amp \mathbf{v}_2 \end{bmatrix} \qquad \text{and} \qquad D = \begin{bmatrix} \lambda_1 \amp 0 \\ 0 \amp \lambda_2 \end{bmatrix}. 
+\end{align*}
+</div>
+<p id="p-170">(\(V\) is the matrix whose first column is \(\mathbf{v}_1\) and whose second column is \(\mathbf{v}_2\text{.}\))</p></article></div>
+<p id="p-171">Since \(A\) is diagonalizable, we can write \(A = VDV^{-1}\) where</p>
+<div class="displaymath">
+\begin{align*}
+V = \begin{bmatrix} \mathbf{v}_1 \amp \mathbf{v}_2 \end{bmatrix} \qquad \text{and} \qquad D = \begin{bmatrix} \lambda_1 \amp 0 \\ 0 \amp \lambda_2 \end{bmatrix}. 
+\end{align*}
+</div>
+<p id="p-172">Now, solving \(\mathbf{x}' = A \mathbf{x} + \mathbf{g}(t)\) follows from a few steps.</p>
+<ol class="decimal">
+<li id="li-4">
+<p id="p-173">Set \(\mathbf{x} = V \mathbf{y}\) to obtain</p>
+<div class="displaymath">
+\begin{gather*}
+V\mathbf{y}' = A V\mathbf{y} + \mathbf{g}(t)
+\end{gather*}
+</div>
+</li>
+<li id="li-5">
+<p id="p-174">Multiply by \(V^{-1}\) on both sides of the new ODE to get</p>
+<div class="displaymath">
+\begin{gather*}
+\mathbf{y} = V^{-1}AV \mathbf{y} + V^{-1} \mathbf{g}(t).
+\end{gather*}
+</div>
+</li>
+<li id="li-6"><p id="p-175">Since \(A = VDV^{-1}\text{,}\) we have \(V^{-1}AV = D\text{.}\) Also, set \(\mathbf{y}(t) = \begin{bmatrix} y_1(t) \\ y_2(t) \end{bmatrix}\) and \(\mathbf{h}(t) = V^{-1} \mathbf{g}(t) = \begin{bmatrix} h_1(t) \\ h_2(t) \end{bmatrix}\text{.}\)</p></li>
+<li id="li-7">
+<p id="p-176">These give us the linear system</p>
+<div class="displaymath">
+\begin{align*}
+y_1'(t) \amp = \lambda_1 y_1(t) + h_1(t),\\
+y_2'(t) \amp = \lambda_2 y_2(t) + h_2(t).
+\end{align*}
+</div>
+</li>
+<li id="li-8"><p id="p-177">Both of these can be solved using integrating factors. Once we have \(\mathbf{y}(t)\text{,}\) remember to get the general solution in \(\mathbf{x} = V \mathbf{y}\text{.}\)</p></li>
+</ol>
+<p id="p-178">That's pretty much all you need to know to solve \(\mathbf{x}' = A \mathbf{x} + \mathbf{g}(t)\text{.}\) Of course, it's really important to remember that \(A\) <em class="alert">must</em> be diagonalizable.</p></section></div></main>
+</div>
+</body>
+</html>
