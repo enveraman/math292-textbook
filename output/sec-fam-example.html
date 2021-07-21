@@ -1,7 +1,7 @@
 <!DOCTYPE html SYSTEM "about:legacy-compat">
 <!--********************************************-->
 <!--*       Generated from PreTeXt source      *-->
-<!--*       on 2021-07-07T18:02:42-04:00       *-->
+<!--*       on 2021-07-21T16:34:28-04:00       *-->
 <!--*   A recent stable commit (2020-08-09):   *-->
 <!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
 <!--*                                          *-->
@@ -11,7 +11,7 @@
 <html lang="en-US">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Math292 Textbook *Examples</title>
+<title>Math292 Textbook A Familiar Example</title>
 <meta name="Keywords" content="Authored in PreTeXt">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script>window.MathJax = {
@@ -103,7 +103,7 @@
 <li class="link">
 <a href="ch-duhamels-principle.html" data-scroll="ch-duhamels-principle"><span class="codenumber">2</span> <span class="title">Duhamel's Principle</span></a><ul>
 <li><a href="sec-duhamels-principle.html" data-scroll="sec-duhamels-principle">Duhamel's Principle</a></li>
-<li><a href="sec-examples-duh.html" data-scroll="sec-examples-duh" class="active">*Examples</a></li>
+<li><a href="sec-fam-example.html" data-scroll="sec-fam-example" class="active">A Familiar Example</a></li>
 </ul>
 </li>
 <li class="link part"><a href="part-nonhomogeneous-linear-systems.html" data-scroll="part-nonhomogeneous-linear-systems"><span class="codenumber">II</span> <span class="title">Nonhomogeneous Linear Systems</span></a></li>
@@ -138,11 +138,11 @@
 </li>
 </ul></nav><div class="extras"><nav><a class="mathbook-link" href="https://pretextbook.org">Authored in PreTeXt</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://www.mathjax.org/badge/badge.gif" alt="Powered by MathJax"></a></nav></div>
 </div></div>
-<main class="main"><div id="content" class="pretext-content"><section xmlns:svg="http://www.w3.org/2000/svg" class="section" id="sec-examples-duh"><h2 class="heading hide-type">
-<span class="type">Section</span> <span class="codenumber">2.2</span> <span class="title">*Examples</span>
+<main class="main"><div id="content" class="pretext-content"><section xmlns:svg="http://www.w3.org/2000/svg" class="section" id="sec-fam-example"><h2 class="heading hide-type">
+<span class="type">Section</span> <span class="codenumber">2.2</span> <span class="title">A Familiar Example</span>
 </h2>
 <p id="p-154">Duhamel's Principle can look pretty complicated at first (mainly because of the \(S(t;s)\)), but the particular solution it gives is quite elegant.</p>
-<p id="p-155">At it's core, Duhamel's Principle “off-loads” solving a nonhomogeneous ODE \(p(t)y''+q(t)y' + r(t)y g(t)\) into solving the homogeneous initial value problem</p>
+<p id="p-155">At it's core, Duhamel's Principle “off-loads” solving a nonhomogeneous ODE \(p(t)y''+q(t)y' + r(t)y = g(t)\) into solving the homogeneous initial value problem</p>
 <div class="displaymath">
 \begin{align*}
 p(t) x'' + q(t)x' + r(t)x \amp = 0, \\
@@ -156,7 +156,90 @@ x'(s) \amp = 1.
 Y(t) \amp = \int_{t_0}^t x_s(t) g(s) \ ds,
 \end{align*}
 </div>
-<p id="p-157">where \(t_0\) is a constant on the interval the original inhomogeneous ODE is defined on.</p></section></div></main>
+<p id="p-157">where \(t_0\) is a constant on the interval the original inhomogeneous ODE is defined on.</p>
+<section class="subsection" id="subsec-another-way"><h3 class="heading hide-type">
+<span class="type">Subsection</span> <span class="codenumber">2.2.1</span> <span class="title">Solve \(x'' - 4x = e^t\)</span>
+</h3>
+<p id="p-158">We solved this problem back in the Variation of Parameters chapter, but we had to use a lot of computations to arrive at an answer.</p>
+<p id="p-159">Here, we'll see that using Duhamel's Principle shortcuts us right to the answer.</p>
+<p id="p-160">As always, the first thing we do is solve the homogeneous ODE \(x'' - 4x = 0\text{,}\) which has the general solution</p>
+<div class="displaymath">
+\begin{align*}
+x(t) \amp = c_1e^{2t} + c_2 e^{-2t}.
+\end{align*}
+</div>
+<p id="p-161">Now, we want to solve an initial value problem: we want to solve the IVP given by</p>
+<div class="displaymath">
+\begin{align*}
+x_s''(t) - 4x_s(t) \amp = 0, \\
+x_s(s) \amp = 0, \\
+x_s'(s) \amp = 1.
+\end{align*}
+</div>
+<article class="question example-like" id="question-20"><a data-knowl="" class="id-ref question-knowl original" data-refid="hk-question-20"><h6 class="heading">
+<span class="type">Question</span><span class="space"> </span><span class="codenumber">2.2.1</span><span class="period">.</span><span class="space"> </span><span class="title">How do I solve this IVP?</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-question-20"><article class="question example-like"><p id="p-162">Since \(x_s''(t) - 4x_s(t) = 0\text{,}\) we can write</p>
+<div class="displaymath">
+\begin{align*}
+x_s(t) \amp = a e^{2t} + be^{-2t}
+\end{align*}
+</div>
+<p id="p-163">for some constants \(a,b\text{.}\) We just need to solve for \(a,b\text{,}\) given that \(x_s(s) = 0\) and \(x_s'(s) = 1\text{.}\) These correspond to a system of equations:</p>
+<div class="displaymath">
+\begin{gather*}
+\begin{cases} 
+0 = ae^{2s} + be^{-2s}, \\
+1 = 2ae^{2s} - 2be^{-2s}.
+\end{cases}
+\end{gather*}
+</div>
+<p id="p-164">This might seem daunting, especially with the \(e^{2s}\) and \(e^{-2s}\) factors, but remember that these are constants with respect to \(t\text{,}\) \(a\text{,}\) and \(b\text{.}\) So, the system above might as well be solving the system</p>
+<div class="displaymath">
+\begin{gather*}
+\begin{cases} 
+0 = a_1 + b_1, \\
+1 = 2a_1 - 2b_1,
+\end{cases}
+\end{gather*}
+</div>
+<p id="p-165">where, \(a_1 = ae^{2s}\) and \(b_1 = be^{-2s}\text{.}\)</p>
+<p id="p-166">This system's pretty easy to solve: \(a_1 = 1/4\) and \(b_1 = -1/4\text{.}\) In all, this means that \(a = a_1 e^{-2s} = e^{-2s}/4\) and \(b = b_1 e^{2s} = -e^{2s}/4\text{,}\) so the solution \(x_s(t)\) to the IVP mentioned is</p>
+<div class="displaymath">
+\begin{align*}
+x_s(t) \amp = \frac14 e^{-2s} e^{2t} - \frac14 e^{2s} e^{-2t} = \frac{e^{2(t-s)} - e^{-2(t-s)}}{4}.
+\end{align*}
+</div></article></div>
+<p id="p-167">The solution to this IVP is</p>
+<div class="displaymath">
+\begin{align*}
+x_s(t) \amp = \frac{e^{2(t-s)} - e^{-2(t-s)}}{4}.
+\end{align*}
+</div>
+<p id="p-168">With this, Duhamel's principle helps us pretty quickly write a particular solution \(Y(t)\) of \(x'' - 4x = e^t\text{:}\)</p>
+<div class="displaymath">
+\begin{align*}
+Y(t) \amp = \int_{t_0}^t x_s(t) \frac{g(s)}{p(s)} \ ds = \int_{t_0}^t \frac{e^{2(t-s)} - e^{-2(t-s)}}{4} \cdot e^s \ ds.
+\end{align*}
+</div>
+<p id="p-169">The variable \(t_0\) can be any number in the domain of the ODE \(x'' - 4x = e^t\text{,}\) basically meaning that \(t_0\) can be any real number, since the ODE holds for all reals.</p>
+<p id="p-170">We might choose \(t_0 = 0\) and evaluate the integral using Mathematica. The appropriate command is</p>
+<pre class="code-display tex2jax_ignore">Integrate[(Exp[2 (t - s)] - Exp[-2 (t - s)])/4 * Exp[s], {s, 0, t}]
+</pre>
+<p id="p-171">But, of course, we might just leave it in the form that it is and get that the general solution to \(x'' - 4x = e^t\) is</p>
+<div class="displaymath">
+\begin{align*}
+x(t) \amp = c_1 e^{2t} + c_2 e^{-2t} + \int_{0}^t \frac{e^{2(t-s)} - e^{-2(t-s)}}{4} \cdot e^s \ ds.
+\end{align*}
+</div>
+<article class="question example-like" id="question-21"><a data-knowl="" class="id-ref question-knowl original" data-refid="hk-question-21"><h6 class="heading">
+<span class="type">Question</span><span class="space"> </span><span class="codenumber">2.2.2</span><span class="period">.</span><span class="space"> </span><span class="title">Bonus: Solve \(x'' - 4x = g(t)\).</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-question-21"><article class="question example-like"><p id="p-172">This is extremely easy with Duhamel's Principle. We just have to replace the \(e^s\) with \(g(s)\) in our integral. So, the general solution to \(x'' - 4x = g(t)\) is</p>
+<div class="displaymath">
+\begin{align*}
+x(t) \amp = c_1 e^{2t} + c_2 e^{-2t} + \int_{0}^t \frac{e^{2(t-s)} - e^{-2(t-s)}}{4} \cdot g(s) \ ds. 
+\end{align*}
+</div>
+<p id="p-173">This generalization might've been harder had we used variation of parameters instead. In general, if you have to solve a lot of inhomogeneous ODEs that have the same homogeneous ODE, then Duhamel's principle reduces down the number of ODEs needed to solve down to 1.</p></article></div></section></section></div></main>
 </div>
 </body>
 </html>

@@ -2,7 +2,7 @@
 <html lang="en-US">
 <!--********************************************-->
 <!--*       Generated from PreTeXt source      *-->
-<!--*       on 2021-07-07T18:02:43-04:00       *-->
+<!--*       on 2021-07-21T16:34:29-04:00       *-->
 <!--*   A recent stable commit (2020-08-09):   *-->
 <!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
 <!--*                                          *-->
@@ -15,19 +15,22 @@
 </head>
 <body>
 <article class="question example-like"><h6 xmlns:svg="http://www.w3.org/2000/svg" class="heading">
-<span class="type">Question</span><span class="space"> </span><span class="codenumber">3.3.2</span><span class="period">.</span><span class="space"> </span><span class="title">I wanna see the work!</span>
+<span class="type">Question</span><span class="space"> </span><span class="codenumber">3.2.1</span><span class="period">.</span><span class="space"> </span><span class="title">What does diagonalizable mean?</span>
 </h6>
-<p xmlns:svg="http://www.w3.org/2000/svg">First, we find \(V^{-1}\text{.}\)</p>
+<p xmlns:svg="http://www.w3.org/2000/svg">Technically, a matrix \(A\) is diagonalizable when there exists an invertible matrix \(V\) and diagonal matrix \(D\) such that \(A = VDV^{-1}\text{.}\)</p>
+<p xmlns:svg="http://www.w3.org/2000/svg">This is a bit of an outlandish definition. But, know that \(A\) is diagonalizable if \(A\) has two <em class="emphasis">unique</em> eigenvalues.</p>
+<p xmlns:svg="http://www.w3.org/2000/svg">Let's say the <em class="emphasis">unique</em> eigenvalues of \(A\) are \(\lambda_1\) and \(\lambda_2\text{,}\) and that the corresponding eigenvectors are \(\mathbf{v}_1\) and \(\mathbf{v}_2\text{.}\) Then,</p>
 <div xmlns:svg="http://www.w3.org/2000/svg" class="displaymath">
 \begin{align*}
-V^{-1} \amp = \frac1{\det V} \bmat{-1}{-1}{-4}{-3} = \bmat1143.
+A \amp = V D V^{-1},
 \end{align*}
 </div>
-<p xmlns:svg="http://www.w3.org/2000/svg">So,</p>
+<p xmlns:svg="http://www.w3.org/2000/svg">where</p>
 <div xmlns:svg="http://www.w3.org/2000/svg" class="displaymath">
-\begin{gather*}
-V^{-1} \bvec{-e^{-t}}{2e^{-t}} = \bmat1143 \bvec{-1}{2} e^{-t} = \bvec{e^{-t}}{2e^{-t}}.
-\end{gather*}
-</div></article><span class="incontext"><a href="sec-a-basic-example.html#question-23">in-context</a></span>
+\begin{align*}
+V = \begin{bmatrix} \mathbf{v}_1 \amp \mathbf{v}_2 \end{bmatrix} \qquad \text{and} \qquad D = \begin{bmatrix} \lambda_1 \amp 0 \\ 0 \amp \lambda_2 \end{bmatrix}. 
+\end{align*}
+</div>
+<p xmlns:svg="http://www.w3.org/2000/svg">(\(V\) is the matrix whose first column is \(\mathbf{v}_1\) and whose second column is \(\mathbf{v}_2\text{.}\))</p></article><span class="incontext"><a href="sec-solving-xAxg.html#question-23">in-context</a></span>
 </body>
 </html>

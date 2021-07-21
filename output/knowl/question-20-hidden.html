@@ -2,7 +2,7 @@
 <html lang="en-US">
 <!--********************************************-->
 <!--*       Generated from PreTeXt source      *-->
-<!--*       on 2021-07-07T18:02:43-04:00       *-->
+<!--*       on 2021-07-21T16:34:29-04:00       *-->
 <!--*   A recent stable commit (2020-08-09):   *-->
 <!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
 <!--*                                          *-->
@@ -13,5 +13,35 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="robots" content="noindex, nofollow">
 </head>
-<body><article class="question example-like"><p xmlns:svg="http://www.w3.org/2000/svg">More generally, a homogeneous linear system looks like \(\mathbf{x}' = P(t) \mathbf{x}\text{.}\) This chapter will mainly go over the case with \(P(t) = A\text{.}\)</p></article></body>
+<body><article class="question example-like"><p xmlns:svg="http://www.w3.org/2000/svg">Since \(x_s''(t) - 4x_s(t) = 0\text{,}\) we can write</p>
+<div xmlns:svg="http://www.w3.org/2000/svg" class="displaymath">
+\begin{align*}
+x_s(t) \amp = a e^{2t} + be^{-2t}
+\end{align*}
+</div>
+<p xmlns:svg="http://www.w3.org/2000/svg">for some constants \(a,b\text{.}\) We just need to solve for \(a,b\text{,}\) given that \(x_s(s) = 0\) and \(x_s'(s) = 1\text{.}\) These correspond to a system of equations:</p>
+<div xmlns:svg="http://www.w3.org/2000/svg" class="displaymath">
+\begin{gather*}
+\begin{cases} 
+0 = ae^{2s} + be^{-2s}, \\
+1 = 2ae^{2s} - 2be^{-2s}.
+\end{cases}
+\end{gather*}
+</div>
+<p xmlns:svg="http://www.w3.org/2000/svg">This might seem daunting, especially with the \(e^{2s}\) and \(e^{-2s}\) factors, but remember that these are constants with respect to \(t\text{,}\) \(a\text{,}\) and \(b\text{.}\) So, the system above might as well be solving the system</p>
+<div xmlns:svg="http://www.w3.org/2000/svg" class="displaymath">
+\begin{gather*}
+\begin{cases} 
+0 = a_1 + b_1, \\
+1 = 2a_1 - 2b_1,
+\end{cases}
+\end{gather*}
+</div>
+<p xmlns:svg="http://www.w3.org/2000/svg">where, \(a_1 = ae^{2s}\) and \(b_1 = be^{-2s}\text{.}\)</p>
+<p xmlns:svg="http://www.w3.org/2000/svg">This system's pretty easy to solve: \(a_1 = 1/4\) and \(b_1 = -1/4\text{.}\) In all, this means that \(a = a_1 e^{-2s} = e^{-2s}/4\) and \(b = b_1 e^{2s} = -e^{2s}/4\text{,}\) so the solution \(x_s(t)\) to the IVP mentioned is</p>
+<div xmlns:svg="http://www.w3.org/2000/svg" class="displaymath">
+\begin{align*}
+x_s(t) \amp = \frac14 e^{-2s} e^{2t} - \frac14 e^{2s} e^{-2t} = \frac{e^{2(t-s)} - e^{-2(t-s)}}{4}.
+\end{align*}
+</div></article></body>
 </html>

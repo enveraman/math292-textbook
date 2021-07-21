@@ -1,7 +1,7 @@
 <!DOCTYPE html SYSTEM "about:legacy-compat">
 <!--********************************************-->
 <!--*       Generated from PreTeXt source      *-->
-<!--*       on 2021-07-07T18:02:42-04:00       *-->
+<!--*       on 2021-07-21T16:34:28-04:00       *-->
 <!--*   A recent stable commit (2020-08-09):   *-->
 <!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
 <!--*                                          *-->
@@ -103,7 +103,7 @@
 <li class="link">
 <a href="ch-duhamels-principle.html" data-scroll="ch-duhamels-principle"><span class="codenumber">2</span> <span class="title">Duhamel's Principle</span></a><ul>
 <li><a href="sec-duhamels-principle.html" data-scroll="sec-duhamels-principle">Duhamel's Principle</a></li>
-<li><a href="sec-examples-duh.html" data-scroll="sec-examples-duh">*Examples</a></li>
+<li><a href="sec-fam-example.html" data-scroll="sec-fam-example">A Familiar Example</a></li>
 </ul>
 </li>
 <li class="link part"><a href="part-nonhomogeneous-linear-systems.html" data-scroll="part-nonhomogeneous-linear-systems"><span class="codenumber">II</span> <span class="title">Nonhomogeneous Linear Systems</span></a></li>
@@ -141,34 +141,34 @@
 <main class="main"><div id="content" class="pretext-content"><section xmlns:svg="http://www.w3.org/2000/svg" class="section" id="sec-solving-xAxg"><h2 class="heading hide-type">
 <span class="type">Section</span> <span class="codenumber">3.2</span> <span class="title">Method 1: Solving \(\mathbf{x}' = A \mathbf{x} + \mathbf{g}(t)\)</span>
 </h2>
-<p id="p-165">Let's say \(A\) is diagonalizable. I'll also only focus on the case where \(A\) is a \(2 \times 2\) matrix.</p>
-<article class="question example-like" id="question-21"><a data-knowl="" class="id-ref question-knowl original" data-refid="hk-question-21"><h6 class="heading">
+<p id="p-181">Let's say \(A\) is diagonalizable. I'll also only focus on the case where \(A\) is a \(2 \times 2\) matrix.</p>
+<article class="question example-like" id="question-23"><a data-knowl="" class="id-ref question-knowl original" data-refid="hk-question-23"><h6 class="heading">
 <span class="type">Question</span><span class="space"> </span><span class="codenumber">3.2.1</span><span class="period">.</span><span class="space"> </span><span class="title">What does diagonalizable mean?</span>
-</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-question-21"><article class="question example-like"><p id="p-166">Technically, a matrix \(A\) is diagonalizable when there exists an invertible matrix \(V\) and diagonal matrix \(D\) such that \(A = VDV^{-1}\text{.}\)</p>
-<p id="p-167">This is a bit of an outlandish definition. But, know that \(A\) is diagonalizable if \(A\) has two <em class="emphasis">unique</em> eigenvalues.</p>
-<p id="p-168">Let's say the <em class="emphasis">unique</em> eigenvalues of \(A\) are \(\lambda_1\) and \(\lambda_2\text{,}\) and that the corresponding eigenvectors are \(\mathbf{v}_1\) and \(\mathbf{v}_2\text{.}\) Then,</p>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-question-23"><article class="question example-like"><p id="p-182">Technically, a matrix \(A\) is diagonalizable when there exists an invertible matrix \(V\) and diagonal matrix \(D\) such that \(A = VDV^{-1}\text{.}\)</p>
+<p id="p-183">This is a bit of an outlandish definition. But, know that \(A\) is diagonalizable if \(A\) has two <em class="emphasis">unique</em> eigenvalues.</p>
+<p id="p-184">Let's say the <em class="emphasis">unique</em> eigenvalues of \(A\) are \(\lambda_1\) and \(\lambda_2\text{,}\) and that the corresponding eigenvectors are \(\mathbf{v}_1\) and \(\mathbf{v}_2\text{.}\) Then,</p>
 <div class="displaymath">
 \begin{align*}
 A \amp = V D V^{-1},
 \end{align*}
 </div>
-<p id="p-169">where</p>
+<p id="p-185">where</p>
 <div class="displaymath">
 \begin{align*}
 V = \begin{bmatrix} \mathbf{v}_1 \amp \mathbf{v}_2 \end{bmatrix} \qquad \text{and} \qquad D = \begin{bmatrix} \lambda_1 \amp 0 \\ 0 \amp \lambda_2 \end{bmatrix}. 
 \end{align*}
 </div>
-<p id="p-170">(\(V\) is the matrix whose first column is \(\mathbf{v}_1\) and whose second column is \(\mathbf{v}_2\text{.}\))</p></article></div>
-<p id="p-171">Since \(A\) is diagonalizable, we can write \(A = VDV^{-1}\) where</p>
+<p id="p-186">(\(V\) is the matrix whose first column is \(\mathbf{v}_1\) and whose second column is \(\mathbf{v}_2\text{.}\))</p></article></div>
+<p id="p-187">Since \(A\) is diagonalizable, we can write \(A = VDV^{-1}\) where</p>
 <div class="displaymath">
 \begin{align*}
 V = \begin{bmatrix} \mathbf{v}_1 \amp \mathbf{v}_2 \end{bmatrix} \qquad \text{and} \qquad D = \begin{bmatrix} \lambda_1 \amp 0 \\ 0 \amp \lambda_2 \end{bmatrix}. 
 \end{align*}
 </div>
-<p id="p-172">Now, solving \(\mathbf{x}' = A \mathbf{x} + \mathbf{g}(t)\) follows from a few steps.</p>
+<p id="p-188">Now, solving \(\mathbf{x}' = A \mathbf{x} + \mathbf{g}(t)\) follows from a few steps.</p>
 <ol class="decimal">
 <li id="li-4">
-<p id="p-173">Set \(\mathbf{x} = V \mathbf{y}\) to obtain</p>
+<p id="p-189">Set \(\mathbf{x} = V \mathbf{y}\) to obtain</p>
 <div class="displaymath">
 \begin{gather*}
 V\mathbf{y}' = A V\mathbf{y} + \mathbf{g}(t)
@@ -176,16 +176,16 @@ V\mathbf{y}' = A V\mathbf{y} + \mathbf{g}(t)
 </div>
 </li>
 <li id="li-5">
-<p id="p-174">Multiply by \(V^{-1}\) on both sides of the new ODE to get</p>
+<p id="p-190">Multiply by \(V^{-1}\) on both sides of the new ODE to get</p>
 <div class="displaymath">
 \begin{gather*}
 \mathbf{y} = V^{-1}AV \mathbf{y} + V^{-1} \mathbf{g}(t).
 \end{gather*}
 </div>
 </li>
-<li id="li-6"><p id="p-175">Since \(A = VDV^{-1}\text{,}\) we have \(V^{-1}AV = D\text{.}\) Also, set \(\mathbf{y}(t) = \begin{bmatrix} y_1(t) \\ y_2(t) \end{bmatrix}\) and \(\mathbf{h}(t) = V^{-1} \mathbf{g}(t) = \begin{bmatrix} h_1(t) \\ h_2(t) \end{bmatrix}\text{.}\)</p></li>
+<li id="li-6"><p id="p-191">Since \(A = VDV^{-1}\text{,}\) we have \(V^{-1}AV = D\text{.}\) Also, set \(\mathbf{y}(t) = \begin{bmatrix} y_1(t) \\ y_2(t) \end{bmatrix}\) and \(\mathbf{h}(t) = V^{-1} \mathbf{g}(t) = \begin{bmatrix} h_1(t) \\ h_2(t) \end{bmatrix}\text{.}\)</p></li>
 <li id="li-7">
-<p id="p-176">These give us the linear system</p>
+<p id="p-192">These give us the linear system</p>
 <div class="displaymath">
 \begin{align*}
 y_1'(t) \amp = \lambda_1 y_1(t) + h_1(t),\\
@@ -193,9 +193,9 @@ y_2'(t) \amp = \lambda_2 y_2(t) + h_2(t).
 \end{align*}
 </div>
 </li>
-<li id="li-8"><p id="p-177">Both of these can be solved using integrating factors. Once we have \(\mathbf{y}(t)\text{,}\) remember to get the general solution in \(\mathbf{x} = V \mathbf{y}\text{.}\)</p></li>
+<li id="li-8"><p id="p-193">Both of these can be solved using integrating factors. Once we have \(\mathbf{y}(t)\text{,}\) remember to get the general solution in \(\mathbf{x} = V \mathbf{y}\text{.}\)</p></li>
 </ol>
-<p id="p-178">That's pretty much all you need to know to solve \(\mathbf{x}' = A \mathbf{x} + \mathbf{g}(t)\text{.}\) Of course, it's really important to remember that \(A\) <em class="alert">must</em> be diagonalizable.</p></section></div></main>
+<p id="p-194">That's pretty much all you need to know to solve \(\mathbf{x}' = A \mathbf{x} + \mathbf{g}(t)\text{.}\) Of course, it's really important to remember that \(A\) <em class="alert">must</em> be diagonalizable.</p></section></div></main>
 </div>
 </body>
 </html>
