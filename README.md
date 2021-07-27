@@ -11,4 +11,4 @@ The Python file only works if your terminal is in this directory. Once it is, th
 
 `python moveout.py`
 
-will move all HTML files in this folder that are generated and move them to the folder named `Output`.
+will move all HTML files in this folder that are generated and move them to the folder named `output`.
