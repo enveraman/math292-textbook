@@ -442,7 +442,7 @@
                     </p>
 
                     <md>
-                        <mrow>\exp(tA) \amp V \bmat{e^{at}}00{e^{tb}} V^{-1}.</mrow>
+                        <mrow>\exp(tA) \amp = V \bmat{e^{at}}00{e^{tb}} V^{-1}.</mrow>
                     </md>
 
                 </statement>
