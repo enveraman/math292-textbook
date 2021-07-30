@@ -1,7 +1,7 @@
 <!DOCTYPE html SYSTEM "about:legacy-compat">
 <!--********************************************-->
 <!--*       Generated from PreTeXt source      *-->
-<!--*       on 2021-07-21T19:42:42-04:00       *-->
+<!--*       on 2021-07-30T00:15:28-04:00       *-->
 <!--*   A recent stable commit (2020-08-09):   *-->
 <!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
 <!--*                                          *-->
@@ -11,7 +11,7 @@
 <html lang="en-US">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Math292 Textbook *Examples</title>
+<title>Math292 Textbook An Involved Example</title>
 <meta name="Keywords" content="Authored in PreTeXt">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script>window.MathJax = {
@@ -121,26 +121,102 @@
 <li class="link">
 <a href="ch-ordinary-regular-singular-points.html" data-scroll="ch-ordinary-regular-singular-points"><span class="codenumber">5</span> <span class="title">Ordinary/Regular Singular Points</span></a><ul>
 <li><a href="sec-definitions.html" data-scroll="sec-definitions">Definitions</a></li>
-<li><a href="sec-examples-of-ordinary-regular-singular-points.html" data-scroll="sec-examples-of-ordinary-regular-singular-points">*Examples of Ordinary and Regular Singular Points</a></li>
+<li><a href="sec-examples-of-regular-singular-points.html" data-scroll="sec-examples-of-regular-singular-points">Examples of Regular Singular Points</a></li>
 </ul>
 </li>
 <li class="link">
 <a href="ch-series-solutions-around-an-ordinary-point.html" data-scroll="ch-series-solutions-around-an-ordinary-point"><span class="codenumber">6</span> <span class="title">Series Solutions around an Ordinary point</span></a><ul>
-<li><a href="sec-the-method.html" data-scroll="sec-the-method">*The Method</a></li>
-<li><a href="sec-examples-ord.html" data-scroll="sec-examples-ord">*Examples</a></li>
+<li><a href="sec-the-method.html" data-scroll="sec-the-method">The Method</a></li>
+<li><a href="sec-examples-ord.html" data-scroll="sec-examples-ord">Ordinary Point Solution Example</a></li>
 </ul>
 </li>
 <li class="link">
 <a href="ch-series-solutions-around-a-regular-singular-point.html" data-scroll="ch-series-solutions-around-a-regular-singular-point"><span class="codenumber">7</span> <span class="title">Series Solutions around a Regular Singular Point</span></a><ul>
-<li><a href="sec-frobenius-method.html" data-scroll="sec-frobenius-method">*Frobenius' Method</a></li>
-<li><a href="sec-examples-reg.html" data-scroll="sec-examples-reg" class="active">*Examples</a></li>
+<li><a href="sec-frobenius-method.html" data-scroll="sec-frobenius-method">Frobenius' Method</a></li>
+<li><a href="sec-exmaple-reg.html" data-scroll="sec-exmaple-reg" class="active">An Involved Example</a></li>
 </ul>
 </li>
 </ul></nav><div class="extras"><nav><a class="mathbook-link" href="https://pretextbook.org">Authored in PreTeXt</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://www.mathjax.org/badge/badge.gif" alt="Powered by MathJax"></a></nav></div>
 </div></div>
-<main class="main"><div id="content" class="pretext-content"><section xmlns:svg="http://www.w3.org/2000/svg" class="section" id="sec-examples-reg"><h2 class="heading hide-type">
-<span class="type">Section</span> <span class="codenumber">7.2</span> <span class="title">*Examples</span>
-</h2></section></div></main>
+<main class="main"><div id="content" class="pretext-content"><section xmlns:svg="http://www.w3.org/2000/svg" class="section" id="sec-exmaple-reg"><h2 class="heading hide-type">
+<span class="type">Section</span> <span class="codenumber">7.2</span> <span class="title">An Involved Example</span>
+</h2>
+<section class="subsection" id="subsec-reg-pt"><h3 class="heading hide-type">
+<span class="type">Subsection</span> <span class="codenumber">7.2.1</span> <span class="title">Find a solution to \((x^2-1)y'' + y' + y = 0\) around \(x = 1\)</span>
+</h3>
+<p id="p-306">First things first, note that the point \(x=1\) is a regular singular point.</p>
+<article class="question example-like" id="question-34"><a data-knowl="" class="id-ref question-knowl original" data-refid="hk-question-34"><h6 class="heading">
+<span class="type">Question</span><span class="space"> </span><span class="codenumber">7.2.1</span><span class="period">.</span><span class="space"> </span><span class="title">Why is \(x=1\) a regular singular point?</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-question-34"><article class="question example-like"><p id="p-307">In this case we have \(P(x) = x^2-1\text{,}\) \(Q(x) = 1\text{,}\) and \(R(x) = 1\text{.}\) So, \(q(x) = Q(x)/P(x) = 1/(x^2-1)\) and \(r(x) = R(x)/P(x) = 1/(x^2-1)\text{.}\)</p>
+<p id="p-308">Note that \(P(1) = 0\text{.}\) The two limits we need to calculate unfold as follows:</p>
+<div class="displaymath">
+\begin{align*}
+\lim_{x \to 1} (x-1) q(x) = \frac12 \amp \quad \text{and} \quad \lim_{x \to 1} (x-1)^2 r(x) = 0.
+\end{align*}
+</div>
+<p id="p-309">Since these two limits are finite, \(x=1\) is a regular singular point.</p></article></div>
+<p id="p-310">Next, we observe the indicial equation: the root we want to use is \(\lambda_1 = 1/2\text{.}\)</p>
+<article class="question example-like" id="question-35"><a data-knowl="" class="id-ref question-knowl original" data-refid="hk-question-35"><h6 class="heading">
+<span class="type">Question</span><span class="space"> </span><span class="codenumber">7.2.2</span><span class="period">.</span><span class="space"> </span><span class="title">Why do we use \(\lambda_1 = 1/2\text{?}\)</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-question-35"><article class="question example-like"><p id="p-311">From the previous question, we have that \(q_0 = 1/2\) and \(r_0 = 0\text{.}\) So, the indicial equation is</p>
+<div class="displaymath">
+\begin{gather*}
+0 = \lambda(\lambda - 1) + \frac12\lambda = \lambda^2 - \frac12\lambda = \lambda(\lambda - 1/2).
+\end{gather*}
+</div>
+<p id="p-312">The bigger solution to the indicial equation is \(\lambda_1 = 1/2\text{.}\)</p></article></div>
+<p id="p-313">Note that we only need to find one solution to the ODE \((x^2 - 1)y'' + y' + y = 0\text{.}\) The solution we look for is of the form</p>
+<div class="displaymath">
+\begin{align*}
+y_1(x) \amp = (x-1)^{1/2}\sum_{n=0}^\infty a_n(x-1)^n = \sum_{n=0}^\infty a_n (x-1)^{n+1/2}.
+\end{align*}
+</div>
+<p id="p-314">Before we continue, we should make things easier by using a substitution. Set \(t = x-1\) and \(Y_1(t) = y_1(x)\) and \(Y(t) = y(x)\text{.}\) This way, the ODE we need to solve is</p>
+<div class="displaymath">
+\begin{align*}
+t(t+2) Y''(t) + Y'(t) + Y(t) = 0  \amp 
+\end{align*}
+</div>and the solution we expect is<div class="displaymath">
+\begin{align*}
+Y_1(t) \amp = \sum_{n=0}^\infty a_n t^{n+1/2}.
+\end{align*}
+</div>
+<p id="p-315">Substitute this into our new ODE \(t(t+2) Y''(t) + Y'(t) + Y(t) = 0\) to find the recurrence relation</p>
+<div class="displaymath">
+\begin{gather*}
+\left(n^2 + \frac34\right)a_n + (n+1)(2n+3)a_{n+1} = 0 \qquad \text{for all $n \geq 0$}.
+\end{gather*}
+</div>
+<article class="question example-like" id="question-36"><a data-knowl="" class="id-ref question-knowl original" data-refid="hk-question-36"><h6 class="heading">
+<span class="type">Question</span><span class="space"> </span><span class="codenumber">7.2.3</span><span class="period">.</span><span class="space"> </span><span class="title">How did you get that?</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-question-36"><article class="question example-like"><p id="p-316">Here's the algebra that gets that recurrence relation:</p>
+<div class="displaymath">
+\begin{align*}
+0 \amp = (t^2 + 2t) \sum_{n=0}^\infty \left(n - \frac12\right)\left(n + \frac12\right) a_n t^{n-3/2} + \sum_{n=0}^\infty \left(n + \frac12\right)a_n t^{n-1/2} + \sum_{n=0}^\infty a_nt^{n+1/2},\\
+\amp  = \sum_{n=0}^\infty \left(n^2 - \frac14\right) a_n t^{n+1/2} + \sum_{n=0}^\infty 2\left(n^2-\frac14\right) a_n t^{n-1/2} + \sum_{n=0}^\infty \left(n + \frac12\right)a_n t^{n-1/2} + \sum_{n=0}^\infty a_nt^{n+1/2} \\
+\amp  = \sum_{n=0}^\infty \left[ n^2 + \frac34 \right] a_nt^{n+1/2} + \sum_{n=0}^\infty \big[2n^2+n\big] a_nt^{n-1/2}, \\
+\amp  = \sum_{n=0}^\infty \left[ n^2 + \frac34 \right] a_nt^{n+1/2} + \sum_{n=0}^\infty \big[(n+1)(2n+3)\big]a_{n+1}t^{n+1/2}\\
+\amp  = \sum_{n=0}^\infty \left[\left(n^2 + \frac34\right)a_n + (n+1)(2n+3)a_{n+1} \right]t^{n+1/2}.
+\end{align*}
+</div>
+<p id="p-317">From this, we get the recurrence relation</p>
+<div class="displaymath">
+\begin{gather*}
+\left(n^2 + \frac34\right)a_n + (n+1)(2n+3)a_{n+1} = 0. 
+\end{gather*}
+</div></article></div>
+<p id="p-318">To finalize, one solution of \((x^2-1)y'' + y' +y = 0\) is</p>
+<div class="displaymath">
+\begin{align*}
+y_1(x) \amp = \sum_{n=0}^\infty a_n(x-1)^{n+1/2}, 
+\end{align*}
+</div>
+<p id="p-319">where \(a_n\) satisfies</p>
+<div class="displaymath">
+\begin{gather*}
+\left(n^2 + \frac34\right)a_n + (n+1)(2n+3)a_{n+1} = 0. 
+\end{gather*}
+</div></section></section></div></main>
 </div>
 </body>
 </html>

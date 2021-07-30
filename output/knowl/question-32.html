@@ -1,0 +1,42 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*       on 2021-07-30T00:15:29-04:00       *-->
+<!--*   A recent stable commit (2020-08-09):   *-->
+<!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<article class="question example-like"><h6 xmlns:svg="http://www.w3.org/2000/svg" class="heading">
+<span class="type">Question</span><span class="space"> </span><span class="codenumber">6.2.2</span><span class="period">.</span><span class="space"> </span><span class="title">Write the first 6 terms of \(y(x)\).</span>
+</h6>
+<p xmlns:svg="http://www.w3.org/2000/svg">Remember our recurrence relation:</p>
+<div xmlns:svg="http://www.w3.org/2000/svg" class="displaymath">
+\begin{gather*}
+(n+2)(n+1) a_{n+2} + (2n+1)a_n = 0 \quad \implies \quad a_{n+2} = - \frac{2n+1}{(n+2)(n+1)} a_n.
+\end{gather*}
+</div>
+<p xmlns:svg="http://www.w3.org/2000/svg">Now, we just need to plug in certain values of \(n\text{.}\) (Don't forget that \(a_0\) and \(a_1\) are arbitrary.)</p>
+<div xmlns:svg="http://www.w3.org/2000/svg" class="displaymath">
+\begin{align*}
+a_2 \amp = - \frac{2(0) + 1}{(0 + 2)(0 + 1)} a_0 = -\frac12 a_0,\\
+a_3 \amp = - \frac{2(1) + 1}{(1 + 2)(1 + 1)} a_1 = -\frac12 a_1,\\
+a_4 \amp = - \frac{2(2) + 1}{(2 + 2)(2 + 1)} a_2 = -\frac5{12} \cdot -\frac12 a_0 = \frac5{24} a_0,\\
+a_5 \amp = - \frac{2(3) + 1}{(3 + 2)(3 + 1)} a_3 = -\frac7{20} \cdot -\frac12 a_1 = \frac7{40} a_1.
+\end{align*}
+</div>
+<p xmlns:svg="http://www.w3.org/2000/svg">So, the first six terms of \(y(x)\) are</p>
+<div xmlns:svg="http://www.w3.org/2000/svg" class="displaymath">
+\begin{gather*}
+a_0 + a_1x - \frac12 a_0 x^2 - \frac12 x^3 + \frac5{24} a_0x^4 + \frac7{40} a_1 x^5.
+\end{gather*}
+</div></article><span class="incontext"><a href="sec-examples-ord.html#question-32">in-context</a></span>
+</body>
+</html>

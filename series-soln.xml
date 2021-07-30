@@ -70,12 +70,151 @@
                 </statement>
             </definition>
 
+            <subsection xml:id="subsec-why-are-these-defined-as-they-are">
+                <title>Why are these defined as they are?</title>
+                
+                <p>
+                    We can solve equations of the form <m>x^2 y''' + ax y' + by = 0</m> pretty easily when we set <m>y = x^r</m> (these are Cauchy-Euler ODEs).
+                </p>
+
+                <p>
+                    Now, we want to solve equations of the form <m>P(x) y'' + Q(x) y' + R(x) y = 0</m>. By dividing out by <m>P(x)</m>, we can transform this into the equation <m>y'' + q(x) y' + r(x)y = 0</m> where
+                </p>
+
+                <md>
+                    <mrow>q(x) = \frac{Q(x)}{P(x)} \qquad \text{and} \qquad r(x) = \frac{R(x)}{P(x)}.</mrow>
+                </md>
+
+                <p>
+                    To try to kinda match the Cauchy-Euler ODE form, multiply both sides of <m>y'' + q(x) y' + r(x) y = 0</m> by <m>x^2</m> to get
+                </p>
+
+                <md>
+                    <mrow>x^2 y'' + x^2 q(x) y' + x^2 r(x) y = 0.</mrow>
+                </md>
+
+                <p>
+                    Then, to further match the form of the constants in the Cauchy-Euler ODEs, group the coefficients like this:
+                </p>
+
+                <md>
+                    <mrow>x^2 y'' + [x q(x)] xy' + [x^2r(x)] y = 0.</mrow>
+                </md>
+
+                <p>
+                    This way, if <m>xq(x) = a</m> and <m>x^2r(x) = b</m>, then we'd easily get back to a Cauchy-Euler ODE. More realistically, you'd want <m>xq(x)</m> and <m>x^2r(x)</m> to be representable as a power series.
+                </p>
+
+                <p>
+                    For example, say we set <m>xq(x)</m> equal to
+                </p>
+
+                <md>
+                    <mrow>xq(x) \amp = q_0 + q_1 x + q_2 x^2 + \cdots + q_nx^n + \cdots.</mrow>
+                </md>
+
+                <p>
+                    Then, when we evaluate <m>xq(x)</m> at <m>x = 0</m>, we get the <em>importantly finite</em> value <m>q_0</m>. This corresponds to saying that the limit
+                </p>
+
+                <md>
+                    <mrow>\lim_{x \to 0} xq(x)</mrow>
+                </md>
+
+                <p>
+                    is finite and equal to <m>q_0</m>. A similar thing happens with <m>x^2r(x)</m>.
+                </p>
+
+            </subsection>
+
         </section>
 
-        <section xml:id="sec-examples-of-ordinary-regular-singular-points">
-            <title>*Examples of Ordinary and Regular Singular Points</title>
+        <section xml:id="sec-examples-of-regular-singular-points">
+            <title>Examples of Regular Singular Points</title>
             
-            <!-- Content here -->
+            <subsection xml:id="subsec-reg-sing">
+                <title>Find the regular singular points of the ODE <m>x^2 y'' + x y' + x^2 y = 0</m>.</title>
+                
+                <p>
+                    Matching this up with <m>P(x) y'' + Q(x) y' + R(x) y = 0</m>, we see that <m>P(x) = x^2</m>, <m>Q(x) = x</m>, and <m>R(x) = x^2</m>. Note that all of these are (technically) power series in <m>x</m>. 
+                </p>
+
+                <p>
+                    Next, we find the singular points of the ODE, which starts by setting <m>P(x) = x^2 = 0</m>. Thus, the only possible singular point is <m>x = 0</m>.
+                </p>
+
+                <p>
+                    Next, we check if <m>x = 0</m> is regular. As in the method, define <m>q(x) = Q(x)/P(x) = x/x^2 = 1/x</m> and <m>r(x) = R(x)/P(x) = x^2/x^2 = 1</m>. Then, we'll compute the following limits:
+                </p>
+
+                <md>
+                    <mrow>\lim_{x \to 0} x q(x) = \lim_{x \to 0} x \cdot \frac1x = 1, </mrow>
+                </md>
+
+                <p>
+                    and
+                </p>
+
+                <md>
+                    <mrow>\lim_{x \to 0} x^2 r(x) = \lim_{x \to 0} x^2 \cdot 1 = 0. </mrow>
+                </md>
+
+                <p>
+                    Since <em>both</em> of these limits are finite, <m>x = 0</m> is a regular singular point.
+                </p>
+
+            </subsection>
+
+            <subsection xml:id="subsec-1-reg">
+                <title>Find the regular singular points of <m>(x-1)^2(x+1)y'' + xy' + (x-1)y = 0</m></title>
+                
+                <p>
+                    Try this one yourself! We have <m>P(x) = (x-1)^2 (x+1)</m>, <m>Q(x) = x</m>, and <m>R(x) = x-1</m> in this case.
+                </p>
+
+                <question>
+                    <title>Where do I start?</title>
+                    
+                    <p>
+                        Start by setting <m>P(x) = 0</m> and solving for <m>x</m> to find the possible singular points of the ODE. You'll see that <m>x = 1, -1</m>.
+                    </p>
+
+                    <question>
+                        <title>What do I do next?</title>
+                        
+                        <p>
+                            Next, find <m>q(x) = Q(x)/P(x)</m> and <m>r(x) = R(x)/P(x)</m>. Calculate the two limits
+                        </p>
+
+                        <md>
+                            <mrow>\lim_{x \to 1} (x - 1)q(x) \qquad \text{and} \qquad \lim_{x \to 1} (x-1)^2 r(x),</mrow>
+                        </md>
+
+                        <p>
+                            and the two limits
+                        </p>
+
+                        <md>
+                            <mrow>\lim_{x \to -1} (x + 1)q(x) \qquad \text{and} \qquad \lim_{x \to -1} (x+1)^2 r(x).</mrow>
+                        </md>
+
+                        <p>
+                            Which of these limits are finite?
+                        </p>
+
+                        <answer>
+                            <p>
+                                <m>x = -1</m> is a regular singular point and <m>x = 1</m> is not.
+                            </p>
+                        </answer>
+                    </question>
+
+                </question>
+
+
+
+            </subsection>
+
 
         </section>
 
@@ -85,16 +224,251 @@
         <title>Series Solutions around an Ordinary point</title>
         
         <section xml:id="sec-the-method">
-            <title>*The Method</title>
+            <title>The Method</title>
             
-            <!-- Content here -->
+            <p>
+                The method is simple enough to remember. Say we want to solve the ODE
+            </p>
+
+            <md>
+                <mrow>P(x)y'' + Q(x)y' + R(x)y = 0,</mrow>
+            </md>
+
+            <p>
+                around the <em>ordinary point</em> <m>x = x_0</m>. Then, to solve the ODE, substitute in
+            </p>
+
+            <md>
+                <mrow>y(x) = \sum_{n=0}^\infty a_n (x-x_0)^n.</mrow>
+            </md>
+
+            <p>
+                After you substitute this form in, condense all the terms and find a <q>recurrence relation</q> for <m>a_n</m>. We'll see an example of this in the examples.
+            </p>
+
+            <p>
+                <alert>Be wary that these methods are often algebraically tedious.</alert>
+            </p>
 
         </section>
 
         <section xml:id="sec-examples-ord">
-            <title>*Examples</title>
+            <title>Ordinary Point Solution Example</title>
             
-            <!-- Content here -->
+            <subsection xml:id="subsec-ord-soln">
+                <title>Solve <m>y'' + 2xy' + y = 0</m> with a series around <m>x=0</m></title>
+                
+                <p>
+                    The first thing we do is set
+                </p>
+
+                <md>
+                    <mrow>y(x) \amp = \sum_{n=0}^\infty a_nx^n.</mrow>
+                </md>
+
+                <p>
+                    We can differentiate this like we would for any polynomial:
+                </p>
+
+                <md>
+                    <mrow>y'(x) \amp = \sum_{n=0}^\infty na_n x^{n-1}, \qquad y''(x) = \sum_{n=0}^\infty n(n-1)a_nx^{n-2}.</mrow>
+                </md>
+
+                <p>
+                    (Technically, <m>y'</m> should start with <m>n=1</m> and <m>y''</m> should start with <m>n=2</m> but that shouldn't matter all too much.)
+                </p>
+
+                <p>
+                    And now, we substitute these into our ODE <m>y'' + 2xy' + y = 0</m>:
+                </p>
+
+                <md>
+                    <mrow>0 \amp = \sum_{n=0}^\infty n(n-1)x^{n-2} + 2x\sum_{n=0}^\infty na_n x^{n-1} + \sum_{n=0}^\infty a_nx^n</mrow>
+                    <mrow>\amp = \sum_{n=0}^\infty n(n-1)x^{n-2} + \sum_{n=0}^\infty 2na_n x^n + \sum_{n=0}^\infty a_nx^n</mrow>
+                    <mrow>\amp = \sum_{n=0}^\infty n(n-1)a_nx^{n-2} + \sum_{n=0}^\infty (2n+1)a_n x^n</mrow>
+                </md>
+
+                <p>
+                    We want to combine all the sums so that there's only one summation. To combine the two sums above, we need to use an <q>index shift</q> on the sum
+                    
+                    <md>
+                        <mrow>\sum_{n=0}^\infty n(n-1)a_nx^{n-2}</mrow>
+                    </md>
+
+                    so that the powers of <m>x</m> match in each sum.
+                </p>
+
+                <question>
+                    <title>What is an index shift?</title>
+                    
+                    <p>
+                        We bascially replace the index variable (which in the case of our sums is <m>n</m>) with something else.
+                    </p>
+
+                    <p>
+                        Since we want to match the powers of <m>x</m>, let's write <m>n = k+2</m> in the <em>first sum</em> above. That way, we'd have
+                    </p>
+
+                    <md>
+                        <mrow>\sum_{n=0}^\infty n(n-1)a_nx^{n-2} \amp = \sum_{k+2=0}^\infty (k+2)(k+2-1)a_{k+2}x^{k+2-2} = \sum_{k=-2}^\infty (k+2) (k+1) a_{k+2} x^k.</mrow>
+                    </md>
+
+                    <p>
+                        The <m>k = -2</m> is a little scary, but notice that <m>(k+2) (k+1) a_{k+2} x^k = 0</m> when <m>k = -2</m> and when <m>k = -1</m>. So, we can rewrite the sum as 
+                    </p>
+
+                    <md>
+                        <mrow>\sum_{k=-2}^\infty (k+2) (k+1) a_{k+2} x^k \amp = \sum_{k=0}^\infty (k+2) (k+1) a_{k+2} x^k = \sum_{n=0}^\infty (n+2) (n+1) a_{n+2} x^n,</mrow>
+                    </md>
+
+                    <p>
+                        where in the last step, we've just replaced all the <m>k</m>'s with <m>n</m>'s.
+                    </p>
+                </question>
+
+                <p>
+                    This would get us
+                </p>
+
+                <md>
+                    <mrow>0 \amp = \sum_{n=0}^\infty n(n-1)a_nx^{n-2} + \sum_{n=0}^\infty (2n+1)a_n x^n</mrow>
+                    <mrow>\amp = \sum_{n=0}^\infty (n+2) (n+1) a_{n+2} x^n + \sum_{n=0}^\infty (2n+1)a_n x^n</mrow>
+                    <mrow>\amp = \sum_{n=0}^\infty \Big[ (n+2)(n+1) a_{n+2} + (2n+1)a_n \Big]x^n.</mrow>
+                </md>
+
+                <p>
+                    In order for equality to hold, the coefficient of <m>x^n</m> must equal <m>0</m>, so our recurrence relation for <m>a_n</m> is
+                </p>
+
+                <md>
+                    <mrow>(n+2)(n+1) a_{n+2} + (2n+1)a_n \amp = 0 \qquad \text{for all $n \geq 0$}.</mrow>
+                </md>
+
+                <p>
+                    This is usually enough to solve an exercise, since it can be difficult to find an explicit expression (no <m>a_{n+2}</m> or anything) for <m>a_n</m>. 
+                </p>
+
+                <p>
+                    Something very important to mention here though, is that only <em>even</em> terms depend on <em>even</em> terms, and only <em>odd</em> terms depend on <em>odd</em> terms.
+                </p>
+
+                <p>
+                    If we solve for <m>a_{n+2}</m> in <m>(n+2)(n+1) a_{n+2} + (2n+1)a_n = 0</m>, we get
+                </p>
+
+                <md>
+                    <mrow>a_{n+2} \amp = - \frac{2n+1}{(n+2)(n+1)} a_n.</mrow>
+                </md>
+
+                <p>
+                    So, <m>a_{n+2}</m> is proportional to <m>a_n</m>. Similarly, <m>a_n</m> is proportional to <m>a_{n-2}</m> and so on. At the very end, note that all <em>even</em> terms <m>a_{2k}</m> are proportional to <m>a_0</m> and all <em>odd</em> terms are proportional to <m>a_1</m>.
+                </p>
+
+                <p>
+                    Since each <m>a_{2k}</m> is proportional to <m>a_0</m>, let's write <m>a_{2k} = \alpha_{2k} a_0</m>, and since each <m>a_{2k+1}</m> is proportional to <m>a_1</m>, let's write <m>a_{2k+1} = \beta_{2k+1} a_0</m>. Then, our solution <m>y(x)</m> becomes
+                </p>
+
+                <md>
+                    <mrow>y(x) \amp = \sum_{n=0}^\infty a_nx^n,</mrow>
+                    <mrow>\amp = \sum_{k=0}^\infty a_{2k}x^{2k} + \sum_{k=0}^\infty a_{2k+1}x^{2k+1},</mrow>
+                    <mrow>\amp = a_0\sum_{k=0}^\infty \alpha_{2k} x^{2k} + a_1\sum_{k=0}^\infty \beta_{2k+1} x^{2k+1}.</mrow>
+                </md>
+
+                <p>
+                    This is actually very similar to the more familiar general solution <m>y(x) = c_1y_1 + c_2y_2</m>, except with <m>c_1 = a_0</m>, <m>c_2 = a_1</m>, and
+                </p>
+
+                <md>
+                    <mrow>y_1 \amp = \sum_{k=0}^\infty \alpha_{2k} x^{2k}, \qquad y_2 = \sum_{k=0}^\infty \beta_{2k+1} x^{2k+1}. </mrow>
+                </md>
+
+                <p>
+                    These choices of <m>y_1</m> and <m>y_2</m> form a fundamental pair of solutions (take it as a given for now). Thus, the solution <m>y(x)</m> was actually the general solution for the ODE!
+                </p>
+
+                <p>
+                    With these kinds of questions, we're often asked about the first few terms:
+                </p>
+                
+                <question>
+                    <title>Write the first 6 terms of <m>y(x)</m></title>
+                    
+                    <p>
+                        Remember our recurrence relation:
+                        
+                    </p>
+                       
+                    <md>
+                        <mrow>(n+2)(n+1) a_{n+2} + (2n+1)a_n = 0 \quad \implies \quad a_{n+2} = - \frac{2n+1}{(n+2)(n+1)} a_n.</mrow>
+                    </md>
+
+                    <p>
+                        Now, we just need to plug in certain values of <m>n</m>. (Don't forget that <m>a_0</m> and <m>a_1</m> are arbitrary.)
+                    </p>
+
+                    <md>
+                        <mrow>a_2 \amp = - \frac{2(0) + 1}{(0 + 2)(0 + 1)} a_0 = -\frac12 a_0,</mrow>
+                        <mrow>a_3 \amp = - \frac{2(1) + 1}{(1 + 2)(1 + 1)} a_1 = -\frac12 a_1,</mrow>
+                        <mrow>a_4 \amp = - \frac{2(2) + 1}{(2 + 2)(2 + 1)} a_2 = -\frac5{12} \cdot -\frac12 a_0 = \frac5{24} a_0,</mrow>
+                        <mrow>a_5 \amp = - \frac{2(3) + 1}{(3 + 2)(3 + 1)} a_3 = -\frac7{20} \cdot -\frac12 a_1 = \frac7{40} a_1.</mrow>
+                    </md>
+
+                    <p>
+                        So, the first six terms of <m>y(x)</m> are
+                    </p>
+
+                    <md>
+                        <mrow> a_0 + a_1x - \frac12 a_0 x^2 - \frac12 x^3 + \frac5{24} a_0x^4 + \frac7{40} a_1 x^5.</mrow>
+                    </md>
+
+                </question>
+
+                <question>
+                    <title>Bonus: Find an explicit form of <m>a_n</m></title>
+                    
+                    <p>
+                        This is usually something that you'd rarely have to do. We have to consider different cases based on whether <m>n = 2k</m> is even or if <m>n = 2k+1</m> is odd.
+                    </p>
+
+                    <p>
+                        Our recurrence relation tells us that <m>a_n = f(n) a_{n-2}</m> where
+                    </p>
+
+                    <md>
+                        <mrow>f(n) \amp = - \frac{2(n-2)+1}{((n-2)+2)((n-2)+1)} = -\frac{2n-3}{n(n-1)}.</mrow>
+                    </md>
+
+                    <p>
+                        When <m>n = 2k</m> is even, we find that
+                    </p>
+
+                    <md>
+                        <mrow>a_{2k} \amp = f(2k) a_{2k-2} = f(2k) f(2k-2) a_{2k-4}, \phantom{\frac12} </mrow>
+                        <mrow>\amp = f(2k) f(2k-2) f(2k-4) \cdots f(4) f(2) a_0,</mrow>
+                        <mrow>\amp = a_0 \prod_{s=1}^k f(2s), </mrow>
+                        <mrow>\amp = a_0 \prod_{s=1}^k \left[-\frac{4s-3}{2s(2s-1)}\right], </mrow>
+                        <mrow>\amp = a_0 \frac{(-1)^k}{(2k)!} \prod_{s=1}^k (4s-3).</mrow>
+                    </md>
+
+                    <p>
+                        When <m>n = 2k+1</m> is odd, we find that
+                    </p>
+                    
+                    <md>
+                        <mrow>a_{2k+1} \amp = f(2k+1) a_{2k-1} = f(2k+1) f(2k-1) a_{2k-3}, \phantom{\frac12} </mrow>
+                        <mrow>\amp = f(2k+1) f(2k-1) f(2k-3) \cdots f(5) f(3) a_1,</mrow>
+                        <mrow>\amp = a_1 \prod_{s=1}^k f(2s+1),</mrow>
+                        <mrow>\amp = a_1 \prod_{s=1}^k \left[-\frac{4s-1}{(2s+1)2s}\right],</mrow>
+                        <mrow>\amp = a_1 \frac{(-1)^k}{(2k+1)!} \prod_{s=1}^k (4s-1).</mrow>
+                    </md>
+
+                    <p>
+                        Put together, we get the explicit form of <m>a_n</m>.
+                    </p>
+
+                </question>
+
+            </subsection>
 
         </section>
 
@@ -104,16 +478,193 @@
         <title>Series Solutions around a Regular Singular Point</title>
         
         <section xml:id="sec-frobenius-method">
-            <title>*Frobenius' Method</title>
+            <title>Frobenius' Method</title>
             
-            <!-- Content here -->
+            <p>
+                Our previous method worked for ordinary points, but the same technique won't exactly work for regular singular points.
+            </p>
+
+            <p>
+                Say that we want to solve the ODE <m>P(x)y'' + Q(x)y' + R(x)y = 0</m> around the <em>regular singular point</em> <m>x = x_0</m>. First, we have to solve the <q>indicial equation</q>:
+            </p>
+
+            <md>
+                <mrow>\lambda (\lambda - 1) + q_0 \lambda + r_0 = 0,</mrow>
+            </md>
+
+            <p>
+                where
+            </p>
+
+            <md>
+                <mrow>q_0 = \lim_{x \to x_0} (x-x_0) \frac{Q(x)}{P(x)} \quad \text{and} \quad r_0 = \lim_{x \to x_0} (x-x_0)^2 \frac{R(x)}{P(x)}.</mrow>
+            </md>
+
+            <p>
+                The indicial equation has two roots <m>\lambda_1</m> and <m>\lambda_2 \leq \lambda_1</m>. Taking that <m>\lambda_1</m> is the bigger root, Frobenius' method tells us that the first solution <m>y_1</m> of the ODE is
+            </p>
+
+            <md>
+                <mrow>y_1(x) \amp = x^{\lambda_1} \sum_{n=0}^\infty a_n x^n.</mrow>
+            </md>
+
+            <p>
+                The second solution <m>y_2</m> depends on the second, smaller, root <m>\lambda_2</m>.
+            </p>
+
+            <ol>
+                <li>
+                    <p>
+                        If <m>\lambda_1 - \lambda_2</m> is <em>not</em> an integer, then
+                    </p>
+
+                    <md>
+                        <mrow>y_2(x) \amp = (x - x_0)^{\lambda_2} \sum_{n=0}^\infty c_n(x-x_0)^n.</mrow>
+                    </md>
+                </li>
+
+                <li>
+                    <p>
+                        If <m>\lambda_1 - \lambda_2</m> is an integer, then
+                    </p>
+
+                    <md>
+                        <mrow>y_2(x) \amp = ay_1(x) \ln |x - x_0| + (x-x_0)^{\lambda_2} \sum_{n=0}^\infty c_n(x - x_0)^n,</mrow>
+                    </md>
+
+                    <p>where <m>a</m> is some real constant. We know for sure that <m>a \neq 0</m> when <m>\lambda_1 = \lambda_2</m>.</p>
+                </li>
+            </ol>
+
+            <p>
+                Often times, we'll only need to know the form of these solutions, not necessarily the specifics.
+            </p>
 
         </section>
 
-        <section xml:id="sec-examples-reg">
-            <title>*Examples</title>
+        <section xml:id="sec-exmaple-reg">
+            <title>An Involved Example</title>
             
-            <!-- Content here -->
+            <subsection xml:id="subsec-reg-pt">
+                <title>Find a solution to <m>(x^2-1)y'' + y' + y = 0</m> around <m>x = 1</m></title>
+                
+                <p>
+                    First things first, note that the point <m>x=1</m> is a regular singular point.
+                </p>
+
+                <question>
+                    <title>Why is <m>x=1</m> a regular singular point?</title>
+                    
+                    <p>
+                        In this case we have <m>P(x) = x^2-1</m>, <m>Q(x) = 1</m>, and <m>R(x) = 1</m>. So, <m>q(x) = Q(x)/P(x) = 1/(x^2-1)</m> and <m>r(x) = R(x)/P(x) = 1/(x^2-1)</m>.
+                    </p>
+
+                    <p>
+                        Note that <m>P(1) = 0</m>. The two limits we need to calculate unfold as follows:
+                    </p>
+
+                    <md>
+                        <mrow>\lim_{x \to 1} (x-1) q(x) = \frac12 \amp \quad \text{and} \quad \lim_{x \to 1} (x-1)^2 r(x) = 0.</mrow>
+                    </md>
+                    
+                    <p>
+                        Since these two limits are finite, <m>x=1</m> is a regular singular point.
+                    </p>
+                </question>
+
+                <p>
+                    Next, we observe the indicial equation: the root we want to use is <m>\lambda_1 = 1/2</m>.
+                </p>
+
+                <question>
+                    <title>Why do we use <m>\lambda_1 = 1/2</m>?</title>
+                    
+                    <p>
+                        From the previous question, we have that <m>q_0 = 1/2</m> and <m>r_0 = 0</m>. So, the indicial equation is
+                    </p>
+
+                    <md>
+                        <mrow> 0 = \lambda(\lambda - 1) + \frac12\lambda = \lambda^2 - \frac12\lambda = \lambda(\lambda - 1/2).</mrow>
+                    </md>
+                    
+                    <p>
+                        The bigger solution to the indicial equation is <m>\lambda_1 = 1/2</m>.
+                    </p>
+
+                </question>
+
+                <p>
+                    Note that we only need to find one solution to the ODE <m>(x^2 - 1)y'' + y' + y = 0</m>. The solution we look for is of the form
+                </p>
+
+                <md>
+                    <mrow>y_1(x) \amp = (x-1)^{1/2}\sum_{n=0}^\infty a_n(x-1)^n = \sum_{n=0}^\infty a_n (x-1)^{n+1/2}.</mrow>
+                </md>
+
+                <p>
+                    Before we continue, we should make things easier by using a substitution. Set <m>t = x-1</m> and <m>Y_1(t) = y_1(x)</m> and <m>Y(t) = y(x)</m>. This way, the ODE we need to solve is
+                </p>
+
+                <md>
+                    <mrow>t(t+2) Y''(t) + Y'(t) + Y(t) = 0  \amp </mrow>
+                </md>
+
+                and the solution we expect is
+
+                <md>
+                    <mrow>Y_1(t) \amp = \sum_{n=0}^\infty a_n t^{n+1/2}.</mrow>
+                </md>
+
+                <p>
+                    Substitute this into our new ODE <m>t(t+2) Y''(t) + Y'(t) + Y(t) = 0</m> to find the recurrence relation
+                </p>
+
+                <md>
+                    <mrow>\left(n^2 + \frac34\right)a_n + (n+1)(2n+3)a_{n+1} = 0 \qquad \text{for all $n \geq 0$}.</mrow>
+                </md>
+
+                <question>
+                    <title>How did you get that?</title>
+                    
+                    <p>
+                        Here's the algebra that gets that recurrence relation:
+                    </p>
+                    
+                    <md>
+                        <mrow>0 \amp = (t^2 + 2t) \sum_{n=0}^\infty \left(n - \frac12\right)\left(n + \frac12\right) a_n t^{n-3/2} + \sum_{n=0}^\infty \left(n + \frac12\right)a_n t^{n-1/2} + \sum_{n=0}^\infty a_nt^{n+1/2},</mrow> 
+                        <mrow>\amp  = \sum_{n=0}^\infty \left(n^2 - \frac14\right) a_n t^{n+1/2} + \sum_{n=0}^\infty 2\left(n^2-\frac14\right) a_n t^{n-1/2} + \sum_{n=0}^\infty \left(n + \frac12\right)a_n t^{n-1/2} + \sum_{n=0}^\infty a_nt^{n+1/2} </mrow> 
+                        <mrow>\amp  = \sum_{n=0}^\infty \left[ n^2 + \frac34 \right] a_nt^{n+1/2} + \sum_{n=0}^\infty \big[2n^2+n\big] a_nt^{n-1/2}, </mrow> 
+                        <mrow>\amp  = \sum_{n=0}^\infty \left[ n^2 + \frac34 \right] a_nt^{n+1/2} + \sum_{n=0}^\infty \big[(n+1)(2n+3)\big]a_{n+1}t^{n+1/2}</mrow> 
+                        <mrow>\amp  = \sum_{n=0}^\infty \left[\left(n^2 + \frac34\right)a_n + (n+1)(2n+3)a_{n+1} \right]t^{n+1/2}.</mrow>
+                    </md>
+
+                    <p>
+                        From this, we get the recurrence relation
+                    </p>
+
+                    <md>
+                        <mrow> \left(n^2 + \frac34\right)a_n + (n+1)(2n+3)a_{n+1} = 0. </mrow>
+                    </md>
+
+                </question>
+                
+                <p>
+                    To finalize, one solution of <m>(x^2-1)y'' + y' +y = 0</m> is
+                </p>
+
+                <md>
+                    <mrow>y_1(x) \amp = \sum_{n=0}^\infty a_n(x-1)^{n+1/2}, </mrow>
+                </md>
+
+                <p>
+                    where <m>a_n</m> satisfies
+                </p>
+
+                <md>
+                    <mrow> \left(n^2 + \frac34\right)a_n + (n+1)(2n+3)a_{n+1} = 0. </mrow>
+                </md>
+
+            </subsection>
 
         </section>
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html SYSTEM "about:legacy-compat">
 <!--********************************************-->
 <!--*       Generated from PreTeXt source      *-->
-<!--*       on 2021-07-21T19:42:41-04:00       *-->
+<!--*       on 2021-07-30T00:15:28-04:00       *-->
 <!--*   A recent stable commit (2020-08-09):   *-->
 <!--* 98f21740783f166a773df4dc83cab5293ab63a4a *-->
 <!--*                                          *-->
@@ -11,7 +11,7 @@
 <html lang="en-US">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Math292 Textbook *Examples</title>
+<title>Math292 Textbook Ordinary Point Solution Example</title>
 <meta name="Keywords" content="Authored in PreTeXt">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script>window.MathJax = {
@@ -121,26 +121,165 @@
 <li class="link">
 <a href="ch-ordinary-regular-singular-points.html" data-scroll="ch-ordinary-regular-singular-points"><span class="codenumber">5</span> <span class="title">Ordinary/Regular Singular Points</span></a><ul>
 <li><a href="sec-definitions.html" data-scroll="sec-definitions">Definitions</a></li>
-<li><a href="sec-examples-of-ordinary-regular-singular-points.html" data-scroll="sec-examples-of-ordinary-regular-singular-points">*Examples of Ordinary and Regular Singular Points</a></li>
+<li><a href="sec-examples-of-regular-singular-points.html" data-scroll="sec-examples-of-regular-singular-points">Examples of Regular Singular Points</a></li>
 </ul>
 </li>
 <li class="link">
 <a href="ch-series-solutions-around-an-ordinary-point.html" data-scroll="ch-series-solutions-around-an-ordinary-point"><span class="codenumber">6</span> <span class="title">Series Solutions around an Ordinary point</span></a><ul>
-<li><a href="sec-the-method.html" data-scroll="sec-the-method">*The Method</a></li>
-<li><a href="sec-examples-ord.html" data-scroll="sec-examples-ord" class="active">*Examples</a></li>
+<li><a href="sec-the-method.html" data-scroll="sec-the-method">The Method</a></li>
+<li><a href="sec-examples-ord.html" data-scroll="sec-examples-ord" class="active">Ordinary Point Solution Example</a></li>
 </ul>
 </li>
 <li class="link">
 <a href="ch-series-solutions-around-a-regular-singular-point.html" data-scroll="ch-series-solutions-around-a-regular-singular-point"><span class="codenumber">7</span> <span class="title">Series Solutions around a Regular Singular Point</span></a><ul>
-<li><a href="sec-frobenius-method.html" data-scroll="sec-frobenius-method">*Frobenius' Method</a></li>
-<li><a href="sec-examples-reg.html" data-scroll="sec-examples-reg">*Examples</a></li>
+<li><a href="sec-frobenius-method.html" data-scroll="sec-frobenius-method">Frobenius' Method</a></li>
+<li><a href="sec-exmaple-reg.html" data-scroll="sec-exmaple-reg">An Involved Example</a></li>
 </ul>
 </li>
 </ul></nav><div class="extras"><nav><a class="mathbook-link" href="https://pretextbook.org">Authored in PreTeXt</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://www.mathjax.org/badge/badge.gif" alt="Powered by MathJax"></a></nav></div>
 </div></div>
 <main class="main"><div id="content" class="pretext-content"><section xmlns:svg="http://www.w3.org/2000/svg" class="section" id="sec-examples-ord"><h2 class="heading hide-type">
-<span class="type">Section</span> <span class="codenumber">6.2</span> <span class="title">*Examples</span>
-</h2></section></div></main>
+<span class="type">Section</span> <span class="codenumber">6.2</span> <span class="title">Ordinary Point Solution Example</span>
+</h2>
+<section class="subsection" id="subsec-ord-soln"><h3 class="heading hide-type">
+<span class="type">Subsection</span> <span class="codenumber">6.2.1</span> <span class="title">Solve \(y'' + 2xy' + y = 0\) with a series around \(x=0\)</span>
+</h3>
+<p id="p-270">The first thing we do is set</p>
+<div class="displaymath">
+\begin{align*}
+y(x) \amp = \sum_{n=0}^\infty a_nx^n.
+\end{align*}
+</div>
+<p id="p-271">We can differentiate this like we would for any polynomial:</p>
+<div class="displaymath">
+\begin{align*}
+y'(x) \amp = \sum_{n=0}^\infty na_n x^{n-1}, \qquad y''(x) = \sum_{n=0}^\infty n(n-1)a_nx^{n-2}.
+\end{align*}
+</div>
+<p id="p-272">(Technically, \(y'\) should start with \(n=1\) and \(y''\) should start with \(n=2\) but that shouldn't matter all too much.)</p>
+<p id="p-273">And now, we substitute these into our ODE \(y'' + 2xy' + y = 0\text{:}\)</p>
+<div class="displaymath">
+\begin{align*}
+0 \amp = \sum_{n=0}^\infty n(n-1)x^{n-2} + 2x\sum_{n=0}^\infty na_n x^{n-1} + \sum_{n=0}^\infty a_nx^n\\
+\amp = \sum_{n=0}^\infty n(n-1)x^{n-2} + \sum_{n=0}^\infty 2na_n x^n + \sum_{n=0}^\infty a_nx^n\\
+\amp = \sum_{n=0}^\infty n(n-1)a_nx^{n-2} + \sum_{n=0}^\infty (2n+1)a_n x^n
+\end{align*}
+</div>
+<p id="p-274">We want to combine all the sums so that there's only one summation. To combine the two sums above, we need to use an “index shift” on the sum</p>
+<div class="displaymath">
+\begin{gather*}
+\sum_{n=0}^\infty n(n-1)a_nx^{n-2}
+\end{gather*}
+</div>
+<p class="continuation">so that the powers of \(x\) match in each sum.</p>
+<article class="question example-like" id="question-31"><a data-knowl="" class="id-ref question-knowl original" data-refid="hk-question-31"><h6 class="heading">
+<span class="type">Question</span><span class="space"> </span><span class="codenumber">6.2.1</span><span class="period">.</span><span class="space"> </span><span class="title">What is an index shift?</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-question-31"><article class="question example-like"><p id="p-275">We bascially replace the index variable (which in the case of our sums is \(n\)) with something else.</p>
+<p id="p-276">Since we want to match the powers of \(x\text{,}\) let's write \(n = k+2\) in the <em class="emphasis">first sum</em> above. That way, we'd have</p>
+<div class="displaymath">
+\begin{align*}
+\sum_{n=0}^\infty n(n-1)a_nx^{n-2} \amp = \sum_{k+2=0}^\infty (k+2)(k+2-1)a_{k+2}x^{k+2-2} = \sum_{k=-2}^\infty (k+2) (k+1) a_{k+2} x^k.
+\end{align*}
+</div>
+<p id="p-277">The \(k = -2\) is a little scary, but notice that \((k+2) (k+1) a_{k+2} x^k = 0\) when \(k = -2\) and when \(k = -1\text{.}\) So, we can rewrite the sum as</p>
+<div class="displaymath">
+\begin{align*}
+\sum_{k=-2}^\infty (k+2) (k+1) a_{k+2} x^k \amp = \sum_{k=0}^\infty (k+2) (k+1) a_{k+2} x^k = \sum_{n=0}^\infty (n+2) (n+1) a_{n+2} x^n,
+\end{align*}
+</div>
+<p id="p-278">where in the last step, we've just replaced all the \(k\)'s with \(n\)'s.</p></article></div>
+<p id="p-279">This would get us</p>
+<div class="displaymath">
+\begin{align*}
+0 \amp = \sum_{n=0}^\infty n(n-1)a_nx^{n-2} + \sum_{n=0}^\infty (2n+1)a_n x^n\\
+\amp = \sum_{n=0}^\infty (n+2) (n+1) a_{n+2} x^n + \sum_{n=0}^\infty (2n+1)a_n x^n\\
+\amp = \sum_{n=0}^\infty \Big[ (n+2)(n+1) a_{n+2} + (2n+1)a_n \Big]x^n.
+\end{align*}
+</div>
+<p id="p-280">In order for equality to hold, the coefficient of \(x^n\) must equal \(0\text{,}\) so our recurrence relation for \(a_n\) is</p>
+<div class="displaymath">
+\begin{align*}
+(n+2)(n+1) a_{n+2} + (2n+1)a_n \amp = 0 \qquad \text{for all $n \geq 0$}.
+\end{align*}
+</div>
+<p id="p-281">This is usually enough to solve an exercise, since it can be difficult to find an explicit expression (no \(a_{n+2}\) or anything) for \(a_n\text{.}\)</p>
+<p id="p-282">Something very important to mention here though, is that only <em class="emphasis">even</em> terms depend on <em class="emphasis">even</em> terms, and only <em class="emphasis">odd</em> terms depend on <em class="emphasis">odd</em> terms.</p>
+<p id="p-283">If we solve for \(a_{n+2}\) in \((n+2)(n+1) a_{n+2} + (2n+1)a_n = 0\text{,}\) we get</p>
+<div class="displaymath">
+\begin{align*}
+a_{n+2} \amp = - \frac{2n+1}{(n+2)(n+1)} a_n.
+\end{align*}
+</div>
+<p id="p-284">So, \(a_{n+2}\) is proportional to \(a_n\text{.}\) Similarly, \(a_n\) is proportional to \(a_{n-2}\) and so on. At the very end, note that all <em class="emphasis">even</em> terms \(a_{2k}\) are proportional to \(a_0\) and all <em class="emphasis">odd</em> terms are proportional to \(a_1\text{.}\)</p>
+<p id="p-285">Since each \(a_{2k}\) is proportional to \(a_0\text{,}\) let's write \(a_{2k} = \alpha_{2k} a_0\text{,}\) and since each \(a_{2k+1}\) is proportional to \(a_1\text{,}\) let's write \(a_{2k+1} = \beta_{2k+1} a_0\text{.}\) Then, our solution \(y(x)\) becomes</p>
+<div class="displaymath">
+\begin{align*}
+y(x) \amp = \sum_{n=0}^\infty a_nx^n,\\
+\amp = \sum_{k=0}^\infty a_{2k}x^{2k} + \sum_{k=0}^\infty a_{2k+1}x^{2k+1},\\
+\amp = a_0\sum_{k=0}^\infty \alpha_{2k} x^{2k} + a_1\sum_{k=0}^\infty \beta_{2k+1} x^{2k+1}.
+\end{align*}
+</div>
+<p id="p-286">This is actually very similar to the more familiar general solution \(y(x) = c_1y_1 + c_2y_2\text{,}\) except with \(c_1 = a_0\text{,}\) \(c_2 = a_1\text{,}\) and</p>
+<div class="displaymath">
+\begin{align*}
+y_1 \amp = \sum_{k=0}^\infty \alpha_{2k} x^{2k}, \qquad y_2 = \sum_{k=0}^\infty \beta_{2k+1} x^{2k+1}. 
+\end{align*}
+</div>
+<p id="p-287">These choices of \(y_1\) and \(y_2\) form a fundamental pair of solutions (take it as a given for now). Thus, the solution \(y(x)\) was actually the general solution for the ODE!</p>
+<p id="p-288">With these kinds of questions, we're often asked about the first few terms:</p>
+<article class="question example-like" id="question-32"><a data-knowl="" class="id-ref question-knowl original" data-refid="hk-question-32"><h6 class="heading">
+<span class="type">Question</span><span class="space"> </span><span class="codenumber">6.2.2</span><span class="period">.</span><span class="space"> </span><span class="title">Write the first 6 terms of \(y(x)\).</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-question-32"><article class="question example-like"><p id="p-289">Remember our recurrence relation:</p>
+<div class="displaymath">
+\begin{gather*}
+(n+2)(n+1) a_{n+2} + (2n+1)a_n = 0 \quad \implies \quad a_{n+2} = - \frac{2n+1}{(n+2)(n+1)} a_n.
+\end{gather*}
+</div>
+<p id="p-290">Now, we just need to plug in certain values of \(n\text{.}\) (Don't forget that \(a_0\) and \(a_1\) are arbitrary.)</p>
+<div class="displaymath">
+\begin{align*}
+a_2 \amp = - \frac{2(0) + 1}{(0 + 2)(0 + 1)} a_0 = -\frac12 a_0,\\
+a_3 \amp = - \frac{2(1) + 1}{(1 + 2)(1 + 1)} a_1 = -\frac12 a_1,\\
+a_4 \amp = - \frac{2(2) + 1}{(2 + 2)(2 + 1)} a_2 = -\frac5{12} \cdot -\frac12 a_0 = \frac5{24} a_0,\\
+a_5 \amp = - \frac{2(3) + 1}{(3 + 2)(3 + 1)} a_3 = -\frac7{20} \cdot -\frac12 a_1 = \frac7{40} a_1.
+\end{align*}
+</div>
+<p id="p-291">So, the first six terms of \(y(x)\) are</p>
+<div class="displaymath">
+\begin{gather*}
+a_0 + a_1x - \frac12 a_0 x^2 - \frac12 x^3 + \frac5{24} a_0x^4 + \frac7{40} a_1 x^5.
+\end{gather*}
+</div></article></div>
+<article class="question example-like" id="question-33"><a data-knowl="" class="id-ref question-knowl original" data-refid="hk-question-33"><h6 class="heading">
+<span class="type">Question</span><span class="space"> </span><span class="codenumber">6.2.3</span><span class="period">.</span><span class="space"> </span><span class="title">Bonus: Find an explicit form of \(a_n\).</span>
+</h6></a></article><div class="hidden-content tex2jax_ignore" id="hk-question-33"><article class="question example-like"><p id="p-292">This is usually something that you'd rarely have to do. We have to consider different cases based on whether \(n = 2k\) is even or if \(n = 2k+1\) is odd.</p>
+<p id="p-293">Our recurrence relation tells us that \(a_n = f(n) a_{n-2}\) where</p>
+<div class="displaymath">
+\begin{align*}
+f(n) \amp = - \frac{2(n-2)+1}{((n-2)+2)((n-2)+1)} = -\frac{2n-3}{n(n-1)}.
+\end{align*}
+</div>
+<p id="p-294">When \(n = 2k\) is even, we find that</p>
+<div class="displaymath">
+\begin{align*}
+a_{2k} \amp = f(2k) a_{2k-2} = f(2k) f(2k-2) a_{2k-4}, \phantom{\frac12} \\
+\amp = f(2k) f(2k-2) f(2k-4) \cdots f(4) f(2) a_0,\\
+\amp = a_0 \prod_{s=1}^k f(2s), \\
+\amp = a_0 \prod_{s=1}^k \left[-\frac{4s-3}{2s(2s-1)}\right], \\
+\amp = a_0 \frac{(-1)^k}{(2k)!} \prod_{s=1}^k (4s-3).
+\end{align*}
+</div>
+<p id="p-295">When \(n = 2k+1\) is odd, we find that</p>
+<div class="displaymath">
+\begin{align*}
+a_{2k+1} \amp = f(2k+1) a_{2k-1} = f(2k+1) f(2k-1) a_{2k-3}, \phantom{\frac12} \\
+\amp = f(2k+1) f(2k-1) f(2k-3) \cdots f(5) f(3) a_1,\\
+\amp = a_1 \prod_{s=1}^k f(2s+1),\\
+\amp = a_1 \prod_{s=1}^k \left[-\frac{4s-1}{(2s+1)2s}\right],\\
+\amp = a_1 \frac{(-1)^k}{(2k+1)!} \prod_{s=1}^k (4s-1).
+\end{align*}
+</div>
+<p id="p-296">Put together, we get the explicit form of \(a_n\text{.}\)</p></article></div></section></section></div></main>
 </div>
 </body>
 </html>
